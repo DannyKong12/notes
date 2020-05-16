@@ -1,0 +1,3 @@
+# Danny Kong's Notes
+
+
