@@ -30,9 +30,10 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
+        git fetch
         git checkout master
         git add */*.html
-        git commit -m "Compiled changes from develop" -a
+        git commit -m "Compiled changes from develop"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
