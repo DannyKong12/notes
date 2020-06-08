@@ -1,0 +1,328 @@
+<!DOCTYPE html><html><head>
+      <title>lecture04</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="math-128">Math 128</h1>
+
+<h3 class="mume-header" id="important-websites">Important Websites</h3>
+
+<ul>
+<li>Learn: course info/assignments/quizzes</li>
+<li>Crowdmark: upload assignments/quizzes</li>
+<li>Piazza</li>
+</ul>
+<h3 class="mume-header" id="_first-tutorial-starts-sep18_"><em>FIRST TUTORIAL STARTS SEP.18</em></h3>
+
+<ul>
+<li><strong><em>QUIZZES WILL BE DURING TUTORIALS</em></strong></li>
+<li>Due 9pm monday</li>
+</ul>
+<h4 class="mume-header" id="review-of-basic-integration">Review of basic integration</h4>
+
+<ul>
+<li><span class="mathjax-exps">$\int x^ndx$</span></li>
+<li><span class="mathjax-exps">$\int e^xdx$</span></li>
+<li><span class="mathjax-exps">$\int \sin(x)dx$</span></li>
+<li><span class="mathjax-exps">$\int \cos(x)dx$</span></li>
+<li><span class="mathjax-exps">$\int \sec^2(x)dx$</span></li>
+<li><span class="mathjax-exps">$\int \csc^2(x)dx$</span></li>
+<li><span class="mathjax-exps">$\int \frac{1}{1+x^2} dx$</span></li>
+<li><span class="mathjax-exps">$\int \frac{1}{\sqrt{1-x^2}}dx$</span></li>
+<li>Definite integrals</li>
+</ul>
+<h4 class="mume-header" id="fundamental-theorem-of-calculus">Fundamental Theorem of Calculus</h4>
+
+<ul>
+<li>Part 1: the cumulation function
+<ul>
+<li><span class="mathjax-exps">$F(x)=\int^x_a f(t)dt$</span>, then <span class="mathjax-exps">$F^\prime(x) = f(x)$</span></li>
+</ul>
+</li>
+<li>Part 2: the antiderivative theorem
+<ul>
+<li>If <span class="mathjax-exps">$F^\prime(x) = f(x)$</span>, then <span class="mathjax-exps">$\int^b_a f(x) = F(b)-F(a)$</span>, where<br>
+F is the antiderivative of f</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="integral-functions">Integral Functions</h4>
+
+<ul>
+<li>an integral function is of the form<br>
+<span class="mathjax-exps">$P(x)=\int^{h(x)}_{g(x)} f(t) dt$</span></li>
+<li>Using FTC to find <span class="mathjax-exps">$P^\prime(x)$</span>:
+<ul>
+<li>let <span class="mathjax-exps">$F(x)$</span> be the antiderivative of <span class="mathjax-exps">$f(x)$</span> (defined as <span class="mathjax-exps">$F^\prime = f$</span>)</li>
+<li><span class="mathjax-exps">$P^\prime(x)=\frac{d}{dx}(F(h(x))-F(g(x)))$</span></li>
+<li><span class="mathjax-exps">$P^\prime(x)=F^\prime(h(x))h^\prime(x)-F^\prime(g(x))g^\prime(x)$</span></li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="substitution">Substitution</h4>
+
+<ul>
+<li>
+<p>idea is to use chain rule in reverse</p>
+</li>
+<li>
+<p>e.g. <span class="mathjax-exps">$\frac{d}{dx}[F(g(x))]=F^\prime(g(x))g^\prime(x)$</span><br>
+</p><div class="mathjax-exps">$$\begin{align} \frac{d}{dx}[F(g(x))]&amp;=F^\prime(g(x))g^\prime(x) \\ \int\frac{d}{dx}[F(g(x))]&amp;=\int F^\prime(g(x))g^\prime(x) dx \text{,  let U = g(x)}\\ F(g(x))&amp;=\int F^\prime(g(x))g^\prime(x)dx \\ F(U)&amp;=\int F^\prime(U) dU \\ \end{align}$$</div><p></p>
+</li>
+<li>
+<p>Theorem: if <span class="mathjax-exps">$U=g(x)$</span> is a differentiable function whose range is an interval I and <span class="mathjax-exps">$f(x)$</span> is continuous on I, then <span class="mathjax-exps">$\int f(g(x)))g^\prime(x)dx=\int f(U)dU$</span></p>
+</li>
+<li>
+<p>look for functions that fit <span class="mathjax-exps">$g(x)$</span> and <span class="mathjax-exps">$g^\prime(x)$</span></p>
+</li>
+</ul>
+<p></p><div class="mathjax-exps">$$\begin{align} \int e^{3x}\sin(e^{3x}+5) dx &amp;= g^\prime(x) \sin(g(x))dx \\ &amp;=\frac{1}{3}\int \sin(U)dU \\ &amp;=-\frac{1}{3}\cos(U)+C \\ &amp;=-\frac{1}{3} \cos(e^{3x}+5)+C \end{align}$$</div><p></p>
+<p><strong>Ex2:</strong> <span class="mathjax-exps">$\int \tan(x)dx$</span><br>
+<span class="mathjax-exps">$let U = \cos(x)$</span><br>
+</p><div class="mathjax-exps">$$\begin{align} \int \tan(x) dx &amp;= -\int \frac{1}{U} dU \\ &amp;= -\ln(U)+C \\ &amp;= -\ln(\cos(x))+C \\ &amp;= \ln(\sec(x))+C \end{align}$$</div><p></p>
+<p><strong>Ex3:</strong> <span class="mathjax-exps">$\int\frac{x^2}{\sqrt{x+1}}$</span> Let <span class="mathjax-exps">$U=x+1$</span><br>
+By using U as the function inside a more complicated function<br>
+</p><div class="mathjax-exps">$$\begin{align} \int\frac{x^2}{\sqrt{x+1}} &amp;= \int \frac{(U-1)^2}{}(sqrt{U}) \\ &amp;= \int U^{\frac{3}{2}} -2U^{\frac{1}{2}}+U^{\frac{1}{2}} \\ &amp;= \frac{2U^{\frac{5}{2}}}{5}-\frac{4U^{\frac{3}{2}}}{3}+2U^{\frac{1}{2}} \end{align}$$</div><p></p>
+<h4 class="mume-header" id="integration-by-parts">Integration By Parts</h4>
+
+<ul>
+<li>general approaches</li>
+<li>Choose the most difficult <span class="mathjax-exps">$dV$</span> you can integrate</li>
+<li>pick <span class="mathjax-exps">$U$</span> so that <span class="mathjax-exps">$dU$</span> is simpler e.g. polynomials</li>
+<li>integrate several times<br>
+&#xA0;<br>
+&#xA0;<br>
+<strong>Ex1:</strong> <span class="mathjax-exps">$\int x^2 \cos(x)dx$</span><br>
+Choose <span class="mathjax-exps">$U=x^2$</span> and <span class="mathjax-exps">$dV = \cos(x)$</span><br>
+<div class="mathjax-exps">$$\begin{align} \int x^2 \cos(x) dx = \int U dV &amp;= UV - \int VdU \\ &amp;= x^2\sin(x)-\int 2x\sin(x)dx \\ &amp;= x^2\sin(x)-2(-x\cos(x)+\int \cos(x) dx) \\ &amp;= x^2\sin(x)+2x\cos(x)-2\sin(x) \end{align}$$</div></li>
+</ul>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

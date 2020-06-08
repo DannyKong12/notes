@@ -1,0 +1,867 @@
+<!DOCTYPE html><html><head>
+      <title>lecture11</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="biol-373">Biol 373</h1>
+
+<h3 class="mume-header" id="metabolism-and-energy-balance">Metabolism and Energy Balance</h3>
+
+<h4 class="mume-header" id="homeostatic-vs-non-homeostatic-eating">Homeostatic vs. non-Homeostatic Eating</h4>
+
+<ul>
+<li>Homeostatic:
+<ul>
+<li>Eating when energy fuels are depleted</li>
+<li>Not eating when energy fuels are sufficient</li>
+<li>&quot;metabolically driven&quot;</li>
+</ul>
+</li>
+<li>Non-Homeostatic:
+<ul>
+<li>Eating in the complete absence of hunger</li>
+<li>Eating despite large fat reserves
+<ul>
+<li>Involves cognitive, reward, emotional factors</li>
+<li>has neural parallels with addiction mechanisms</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="models-for-regulation-of-homeostatic-eating">Models for Regulation of Homeostatic Eating</h4>
+
+<ul>
+<li>Two centers in the hypothalamus
+<ul>
+<li>Hunger center</li>
+<li>Satiety center</li>
+</ul>
+</li>
+<li>Glucosatic theory
+<ul>
+<li>Intake regulated by glucose levels, monitored in hypothalamus</li>
+</ul>
+</li>
+<li>Lipostatic theory
+<ul>
+<li>Signal from fat stores to brain modulates eating behaviour</li>
+<li>Discovery of protein hormone synthesized in white adipose tissue</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="leptin-and-the-obob-mouse">Leptin and the ob/ob Mouse</h4>
+
+<ul>
+<li>In the 1950s, discovered spontaneous mutation in mouse colony at lab animal supplier
+<ul>
+<li>Mice were obese, voracious eaters</li>
+</ul>
+</li>
+<li>Mutation was identified with the &apos;ob&apos; gene
+<ul>
+<li>&apos;ob/ob&apos; mouse name arose</li>
+</ul>
+</li>
+<li>the protein product of the gene was leptin</li>
+<li>Another mutation discovered &apos;db&apos; mutation in the leptin receptor</li>
+<li>Circulating leptin concentrations may affect eating habits</li>
+</ul>
+<h4 class="mume-header" id="signals-from-gut-can-regulate-homeostatic-eating">Signals from Gut can Regulate Homeostatic Eating</h4>
+
+<ul>
+<li>Stomach can increase appetite by producing ghrelin</li>
+<li>Stomach distension and increased acid signals for decreased appetite</li>
+<li>Upper small intestine increase CCK in response to fat/proteins</li>
+<li>Increased glucose in lumen (pathway is uncertain)</li>
+<li>Lower small intestine produces peptide YY and GLP 1</li>
+</ul>
+<h4 class="mume-header" id="peptides-that-influence-homeostatic-eating">Peptides that Influence Homeostatic Eating</h4>
+
+<ul>
+<li>Neuropeptide Y
+<ul>
+<li>Key NT in the stimulation of appetite</li>
+<li>Many hormones, neuropeptides and produces of adipocytes interact to influence appetite</li>
+<li>Fairly complex and poorly understood<br>
+<img src="../static/BIOL373/fig22.1.png" alt="fig 22.1"></li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="homeostatic-regulation-of-metabolism">Homeostatic Regulation of Metabolism</h4>
+
+<ul>
+<li>metabolism: &quot;set of life-sustaining chemical transformation within cellso f living organisms&quot;</li>
+<li>Whether transformation of energy substrates (carbs fats proteins) will go towards storage/anabolism or breakdown/catabolism</li>
+<li>Regulation
+<ul>
+<li>Endocrine
+<ul>
+<li>products of endocrine pancreas</li>
+<li>insulin/glucagon ration</li>
+</ul>
+</li>
+<li>Neural - regulation of food intake</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="endocrine-pancreas">Endocrine Pancreas</h4>
+
+<ul>
+<li>Islets of Langerhans
+<ul>
+<li>Bundles of cells not connected to exocrine acinar cells</li>
+</ul>
+</li>
+<li>Consists of 3 types, alpha/beta, D</li>
+<li>Apha cell produces Glucagon</li>
+<li>Beta cell produces insulin</li>
+<li>D cell produces somatostatin</li>
+</ul>
+<h4 class="mume-header" id="fed-vs-fasted-states">Fed vs Fasted states</h4>
+
+<ul>
+<li>Fed (absorptive) vs Fasted (postabsorptive) states are decided by hormones</li>
+<li>Insulin
+<ul>
+<li>increases glucose oxidation</li>
+<li>increases glycogen synthesis</li>
+<li>increases fat synthesis</li>
+<li>increases protein synthesis</li>
+</ul>
+</li>
+<li>Glucagon
+<ul>
+<li>Increases glycogenolysis</li>
+<li>Gluconeogensis</li>
+<li>Ketogenesis</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="insulin-secretion-and-action">Insulin Secretion and Action</h4>
+
+<ul>
+<li>Factors affecting insulin release
+<ul>
+<li>Increased plasma glucose (&gt; 100mg/dL, fasting is 90)</li>
+<li>Increased plasma AAs</li>
+<li>GLP-1, GIP increase</li>
+</ul>
+</li>
+<li>Targets
+<ul>
+<li>striated muscle, adipose tissue (that express GLUT4)</li>
+<li>Liver</li>
+</ul>
+</li>
+<li>Action
+<ul>
+<li>Glucose transport into GLUT4 expressing cells</li>
+<li>Glucose metabolism</li>
+<li>Glycogenesis</li>
+<li>Fat synthesis, protein synthesis</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="fed-state-insulin">Fed State Insulin</h4>
+
+<p><img src="../static/BIOL373/fig22.15.png" alt="fig 22.15"></p>
+<ul>
+<li>Various pathways from eating causes Insulin release</li>
+<li>Action is to ultimately reduce plasma glucose</li>
+</ul>
+<h4 class="mume-header" id="features-of-pancreatic-beta-cells">Features of Pancreatic Beta Cells</h4>
+
+<ul>
+<li>GLUT2 transporters move glucose into beta cells by facilitated diffusion</li>
+<li>K+ leak channels, close when ATP binds to them &quot;ATP-gated&quot; channel</li>
+<li>voltage gated Ca channels</li>
+<li>Secretory vesicles of insulin waiting for release signal</li>
+<li>At rest, the K leak channels set membrane potential, Ca channel closed</li>
+<li>When K channels close, cell depolarizes and Ca enters</li>
+</ul>
+<h4 class="mume-header" id="how-does-the-insulin-receptor-work">How does the insulin receptor work</h4>
+
+<ul>
+<li>Enzyme coupled RTK</li>
+<li>When activated, RTKs transfer phosphate groups from ATP to tyrosine on target proteins
+<ul>
+<li>Insulin binds, <span class="mathjax-exps">$\beta$</span>-subunits phosphorylate themselves</li>
+<li>activated RTKs phosphorylates target proteins</li>
+<li>Cell reponses</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="insulin-mechanism-of-action">Insulin mechanism of Action</h4>
+
+<p><img src="../static/BIOL373/fig22.16.png" alt="fig 22.16"></p>
+<h4 class="mume-header" id="insulin-effects-in-muscle-and-adipose-tissue">Insulin effects in Muscle and Adipose Tissue</h4>
+
+<ul>
+<li>Insulin receptor sends a signal cascade in cell, which installs GLUT4 in muscle and adipose</li>
+</ul>
+<h4 class="mume-header" id="insulin-effects-in-hepatocytes">Insulin effects in Hepatocytes</h4>
+
+<ul>
+<li>during low blood glucose conditions, hepatocytes make glucose and export it</li>
+<li>during high blood glucose conditions, hepatocytes <em>import</em> glucose using the same GLUT2 transporter</li>
+<li>Activates hexokinase -&gt; phosphorylated glucose, which reduces free glucose levels</li>
+</ul>
+<h4 class="mume-header" id="insulin-as-an-anabolic-pathway">Insulin as an Anabolic pathway</h4>
+
+<ul>
+<li>Activates enzymes that enhance
+<ul>
+<li>glycolysis</li>
+<li>glycogenesis</li>
+<li>AA utilization</li>
+<li>Lipogenesis</li>
+</ul>
+</li>
+<li>Inhibits enzymes that enhance
+<ul>
+<li>gluconeogenesis</li>
+<li>Glycogenolysis</li>
+<li>Proteolysis</li>
+<li>Lipolysis</li>
+<li><span class="mathjax-exps">$\beta$</span> oxidation of fatty acids</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="glucagon-antagonizes-effects-of-insulin">Glucagon antagonizes effects of insulin</h4>
+
+<ul>
+<li>produced by alpha cells of pancreas</li>
+<li>Member of secretin family of peptides</li>
+<li>Main trigger is low blood glucose</li>
+<li>Main target is liver</li>
+<li>acts via GPCR, cAMP</li>
+<li>Main function is to prevent hypoglycemia</li>
+<li>During overnight fast, 75% of glucose from the liver comes from glycogenolysis, 25% from gluconeogenesis</li>
+</ul>
+<h4 class="mume-header" id="endocrine-response-to-hypoglycemia">Endocrine response to Hypoglycemia</h4>
+
+<p><img src="../static/BIOL373/fig22.18.png" alt="fig 22.18"></p>
+<ul>
+<li>Low glucose is detected by pancreatic <span class="mathjax-exps">$\alpha$</span> cells</li>
+<li>Produces glucagon which stimulates targets</li>
+<li>Net target is higher blood glucose</li>
+</ul>
+<h4 class="mume-header" id="diabetes-mellitus">Diabetes Mellitus</h4>
+
+<ul>
+<li>Group of diseases characterized by elevated blood glucose
+<ul>
+<li>can result from inadequate insulin secretion</li>
+<li>Abnormal target cell responsiveness</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="acute-pathophysiology-of-type-1-diabetes-mellitus">Acute pathophysiology of Type 1 Diabetes Mellitus</h4>
+
+<p>fig ???</p>
+<ul>
+<li>basically figure suggests no insulin is being released from fat/protein/glucose metabolism</li>
+<li>Eventually ends in hyperglycemia
+<ul>
+<li>Causes metabolic acidosis</li>
+<li>Dehydration</li>
+<li>Various systemic outcomes</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="type-2-diabetes">Type 2 Diabetes</h4>
+
+<ul>
+<li>Accounts for 90% of diabetes</li>
+<li>Typically there is a &quot;insulin resistance&quot;
+<ul>
+<li>delayed response to oral glucose</li>
+<li>Can be coupled with low, normal, or high insulin secretion</li>
+</ul>
+</li>
+<li>Acute symptoms not as severe as Type 1</li>
+<li>Type 2 diabetes, atherosclerosis and hypertension tend to occur together
+<ul>
+<li>Hypertension</li>
+<li>high fasting blood glucose</li>
+<li>elevated fasting triglycerides</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="appetite-control-and-metabolic-regulation-in-the-modern-world">Appetite Control and Metabolic Regulation in the Modern World</h4>
+
+<ul>
+<li>Humans have significant energy stores
+<ul>
+<li>Can go long without food</li>
+<li>Food restriction and fat use leads to hunger</li>
+<li>Effector mechanisms that are adaptible, flexible and learn from experience</li>
+</ul>
+</li>
+<li>Emerged evolutionarily from constant struggle to find food for survival, <em>using</em> fat stores sends low food alarm -&gt; find more food</li>
+</ul>
+<h4 class="mume-header" id="modern-humans">Modern Humans</h4>
+
+<ul>
+<li>Environment acts on higher brain regions to overstimulate food intake</li>
+<li>Procuring food is no longer demanding or dangerous, don&apos;t need as much stimulation from homestatic hunger</li>
+<li>Exceeding upper limits of body weight is not a disadvantage in terms of predator-prey relationships
+<ul>
+<li>no selection for leanness</li>
+</ul>
+</li>
+<li>Leptin resistance
+<ul>
+<li>happens to animals when exposed to human diets</li>
+<li>Leptin resistance occurs so animals can overeat to build up stores (ie for winter)</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="leptin-deficiencies-in-humans">Leptin Deficiencies in humans</h4>
+
+<ul>
+<li>Frame shift mutation in lep gene</li>
+<li>Five other cases</li>
+</ul>
+<h4 class="mume-header" id="adrenal-gland">Adrenal Gland</h4>
+
+<ul>
+<li>Ad-renal &quot;on the kidneys&quot;, same as epi-nephros<br>
+<img src="../static/BIOL373/fig23.1.png" alt="fig 23.1"></li>
+<li>Three main zones producing endocrine hormones
+<ul>
+<li>Aldosterones produced (mineralo)</li>
+<li>cortisol, corticosteroids</li>
+<li>sex steroids</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="steroidogenic-pathway">Steroidogenic Pathway</h4>
+
+<ul>
+<li>Cholesterol with a cleaved side chain is the precursor to steroids</li>
+</ul>
+<h4 class="mume-header" id="hypothalamic-pituitary-adrenal-axis">Hypothalamic Pituitary Adrenal Axis</h4>
+
+<p><img src="../static/BIOL373/fig23.2.png" alt="fig 23.2"></p>
+<ul>
+<li>Hypothalamus controlled by a number of aspects, including circadian rhythm
+<ul>
+<li>Low blood glucose</li>
+</ul>
+</li>
+<li>Targets Liver/Muscles/Adipose tissue
+<ul>
+<li>Pushes tissue groups for energy</li>
+<li>produces glucose for energy</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="cortisol-is-secreted-in-a-circadian-rhythm">Cortisol is secreted in a circadian rhythm</h4>
+
+<h4 class="mume-header" id="targets-of-glucocorticoids">Targets of Glucocorticoids</h4>
+
+<ul>
+<li>Receptors expressed by all nucleated cells</li>
+<li>Long term (genomic) effects
+<ul>
+<li>Increased expression of enzymes</li>
+<li>Increased expression of receptors for other regylatory hormones</li>
+</ul>
+</li>
+<li>Drives enzymatic expression
+<ul>
+<li>to carry out metabolic effects (hypoglycemia)</li>
+<li>Generate glucose in blood</li>
+</ul>
+</li>
+<li>Suppress immune response</li>
+</ul>
+<h4 class="mume-header" id="stress-axis">Stress Axis</h4>
+
+<ul>
+<li>Hans Selye</li>
+<li>Built on walk of Claude Bernard, Water Cannon
+<ul>
+<li>Developed concept that a wide variety of stressors (harmless, noxious, positive, negative) causing a generic response
+<ul>
+<li>Adrenal Hypertrophy</li>
+<li>Atrophy of thymus/lymph nodes</li>
+<li>GI ulcers</li>
+</ul>
+</li>
+<li>Failure to cope with/adapt to stresses caused diseases of adaptation (ulcers, hypertension, etc)</li>
+<li>Was working with rats, injected certain compounds he considered to be stressors
+<ul>
+<li>yet, all the animals, including the control, had the same symptoms</li>
+<li>The stress of the procedure of testing the animals was producing symptoms</li>
+<li>Stress leads to generic responses</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Led to many breakthroughs in hypothalamic-pituitary axis</li>
+</ul>
+<h4 class="mume-header" id="epinephrine-fight-or-flight-response">Epinephrine + Fight or Flight response</h4>
+
+<ul>
+<li>NE released from post-ganglionic neurons</li>
+<li>E released from adrenal medulla
+<ul>
+<li>Rapid effects with very short half-lives</li>
+</ul>
+</li>
+<li>Various effects throughout body</li>
+<li>Metabolic effects: mobilize energy substrates
+<ul>
+<li>decrease insulin release + increase glucagon release</li>
+<li>adpiose -&gt; lipogenesis</li>
+<li>muscle -&gt; glycogenolysis</li>
+<li>liver -&gt; glycogenolysis, gluconeogenesis</li>
+</ul>
+</li>
+<li>Acts like glucagon, but on a variety of target tissues</li>
+</ul>
+<h4 class="mume-header" id="why-zebras-dont-get-ulcers">Why Zebras Don&apos;t Get Ulcers</h4>
+
+<ul>
+<li>Supression of immune system to prevent energy waste</li>
+<li>Don&apos;t need to worry about bacterial infection when muscles need energy to literally &quot;run from the lion&quot;</li>
+</ul>
+<h4 class="mume-header" id="glucagon-and-epinephrine-and-cortisol">glucagon and epinephrine and cortisol</h4>
+
+<p><img src="../static/BIOL373/fig7.12.png" alt="fig 7.12"></p>
+<ul>
+<li>Cortisol allows glucagon and epinephrine to fully effect</li>
+</ul>
+<h4 class="mume-header" id="cortisol-pathologies">Cortisol Pathologies</h4>
+
+<ul>
+<li>Hypercortisolism - Cushing&apos;s Syndrome
+<ul>
+<li>Primary - Cortisol-secreting adrenal tumors (not regulated by ACTH)</li>
+<li>Secondary - pituitary tumor that over-secretes ACTH</li>
+<li>Iatrogenic - secondary to cortisol therapy for other conditions</li>
+</ul>
+</li>
+<li>Hypocortisolism
+<ul>
+<li>Primary adrenal insufficiency (Addison&apos;s Disease)
+<ul>
+<li>Adrenal Gland does not develop normally</li>
+<li>mutations in key steroidogenic enzymes</li>
+<li>Adrenal Gland damaged (autoimmune)</li>
+<li>Produces Congenital Adrenal Hyperplasia</li>
+</ul>
+</li>
+<li>Secondary
+<ul>
+<li>Lack of ACTH</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="thyroid-gland">Thyroid Gland</h4>
+
+<p><img src="../static/BIOL373/fig23.4.png" alt="fig 23.4"></p>
+<ul>
+<li>Located just under the larynx, around the trachea</li>
+<li>Bulbous, made of capsules of connective tissue</li>
+<li>capsules themselves contain follicles</li>
+<li>Follicles made up of cells that produce thyroid hormones</li>
+<li>Adjacent to many follicles are C-cells which produce Calcitonin</li>
+</ul>
+<h4 class="mume-header" id="thyroid-hormone">Thyroid Hormone</h4>
+
+<p><img src="../static/BIOL373/fig23.5.png" alt="fig 23.5"></p>
+<ul>
+<li>Tyrosine derived Hormones</li>
+<li>Catecholamines produced by modifying side groups of tyrosine</li>
+<li>Thyroid hormones are synthesized from two tyrosines and iodine (4)</li>
+<li>Circulate in blood usually in T4 form, activated in T3 form</li>
+</ul>
+<h4 class="mume-header" id="actions-of-thyroid-hormones">Actions of Thyroid Hormones</h4>
+
+<ul>
+<li>Essential for normal growth/development especiall nervous system
+<ul>
+<li>In children, severe developmental effects</li>
+<li>In adults, not essential but affects quality of life</li>
+</ul>
+</li>
+<li>Main function is to provide substrates for oxidative metabolism</li>
+</ul>
+<h4 class="mume-header" id="thyroid-pathologies">Thyroid Pathologies</h4>
+
+<ul>
+<li>Hypothyroidism
+<ul>
+<li>Diminished oxygen consumption, decreased metabolic rate</li>
+<li>Neurological effects, fatigue</li>
+<li>Effects on skin nails hair</li>
+</ul>
+</li>
+<li>Hyperthyroidism
+<ul>
+<li>Increased oxygen consumption, heat production</li>
+<li>muscle weakness</li>
+<li>neurological, cardiac effects</li>
+<li>exophthalmos</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="growth-hormone-gh-somatotropin-axis">Growth Hormone (GH, somatotropin) axis</h4>
+
+<p><img src="../static/BIOL373/fig23.8.png" alt="fig 23.8"></p>
+<ul>
+<li>control of growth depends on many factors
+<ul>
+<li>GH, plus many other hormones playing direct and permissive roles
+<ul>
+<li>Insulin, thyroid hormone, sex steroids</li>
+</ul>
+</li>
+<li>Adequate nutrition</li>
+<li>Absence of chronic stress</li>
+<li>genetics</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="action-of-growth-hormone">Action of Growth Hormone</h4>
+
+<ul>
+<li>Carbohydrate - indirect effects lead to increase plamsa glucose</li>
+<li>Fat - lipulysis and oxidation</li>
+<li>Protein - <em>increases</em> protein creation
+<ul>
+<li>anabolic to proteins</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="growth-hormone-pathologies">Growth Hormone Pathologies</h4>
+
+<ul>
+<li>Deficiency due to GH hyposecretion, GH receptor mutations
+<ul>
+<li>Dwarfism though GH issues are not a common cause</li>
+</ul>
+</li>
+<li>Excess depends on whether excess secretion is before or after closure of growth plates of long bones
+<ul>
+<li>Before - giantism</li>
+<li>After - acromegaly</li>
+</ul>
+</li>
+<li>Deficiency syndromes were difficult to treat when the only source of human GH was cadavers</li>
+<li>Availability of bioengineered human GH has raised ethical issues
+<ul>
+<li>Fine determinism of &quot;how tall enough&quot;</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="calcium-in-the-body">Calcium in the Body</h4>
+
+<ul>
+<li>Extracellular Calcium involved in
+<ul>
+<li>Secretion/exocytosis</li>
+<li>Contraction of cardiac and smooth muscle</li>
+<li>Clotting cascade</li>
+</ul>
+</li>
+<li>Intracellular calcium in SR, cytosol, mitochondria</li>
+<li>Bone
+<ul>
+<li>Osteoblasts</li>
+<li>osteoclasts</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="bone-composition">Bone composition</h4>
+
+<p><img src="../static/BIOL373/fig23.10.png" alt="fig 23.10"></p>
+<ul>
+<li>Chondrocytes multiply and grow
+<ul>
+<li>Osteoblasts invades space where chondryctes die and lays down calcium</li>
+</ul>
+</li>
+<li>Osteoclasts - large multinucleate cells derived from hematopoietic stem cells
+<ul>
+<li>Dissolve bones and pulls Calcium in</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="calcium-intake">Calcium intake</h4>
+
+<ul>
+<li>Calcium absorption <em>can</em> be regulated by Vitamin <span class="mathjax-exps">$D_3$</span>, and</li>
+<li>Calcium reabsorption at the kidneys is regulated at the distal nephron only</li>
+<li>Parathyroid hormone regulates Calcium<br>
+<img src="../static/BIOL373/fig7.7.png" alt="fig 7.7"></li>
+<li>Parathyroid hormone detects low plasma Ca
+<ul>
+<li>Increased reabsorption at kidneys</li>
+<li>Increased osteoclast activity</li>
+<li>Increased (transcellular) Ca absorption at kidneys</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="calcium-homeostasis">Calcium Homeostasis</h4>
+
+<ul>
+<li>The small amount of calcium in the ECF is regulated</li>
+<li>From Small intestine:
+<ul>
+<li>Some is absorbed directly into ECF, trans cellular transporters can be regulated</li>
+</ul>
+</li>
+<li>At the kidneys:
+<ul>
+<li>Freely filtered</li>
+<li>mostly reabsorbed, can be regulated</li>
+</ul>
+</li>
+<li>Bones:
+<ul>
+<li>Build bones
+<ul>
+<li>Osteoblasts</li>
+</ul>
+</li>
+<li>Resorption
+<ul>
+<li>Osteoclasts</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

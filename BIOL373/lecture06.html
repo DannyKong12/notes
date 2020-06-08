@@ -1,0 +1,496 @@
+<!DOCTYPE html><html><head>
+      <title>lecture06</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="biol-373">Biol 373</h1>
+
+<h3 class="mume-header" id="renal-function-2">Renal Function 2</h3>
+
+<ul>
+<li>Kidneys process ~180L of fluid, excretes ~1.5L</li>
+<li>In the 1.5L:
+<ul>
+<li>foreign/toxic substances</li>
+<li>endrogenous waste</li>
+<li>Easily excrete waste without using a transport mechanism for each new substance</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="reabsorption">Reabsorption</h4>
+
+<ul>
+<li>By default, filtrate is excreted</li>
+<li>Specific things (solutes, water, etc) can be reabsorbed into the blood stream</li>
+<li>Filtrate as it enters the capsule has the same osmolarity</li>
+<li>Solute and water can be reclaimed by creating a gradient<br>
+<img src="../static/BIOL373/fig19.8.png" alt="fig 19.8"></li>
+<li>Pumping sodium ions via active transport:
+<ul>
+<li>Anions move through barrier</li>
+<li>Water moves through barrier to balance osmolarity</li>
+<li>Other permeable solutes increase in concentration since water is being absorbed</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="crossing-the-tubular-membrane">Crossing the Tubular Membrane</h4>
+
+<ul>
+<li>Paracellular
+<ul>
+<li>through cell-cell junctions</li>
+<li>doesn&apos;t enter cell</li>
+</ul>
+</li>
+<li>epithelial transport
+<ul>
+<li>Transport proteins on apical surface of membrane cells</li>
+<li>Transport mechanism depends on gradient (active/passive)</li>
+<li>Most transport depends on Na gradient</li>
+</ul>
+</li>
+<li>Sodium transport in epithelium
+<ul>
+<li>Sodium enters through ENaC channel (leaky, down gradient)</li>
+<li>Na/K pump through other surface out of membrane cell</li>
+<li>Net effect is sodium is pumped out of the tubule lumen</li>
+</ul>
+</li>
+<li>Sodium linked transport
+<ul>
+<li>Glucose is pumped into the membrane cell via SGLT transporter as Na moves into the cell</li>
+<li>GLUT transporter pumps glucose out of membrane cell into ICF</li>
+<li>Na is still pumped out with Na/K ATPase</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="urea">Urea</h4>
+
+<ul>
+<li>Urea is a small, uncharged molecule that passes through membranes fairly easily</li>
+<li>~40% of urea passes through the membrane and gets reabsorbed before it reaches the collecting duct, even without transporters</li>
+<li>Urea gradient is set up by water reabsorption, like most molecules</li>
+</ul>
+<h4 class="mume-header" id="urea-is-a-form-of-nitrogenous-waste">Urea is a form of nitrogenous waste</h4>
+
+<ul>
+<li>Urea is formed from ammonia, product of metabolizing amino acids</li>
+<li>Metabolically speaking, urea is in a form that can be easily recycled by the body (urea cycle)</li>
+<li>Can be used in other metabolic pathways, so it can be reabsorbed</li>
+<li>Still, most of urea gets excreted (passive diffusion is slow)</li>
+</ul>
+<h4 class="mume-header" id="proteins">Proteins</h4>
+
+<ul>
+<li>Recall that proteins don&apos;t usually enter the nephron as filtrate, they are selectively blocked</li>
+<li>Most small (50kDa or less) proteins are still excreted via the kidneys</li>
+<li>Some charged proteins are still blocked, and conformation</li>
+<li>glycoproteins, hormones, insulin are filtered</li>
+</ul>
+<h4 class="mume-header" id="renal-handling-of-proteins">Renal Handling of Proteins</h4>
+
+<ul>
+<li>Smaller proteins enter the nephron as filtrate, and need to be reabsorbed</li>
+<li>proteins in filtrate can be endocytosed by the membrane cells
+<ul>
+<li>Insulin, GH, etc have no way of passing through membrane</li>
+<li>broken down inside the cell</li>
+</ul>
+</li>
+<li>other proteins are broken down by brush border cells and absorbed as amino acids
+<ul>
+<li>Small linear peptides that are easily metabolized</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="renal-transport">Renal Transport</h4>
+
+<ul>
+<li>Since transport requires membrane proteins, they can be saturated</li>
+<li>Transport maximum is the fastest rate of protein transport, occurs at some plasma concentration (renal threshold)</li>
+<li>Excess plasma concentration past the renal threshold can only be excreted</li>
+</ul>
+<h4 class="mume-header" id="glucose-handling-at-the-nephron">Glucose Handling at the Nephron</h4>
+
+<ul>
+<li>At higher concentration, the same fraction enters filtrate at the same concentration, so more glucose is filtered</li>
+<li>Reabsorption is capped at the transport max, so it is saturated</li>
+<li>Glucose is excreted when the concentration is past the renal threshold, as excess, unabsorbed glucose is left in the filtrate and is excreted</li>
+<li>Extremely high blood glucose results in glycosuria</li>
+</ul>
+<h4 class="mume-header" id="transfer-of-interstitial-fluid-to-plasma">Transfer of Interstitial Fluid to Plasma</h4>
+
+<ul>
+<li>Peritubular capillaries have low hydrostatic pressure</li>
+<li>Pressure gradient favours reabsorption</li>
+</ul>
+<h4 class="mume-header" id="secretion">Secretion</h4>
+
+<ul>
+<li>Secretion is a way of clearing a substance from plasma</li>
+<li>Uses membrane transporters/receptors</li>
+</ul>
+<h4 class="mume-header" id="protein-handling-at-nephron-3">Protein handling at Nephron (3)</h4>
+
+<ul>
+<li>Some small proteins are secreted into the lumen of the tubules</li>
+<li>Endocytosed on the basolateral side</li>
+<li>The protein can either be pushed into the lumen or recycled and brought back as amino acids</li>
+</ul>
+<h4 class="mume-header" id="secretion-of-organic-anions">Secretion of organic anions</h4>
+
+<ul>
+<li>Uses the organic anion transporter (OAT)</li>
+<li>Has broad specificity, both endrogenous and exogenous
+<ul>
+<li>bile salts, dicarboxylates, cyclic nucleotides, folate, urate</li>
+<li>benzoate, salicylate, saccharine, many drugs<br>
+<img src="../static/BIOL373/fig19.12.png" alt="fig 19.12"></li>
+</ul>
+</li>
+<li>Na-K-ATPase maintains Na gradient, (low in cell, high outside)</li>
+<li>NaDC
+<ul>
+<li>On both sides of the membrane, concentrates dicarboxylates inside the cell</li>
+</ul>
+</li>
+<li>OAT uses dicarboxylate gradient to transport OAs ICF and Dicarboxylates into tubule</li>
+</ul>
+<h4 class="mume-header" id="drug-interactions-of-oats">Drug interactions of OATs</h4>
+
+<ul>
+<li>drugs can compete with OATs</li>
+<li>excess drugs can slow clearance of both competitors</li>
+<li>Can be used to extend &quot;drug life&quot; in blood</li>
+<li>Probenecid
+<ul>
+<li>antibiotic sparing agent</li>
+<li>nephrotoxicity</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="excretion">Excretion</h4>
+
+<ul>
+<li>Look at the filtrate compared to the excreted urine:
+<ul>
+<li>Glucose, metabolites, amino acids are not excreted</li>
+<li>proteins are mostly not excreted</li>
+<li>Waste products are more concentrated</li>
+</ul>
+</li>
+<li>Renal handling of substances is clinically important
+<ul>
+<li>GFR is important indicator of kidney function/health</li>
+<li>drugs affecting renal handling is important to know</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="clearance">Clearance</h4>
+
+<ul>
+<li>Rate of excretion of a substance</li>
+<li>Defined as the plasma equivalent that is completely cleared of a substance
+<ul>
+<li>e.g. if there is X g/Y mL of a substance in blood, and X g is excreted per unit time, then we say Y mL / unit time of clearance</li>
+</ul>
+</li>
+<li>excretion rate/concentration in plasma</li>
+<li>A substance that is filtered only through the kidneys and is not reabsorbed or secreted is a good indicator of GFR</li>
+<li>inulin is not absorbed or secreted, all of the inulin in the filtrate is excreted, and none are added to the filtrate</li>
+<li>Since all of the inulin is excreted, its clearance is equal to GFR
+<ul>
+<li>if Y mL plasma equivalent is excreted, and 100% of the excreted is from filtrate, then Y mL plasma was filtered</li>
+</ul>
+</li>
+<li>Creatinine is secreted in small amounts, but is not reabsorbed
+<ul>
+<li>Good estimate for GFR</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="renal-handling-with-known-gfr">Renal Handling with known GFR</h4>
+
+<ul>
+<li>inulin is an example because 100% of excreted is due to filtration</li>
+<li>with a known GFR, amount in urine indicates renal handling
+<ul>
+<li>If amount in urine is lower than (blood concentration) * (GFR), then net reabsorption</li>
+<li>If amount in urine is higher than (blood concentration) * (GFR), then net secretion</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="renal-handling-of-some-substances">Renal Handling of some substances</h4>
+
+<ul>
+<li>inulin:
+<ul>
+<li>100% excretion</li>
+</ul>
+</li>
+<li>glucose:
+<ul>
+<li>100% absorption, 0% reabsorption</li>
+</ul>
+</li>
+<li>urea:
+<ul>
+<li>about 50/50</li>
+</ul>
+</li>
+<li>penicillin
+<ul>
+<li>
+<blockquote>
+<p>100% excretion, net secretion</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="micturition-urination">Micturition (urination)</h4>
+
+<ul>
+<li>Filtrate cannot be changed after it reaches the collecting duct</li>
+<li>Opening between urethra
+<ul>
+<li>Internal - smooth muscle</li>
+<li>External - skeletal muscle</li>
+</ul>
+</li>
+<li>CNS external closed most of the time<br>
+<img src="../static/BIOL373/fig19.14.png" alt="fig 19.14"></li>
+<li>Spinal reflex
+<ul>
+<li>two sets of neurons, one for smooth one for skeletal</li>
+<li>stretch receptors</li>
+<li></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

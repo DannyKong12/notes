@@ -1,0 +1,789 @@
+<!DOCTYPE html><html><head>
+      <title>lecture09</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="biol-373">Biol 373</h1>
+
+<h3 class="mume-header" id="gastrointestinal-system">Gastrointestinal System</h3>
+
+<ul>
+<li>Overview of Gastro functions:
+<ul>
+<li>Motility
+<ul>
+<li>Keeps gut contents moving</li>
+</ul>
+</li>
+<li>Secretion
+<ul>
+<li>Regulated release of enzymes into gut lumen</li>
+</ul>
+</li>
+<li>Digestion
+<ul>
+<li>Breaking down macromolecules (nutrients) into forms that can be transported across the epithelium</li>
+</ul>
+</li>
+<li>Absorption
+<ul>
+<li>Transport nutrients, water, ions, vitamins across epithelium</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Similar to kidney, need to overcome the challenge of movement across a barrier</li>
+<li>Tubular system, controls what enters or exits the body</li>
+<li>Some level of defence against entry of pathogens
+<ul>
+<li>Large class of diseases comes from food an water</li>
+<li>Some sense of OK vs not OK macromolecules (pathogens are made of macromolecules)</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="water-balance-in-the-gi-tract">Water Balance in the GI Tract</h4>
+
+<ul>
+<li>Similar to kidneys<br>
+<img src="../static/BIOL373/fig21.1.png" alt="fig 21.1"></li>
+<li>About 9L of water is inputted into the gut lumen, all of it needs to get out (or diarrhea)</li>
+<li>Fluid output mostly due to the small intestine</li>
+<li>Large intestine removes a small amount of the water, the last bit</li>
+<li>Very little water is excreted from the feces</li>
+</ul>
+<h4 class="mume-header" id="gross-anatomy">Gross Anatomy</h4>
+
+<p><img src="../static/BIOL373/fig21.3a.png" alt="fig 21.3"></p>
+<ul>
+<li>Mucosa
+<ul>
+<li>Lamina propria is the innermost connective tissue laer under the epithelium</li>
+<li>Innermost section, contains glands</li>
+<li>Single layer</li>
+<li>Muscularis Mucosa</li>
+</ul>
+</li>
+<li>Submucosa
+<ul>
+<li>Nerve sections</li>
+<li>Meissner&apos;s plexus</li>
+</ul>
+</li>
+<li>Muscularis
+<ul>
+<li>two layers of smooth muscle</li>
+<li>Circular muscle</li>
+<li>Myenteric plexus</li>
+<li>Longitudinal muscle</li>
+</ul>
+</li>
+<li>Serosa</li>
+</ul>
+<h4 class="mume-header" id="microanatomy-of-the-stomach">Microanatomy of the Stomach</h4>
+
+<p><img src="../static/BIOL373/fig21.3b.png" alt="fig 21.3"></p>
+<ul>
+<li>Goal is to transport from above the Mucosa (in figure) to artery</li>
+<li>Mucosa contains gastric glands, folded but different from rugae</li>
+</ul>
+<h4 class="mume-header" id="small-intestine-gross-anatomy">Small intestine Gross Anatomy</h4>
+
+<p><img src="../static/BIOL373/fig21.3c.png" alt="fig 21.3"></p>
+<ul>
+<li>Also folded (plica), does not spread out like rugae</li>
+<li>Have villi on the epithelium</li>
+</ul>
+<h4 class="mume-header" id="small-intestine-microanatomy">Small intestine Microanatomy</h4>
+
+<p><img src="../static/BIOL373/fig21.3d.png" alt="fig 21.3"></p>
+<ul>
+<li>Villi at the top</li>
+</ul>
+<h4 class="mume-header" id="ideas-for-anatomy">Ideas for Anatomy</h4>
+
+<ul>
+<li>Know the general anatomy, similarities in the tubeular cross section</li>
+</ul>
+<h4 class="mume-header" id="patterns-of-gut-motility">Patterns of Gut Motility</h4>
+
+<ul>
+<li>Perstalsis
+<ul>
+<li>Moving food from mouth to anus</li>
+</ul>
+</li>
+<li>segmental Contractions
+<ul>
+<li>Mixing/Churning</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="gut-motility">Gut Motility</h4>
+
+<p><img src="../static/BIOL373/fig12.23.png" alt="fig 12.23"></p>
+<ul>
+<li>Coupled by gap junctions</li>
+<li>Recall from BIOL273
+<ul>
+<li>single unit smooth muscle</li>
+<li>Coordinated</li>
+</ul>
+</li>
+<li>Tonic Contraction
+<ul>
+<li>Sphincters</li>
+<li>Anterior part of stomach</li>
+<li>Keeps food from moving backwards</li>
+</ul>
+</li>
+<li>Can undergo phasic contractions
+<ul>
+<li>Posterior stomach, small intestine</li>
+</ul>
+</li>
+<li>Between meals
+<ul>
+<li>Sweeping, phasic muscle contractions</li>
+<li>Slowly moves down tract</li>
+</ul>
+</li>
+<li>During meals
+<ul>
+<li>Both peristaltic and segmental contractions</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="slow-wave-potentials">Slow Wave Potentials</h4>
+
+<p><img src="../static/BIOL373/fig21.4.png" alt="fig 21.4"></p>
+<ul>
+<li>Similar to cardiac muscles</li>
+<li>Set off by pacemaker cells
+<ul>
+<li>Less frequent, do not necessarily reach threshold</li>
+<li>Below threshold -&gt; no contraction</li>
+<li>Above threshold -&gt; open voltage gated Ca channels -&gt; AP -&gt; contractions</li>
+</ul>
+</li>
+<li>Degree of contraction is graded
+<ul>
+<li>Longer wave more time for Ca to enter -&gt; larger contraction</li>
+<li>Influenced by hormones, NTs Paractine factors</li>
+</ul>
+</li>
+<li>Slow wave frequency varies in different regions of tract
+<ul>
+<li>More frequent in duodenum instead of stomach</li>
+<li>Set by pacemaker cells
+<ul>
+<li>Cajal</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="secretion">Secretion</h4>
+
+<ul>
+<li>Water and ions secreted, then reabsorbed
+<ul>
+<li>Contribute to mucus layer</li>
+<li>Help carry substances through tract (motility)</li>
+</ul>
+</li>
+<li>Water and ions
+<ul>
+<li>Mostly via membrane transporter
+<ul>
+<li>Similar to kidneys</li>
+</ul>
+</li>
+<li>Water follows osmotic gradient</li>
+<li>Water and ions in regions between cells occurs more often
+<ul>
+<li>paracellular</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Transporters
+<ul>
+<li>Na/K-ATPase</li>
+<li>NKCC</li>
+<li>Cl/HCO3 exchanger</li>
+<li>Na/H exchanger</li>
+<li>CFTR (new)</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="acid-secretion">Acid Secretion</h4>
+
+<p><img src="../static/BIOL373/fig21.5a.png" alt="fig 21.5"></p>
+<ul>
+<li>Happens by Parietal Cells
+<ul>
+<li>Looks like a tooth</li>
+<li>H+ pumped into lumen by pumping in Cl in exchange for HCO3</li>
+<li>HCO3 comes in from splitting H and OH</li>
+</ul>
+</li>
+<li>Parietal cells secrete A LOT of H+
+<ul>
+<li>Alkaline tide</li>
+<li>pH of ~1-2 in the stomach, 7 in the cell</li>
+<li>Requires massive amounts of ATP</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="nacl-secretion">NaCl secretion</h4>
+
+<p><img src="../static/BIOL373/fig21.5b.png" alt="fig 21.5"></p>
+<ul>
+<li>CFTR Channel is the driver of NaCl secretion</li>
+<li>NKCC from interstitial fluid
+<ul>
+<li>Na is pumped out with ATPase</li>
+<li>K+ flows out from channel</li>
+</ul>
+</li>
+<li>Cl and Na flows out into lumen</li>
+</ul>
+<h4 class="mume-header" id="bicarb-from-pancreas-into-duodenum">Bicarb from Pancreas into Duodenum</h4>
+
+<p><img src="../static/BIOL373/fig21.5c.png" alt="fig 21.5"></p>
+<ul>
+<li>Bicarb secreted into duodenum neutralizes acid arriving from stomach</li>
+<li>Islet Cells</li>
+<li>Acinar cells of pancreas secrete enzyme, epithelial cells lining ducts secrete bicarb solution
+<ul>
+<li><img src="../static/BIOL373/fig21.5d.png" alt="fig 21.5"></li>
+<li>Goal is to put bicarbonate into pancreatic duct</li>
+<li>Requires expression of Carbonic Anhydrase</li>
+<li>Similar to acid secretion, but different direction</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="cftr">CFTR</h4>
+
+<ul>
+<li>Mucosal surface is a watery saline</li>
+<li>Issues with CFTR messes up watery saline production</li>
+<li>In the pancreas, mucus is too thick, and acinar cell groups are blocks and forms cysts</li>
+<li>Fibrotic tissue in acinar cells</li>
+<li>Causes cystic fibrosis</li>
+<li>Part of Cystic Fibrosis treatment is to consume digestive enzymes that would normally be produced but are blocked in the pancreas</li>
+</ul>
+<h4 class="mume-header" id="secretion-of-enzymes">Secretion of Enzymes</h4>
+
+<ul>
+<li>Enzymes secreted by either exocrine glands (pancreas, salivary) or epithelial cells lining stomach and small intestine
+<ul>
+<li>Synthesized by rough ER, packaged by Golgi and stored in cells under signal for release</li>
+</ul>
+</li>
+<li>Enzyme often linked to apical membranes by protein or lipied stalks (brush border enzymes)</li>
+<li>Zymogens
+<ul>
+<li>Protect from autodigestion</li>
+</ul>
+</li>
+<li>Regulated by neural hormone and paracrine</li>
+</ul>
+<h4 class="mume-header" id="secretion-of-mucus">Secretion of Mucus</h4>
+
+<ul>
+<li>Mucus consists of mucins, mixture of glycoproteins</li>
+<li>Produced by exocrine cells
+<ul>
+<li>Serous cells in salivary glands</li>
+<li>Mucous cells in stomach</li>
+<li>Goblet cells in intestine</li>
+</ul>
+</li>
+<li>Signals for secretion:
+<ul>
+<li>parasympathetic stimulation</li>
+<li>various neuropeptides (of enteric nervous system)</li>
+<li>cytokines (from immune cells)&#x2013;infection and inflammation increase mucus secretiion</li>
+<li>Can get inconvenient, often this aspect is messed up with diseases</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="saliva">Saliva</h4>
+
+<ul>
+<li>Salivary glands arranged similar to exocrine pancreas</li>
+<li>Saliva is fairly complex, hypo-osmotic fluid</li>
+<li>Two step process
+<ul>
+<li>Fluid secreted by acinar cells similar to ECF</li>
+<li>As it passes through ducts, epithelial cells take back Na and secrete K so eventually resembles ICF
+<ul>
+<li>duct cells have low water permeability</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="liver-gross-anatomy">Liver Gross Anatomy</h4>
+
+<p><img src="../static/BIOL373/fig21.6.png" alt="fig 21.6"></p>
+<ul>
+<li>The liver makes bile</li>
+<li>Stored in the gall bladder</li>
+<li>Common Hepatic duct
+<ul>
+<li>bile drainage for the entire liver</li>
+</ul>
+</li>
+<li>Common bile duct
+<ul>
+<li>for liver and the gall bladder</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="hepatic-portal-system">Hepatic Portal System</h4>
+
+<ul>
+<li>Liver accepts blood from the hepatic artery</li>
+<li>Most of the blood in the liver is from venous drainage
+<ul>
+<li>From hepatic portal vein</li>
+<li>After the capillaries of GI tract, nutrients pass to liver <em>first</em></li>
+</ul>
+</li>
+<li>Liver decides what passes into the rest of the body</li>
+<li>(Artery blood + Portal vein blood) -&gt; sinusoids -&gt; central vein -&gt; hepatic vein</li>
+</ul>
+<h4 class="mume-header" id="liver-function">Liver function</h4>
+
+<ul>
+<li>Organization of Hepatic Lobule</li>
+<li>Blood moves from the vertices into the center of each lobule
+<ul>
+<li>Interacts with liver cells (hepatocytes)</li>
+<li>Blood spaces (vessels? like a capillary bed) called sinusoids</li>
+<li>Hepatocytes can build cool things to deliver to the rest of the body</li>
+<li>Artery delivers blood (partially oxygenated in sinusoids, for hepatocytes)</li>
+</ul>
+</li>
+<li>Bile duct also in the corners
+<ul>
+<li>Small canals to the bile ductule</li>
+<li>Hepatocytes secretes bile into canals</li>
+<li>Picked up and goes into ductules, which join eventually into common hepatic duct</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="secretion-of-bile">Secretion of bile</h4>
+
+<ul>
+<li>Key components of bile:
+<ul>
+<li>Bile salts (facilitate fat digestion)</li>
+<li>Bile pigments (bilirubin)</li>
+<li>Cholesterol</li>
+</ul>
+</li>
+<li>Drugs and other xenobiotics excreted in feces</li>
+</ul>
+<h4 class="mume-header" id="overview-of-liver-function">Overview of Liver Function</h4>
+
+<p><img src="../static//fig-slide-32.png" alt="fig-slide-32"></p>
+<ul>
+<li>Glucose (and other metabolic nutrients) entering the GI tract can be stored as glycogen/used/exported</li>
+<li>Drugs (oral) enters through GI tract and liver determines if it needs to be detoxified (almost always modifies) enters bloodstream</li>
+<li>Drugs (intravenous/intramuscular) enters liver through hepatic artery</li>
+</ul>
+<h4 class="mume-header" id="hemoglobin-iron-processing-and-rbc-turnover">Hemoglobin, Iron processing and RBC Turnover</h4>
+
+<ul>
+<li>Bilirubin comes from processed haemoglobin</li>
+<li>Kidney and liver filters bilirubin</li>
+<li>Breakdown of RBC produces bilirubin
+<ul>
+<li>Yellow phase of bruises</li>
+<li>Jaundice (bilirubin emia)</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="digestion-and-absorption">Digestion and Absorption</h4>
+
+<ul>
+<li>combination of mechanical and enzymatic processes
+<ul>
+<li>Mouth - chewing</li>
+<li>Stomach, small intestine - churning</li>
+<li>exposes to enzymes: saliva, stomach acids, digestive enzymes</li>
+</ul>
+</li>
+<li>Absorption
+<ul>
+<li>Crossing the gut epithelium</li>
+<li>very similar transport challenge to kidney</li>
+<li>fat: enters lymph vessels</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="absorption-in-small-intestine">Absorption in Small Intestine</h4>
+
+<p><img src="../static/BIOL373/fig21.7.png" alt="fig 21.7"></p>
+<ul>
+<li>Enterocyte: intestinal cell</li>
+</ul>
+<h4 class="mume-header" id="carbohydrates">Carbohydrates</h4>
+
+<ul>
+<li>Constitute about half of caloric intake</li>
+<li>Mostly starches and sucrose
+<ul>
+<li>glycogen, cellulose, lactose, maltose, glucose, fructose</li>
+<li>Can only be absorbed via a membrane transporter</li>
+<li>Membrane transporters for monosaccharides</li>
+</ul>
+</li>
+<li>Carbohydrate polymers -&gt; amylase produces disaccharides</li>
+<li>maltose + sucrose + lactose -&gt; maltase + sucrase + lactase -&gt; glucose + glucose fructose + glucose galactose</li>
+<li>SGLT brings into the apical side, exits on GLUT2. GLUT5 transport fructose</li>
+</ul>
+<h4 class="mume-header" id="protein-digestion">Protein digestion</h4>
+
+<ul>
+<li>Hydrochloric acid straightens a chain</li>
+<li>Endopeptidase digests internal peptide bonds
+<ul>
+<li>Pepsin in the stomach and trypsin, chymotrypsin in the pancreas helps digest</li>
+<li>Endopeptidase cleaves peptides into smaller peptides</li>
+<li>free amino acids and small (2-3 AA) peptides</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="protein-absorption">Protein Absorption</h4>
+
+<ul>
+<li>Co-transport with sodium for amino acids</li>
+<li>Di-tripeptides cotransport with H+</li>
+<li>IGs are transported via endocytosis
+<ul>
+<li>mammalian milk contains immunoglobulins</li>
+<li>brief time in early development</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="fats">Fats</h4>
+
+<ul>
+<li>Triglycerides
+<ul>
+<li>also includes cholesterol, phospholipids, long chain fatty acids, fat soluble vitamins</li>
+</ul>
+</li>
+<li>Digestion complicated by solubility issues</li>
+<li>Leave stomach as large droplets mixed with aqueous chyme</li>
+<li>Can cross membrane, but needs to be small enough to be taken across</li>
+<li>Bile helps emulsify</li>
+</ul>
+<h4 class="mume-header" id="bile-salts">Bile salts</h4>
+
+<ul>
+<li>Bile acids: Cholic acid, chenodeoxycholic acids</li>
+<li>Acids get modified with functional groups added</li>
+<li>Bile salts are inserted into the intestine</li>
+<li>Amphipathic, helps emulsify fats</li>
+<li>Contains polar side chains, orient facing the water</li>
+</ul>
+<h4 class="mume-header" id="formation-of-micelles">Formation of Micelles</h4>
+
+<ul>
+<li>Formed in the small intestine</li>
+<li>Fats are digested into smaller components except cholesterol</li>
+<li>Free fatty acids inside, and can move into intestinal brush border</li>
+</ul>
+<h4 class="mume-header" id="fat-absorption">Fat Absorption</h4>
+
+<p><img src="../static/BIOL373/fig21.9.png" alt="fig 21.9"></p>
+<ul>
+<li>Lipid components of micelles diffuse across apical membrane</li>
+<li>Monoglycerides and free fatty acids recombine into triglycerides in smooth ER</li>
+<li>Triglycerides, cholesterol, proteins from chylomicrons are packed into vesicles and exocytosed into lacteals</li>
+</ul>
+<h4 class="mume-header" id="nucleic-acids">Nucleic Acids</h4>
+
+<ul>
+<li>Nuceloprotein
+<ul>
+<li>we know how to handle protein component</li>
+<li>proteases break off amino acids and leaves only nucleic acids</li>
+<li>Nucleotides produce nucleosides, absorbed by Na coupled transport</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="vitamins">Vitamins</h4>
+
+<ul>
+<li>Fat soluble (A,D,E,K)
+<ul>
+<li>Absorbed in small intestine along with fats</li>
+</ul>
+</li>
+<li>Water Soluble (C, B)
+<ul>
+<li>Absorbed in small intestine via membrane transporters</li>
+</ul>
+</li>
+<li>Exception: Vitamin B12
+<ul>
+<li>B12 absorption is weird</li>
+<li>Absorption in ileum (last section of small intestine)</li>
+<li>Absorption requires protein secreted by gastric (stomach) parietal cells (&apos;intrinsic factor&apos;)</li>
+<li>Deficiency of intrinsic factor leads to B12 deficiency, but cannot be corrected by oral B12 supplementation</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="water-and-ion-balance">Water and Ion Balance</h4>
+
+<ul>
+<li>Absorption of ions and water</li>
+<li>Small and large intestine move sodium, water and other ions follow</li>
+<li>Iron and Calcium is the only example of <em>regulated</em> digestion/absorption</li>
+<li>Apically expressed transporters to bring iron
+<ul>
+<li>Divalent Metal Transporter 1 (DMT1)</li>
+<li>Iron intake is regulated</li>
+<li>Intestinal uptake is increased</li>
+<li>DMT1 also brings in heavy metals, including cadmium, etc</li>
+</ul>
+</li>
+<li>Calcium
+<ul>
+<li>Calcium channel on apical side</li>
+<li>Calcium <em>pump</em> on the basolateral side, along with calcium sodium antiporter</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

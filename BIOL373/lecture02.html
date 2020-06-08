@@ -1,0 +1,601 @@
+<!DOCTYPE html><html><head>
+      <title>lecture02</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="biol-373">Biol 373</h1>
+
+<h4 class="mume-header" id="central-nervous-system">Central Nervous System</h4>
+
+<p><img src="../static/BIOL373/fig9.1.png" alt="fig 9.1"></p>
+<ul>
+<li>Evolutionary trends in Nervous Systems
+<ul>
+<li>Invertebrates and simple organisms have fairly diffuse networks of nervous tissue</li>
+<li>Bilateral symmetry <span class="mathjax-exps">$\rightarrow$</span> cephalization</li>
+<li>Consolidation of peripheral nervous system into nerves</li>
+<li>Consolidation into forebrain</li>
+</ul>
+</li>
+<li>All vertebrates will develop a neural tube
+<ul>
+<li>Neural Tube is the precursor of the CNS</li>
+<li>Neural crest cells will migrate throughout the body and produces nervous system</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="development-of-the-human-cns">Development of the Human CNS</h4>
+
+<p><img src="../static/BIOL373/fig9.2.png" alt="fig 9.2"></p>
+<ul>
+<li>Anterior end of Neural tube specializes into 3 regions of the brain</li>
+<li>Focus on the forebrain</li>
+</ul>
+<h4 class="mume-header" id="adult-brain-and-spinal-chord">Adult Brain and Spinal Chord</h4>
+
+<p><img src="../static/BIOL373/fig9.3.png" alt="fig 9.3"></p>
+<ul>
+<li>Protection and support for the CNS
+<ul>
+<li>Surrounded by bony cage (cranium, vertebrae)</li>
+<li>Three layers of connective tissue - meninges (pia mater, arachnoid, dura mater)<br>
+(picture from slides)
+<ul>
+<li>Dura mater attaches to bone</li>
+<li>Arachnoid attaches to Dura mater and weblike network that attaches to pia mater</li>
+</ul>
+</li>
+<li>Fluid between layers, cerebrospinal fluid</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="subdural-hematoma">Subdural Hematoma</h4>
+
+<ul>
+<li>Blood vessels between arachnoid and pia mater</li>
+<li>Torn cerebral veins bleed into space between arachnoid and pia mater</li>
+</ul>
+<h4 class="mume-header" id="the-cns-contains-fluid-filled-cavities">The CNS contains fluid filled cavities</h4>
+
+<ul>
+<li>4 Cavities called ventricles - lateral, third, fourth</li>
+<li>All cavities are interconnected with each other and the spinal canal</li>
+<li>CSF fills the cavities and is continuously produced and drained from the brain</li>
+<li>Choroid plexus produces CSF and secretes it into cavities</li>
+<li>Compared to plasma, CSF has very low protein and no blood cells</li>
+<li>CSF also has comparatively lower <span class="mathjax-exps">$K^+$</span>, <span class="mathjax-exps">$Ca^{2+}$</span>, <span class="mathjax-exps">$HCO_3$</span>, glucose, pH</li>
+<li>Choroid plexus are a type of ependymal cell, and decide what ends up in the CSF</li>
+<li>4x of fluid volume is produced a day by the choroid plexus<br>
+<img src="../static/BIOL373/fig9.4.png" alt="fig 9.4"></li>
+<li>CSF pushes towards 4th ventricle into subarachnoid space</li>
+<li>Arachnoid tissue pushes through dural mater into a space called dural/sagittal sinus</li>
+<li>dural sinus is a space leading to venous return to the heart</li>
+</ul>
+<h4 class="mume-header" id="circulation-of-csf">Circulation of CSF</h4>
+
+<ul>
+<li>Choroid Plexus continuously producing CSF into ventricles</li>
+<li>Ventricles drain into subarachnoid space</li>
+<li>subarachnoid drains into dural sinus</li>
+</ul>
+<h4 class="mume-header" id="hydrocephalus">Hydrocephalus</h4>
+
+<ul>
+<li>Blockage of circulation in CSF</li>
+<li>Typically in the already narrow passageways between ventricles</li>
+</ul>
+<h4 class="mume-header" id="blood-brain-barrier">Blood Brain Barrier</h4>
+
+<ul>
+<li>Astrocytes seal off capillaries with foot processes</li>
+<li>Lipid soluble molecules cross barrier easily</li>
+<li>Hydrophilic substances that are required by brain will cross if specific transporters are present on the endothelial cells
+<ul>
+<li>Antihistamines are made to not cross the blood brain barrier</li>
+<li>Brain diseases are treated with drugs that are specifically made to cross</li>
+<li>Parkinsons is a deficiency of dopamine in the brain
+<ul>
+<li>Dopamine is not transportable across the blood brain barrier</li>
+<li>L-DOPA is transportable by L-Tyrosine transporters, which can produce dopamine</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="metabolic-quirks-of-neural-tissue">Metabolic Quirks of Neural Tissue</h4>
+
+<ul>
+<li>Neurons are obligate aerobes (cannot undergo anaerobic metabolism)</li>
+<li>Large glucose requirement
+<ul>
+<li>Transporters</li>
+<li>Brain as a whole consumes ~50% of glucose</li>
+</ul>
+</li>
+<li>Vasculature
+<ul>
+<li>Brain cannot undergo anaerobic metabolism</li>
+<li>Dedicated blood supply</li>
+<li>Critically dependent on oxygen, glucose, therefore bloodflow</li>
+</ul>
+</li>
+</ul>
+<h3 class="mume-header" id="spinal-chord">Spinal Chord</h3>
+
+<ul>
+<li>The Spinal Chord is a major information pathway between the CNS and the PNS</li>
+</ul>
+<h4 class="mume-header" id="spinal-chord-segments">Spinal Chord Segments</h4>
+
+<p><img src="../static//fig9.6.png" alt="fig 9.6"></p>
+<ul>
+<li>White matter made of myelinated axons</li>
+<li>Grey matter is made up of cell bodies, axons, dendrites, etc
+<ul>
+<li>Grey matter allows integration</li>
+<li>Consists of sensory and motor nuclei</li>
+</ul>
+</li>
+<li>Efferent leave through ventral</li>
+<li>Afferent enter through dorsal</li>
+</ul>
+<h4 class="mume-header" id="white-matter-in-the-spinal-chord">White Matter in the Spinal Chord</h4>
+
+<ul>
+<li>White matter organized into Ascending and Descending tracts</li>
+<li>Ascending
+<ul>
+<li>Includes dorsal columns, spinocerebellar, spinothalamic</li>
+<li>In general, &quot;fine&quot; senses ascend into DC</li>
+<li>&quot;coarse&quot; senses ascend through spinothalamic</li>
+</ul>
+</li>
+<li>Descending
+<ul>
+<li>Includes lateral and anterior (ventromedial) corticospinal tracts</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="spinal-reflexes">Spinal Reflexes</h4>
+
+<p><img src="../static/BIOL373/fig9.7.png" alt="fig 9.7"></p>
+<ul>
+<li>There exist reflexes that do not have the brain as the &quot;integrating center&quot;</li>
+<li>Reflex may still involve brain through senses (eg proprioception)</li>
+<li>Reflex mediated entirely through CNS in the spine</li>
+</ul>
+<h4 class="mume-header" id="cns-development">CNS Development</h4>
+
+<p><img src="../static/BIOL373/fig9.2.png" alt="fig 9.2"></p>
+<ul>
+<li>Forebrain forms cerebrum, medulla, cerebellum</li>
+<li>By birth, cerebrum covers most of the brain</li>
+</ul>
+<h4 class="mume-header" id="brain-stem">Brain Stem</h4>
+
+<p><img src="../static/BIOL373/fig9.8.png" alt="fig 9.8"></p>
+<ul>
+<li>Oldest part of the brain evolutionarily</li>
+<li>Derived from embryonic hindbrain and some midbrain
+<ul>
+<li>Structures like pons, thalamus, medulla</li>
+<li>Carry information from the spine, organized like the spine</li>
+<li>Many cranial nerves originate from brain stem</li>
+</ul>
+</li>
+<li>Diffuse network of coordinate sleeping, arousal, BP, breathing</li>
+</ul>
+<h4 class="mume-header" id="brain-stem-structures-and-function">Brain Stem Structures and Function</h4>
+
+<ul>
+<li>Midbrain
+<ul>
+<li>coordination of visual and auditory reflexes</li>
+<li>eye movement</li>
+</ul>
+</li>
+<li>Pons
+<ul>
+<li>Regulates breathing</li>
+<li>relay station between cerebrum and cerebellum</li>
+</ul>
+</li>
+<li>Medulla
+<ul>
+<li>Grey matter involved in involuntary functions</li>
+<li>White matter including ascending and descending tracts</li>
+<li>Crossing over site (high crossing)</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="brain-anatomy">Brain Anatomy</h4>
+
+<ul>
+<li>Cerebrum composed of lobes
+<ul>
+<li>Frontal, Parietal, Temporal, Occipital</li>
+</ul>
+</li>
+<li>Diencephalon is tucked inside the cerebrum
+<ul>
+<li>Composed of Thalamus, Hypothalumus, glands</li>
+<li>Information relay to cerebral cortex</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="cerebrum">Cerebrum</h4>
+
+<ul>
+<li>Site of higher brain function</li>
+<li>Furrowed/grooved (sulcus)</li>
+<li>Convolution (gyrus)</li>
+<li>Organization<br>
+<img src="../static/BIOL373/fig9.10.png" alt="fig 9.10">
+<ul>
+<li>Three regions with grey matter
+<ul>
+<li>Basal ganglia (nuclei )
+<ul>
+<li>Coordinates movement</li>
+</ul>
+</li>
+<li>Limbic System
+<ul>
+<li>emotions/fear</li>
+<li>Links with higher brain function</li>
+</ul>
+</li>
+<li>Cerebral Cortex</li>
+</ul>
+</li>
+<li>Lots of grey matter in the brain
+<ul>
+<li>(cell bodies, dendrites, axons allow for integration)</li>
+</ul>
+</li>
+<li>Thick band of fibres connect left and right side (corpus callosum)</li>
+<li>Basal ganglia is pink, dense grey matter</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="brain-function">Brain Function</h4>
+
+<p><img src="../static/BIOL373/fig9.12.png" alt="fig 9.12"></p>
+<ul>
+<li>Brain takes the simple reflex further
+<ul>
+<li>example of simple reflex is a spinal reflex</li>
+<li>Behavioral state influences brain output
+<ul>
+<li>asleep, anxiety, mental state</li>
+<li>influences the outcome of a reflex</li>
+<li>Reflexes can influence behavioral state as well</li>
+</ul>
+</li>
+<li>Cognition can influence brain output
+<ul>
+<li>We can voluntarily make decisions that impact reflexes</li>
+<li>e.g. overriding a withdrawal reflex</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="functional-cerebral-cortex">Functional Cerebral Cortex</h4>
+
+<ul>
+<li>Organised into three main sections
+<ul>
+<li>Sensory input to perception</li>
+<li>Motor areas</li>
+<li>Association areas (big)<br>
+<img src="../static/BIOL373/fig9.13.png" alt="fig 9.13"></li>
+</ul>
+</li>
+<li>Frontal Lobe
+<ul>
+<li>Primary motor cortex
+<ul>
+<li>The movement area</li>
+<li>Descending efferent motor neurons start here</li>
+</ul>
+</li>
+<li>Motor association area</li>
+<li>Prefrontal association area</li>
+</ul>
+</li>
+<li>Parietal Lobe
+<ul>
+<li>Primary somatic sensory cortex</li>
+<li>Sensory association area</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="primary-motor-and-somatosensory-cortices">Primary Motor and Somatosensory Cortices</h4>
+
+<ul>
+<li>Motor cortex
+<ul>
+<li>just before the central sulcus</li>
+<li>(precentral gyrus)</li>
+<li>Contains cell bodies of the upper motor neurons</li>
+</ul>
+</li>
+<li>Somatosensory Cortex
+<ul>
+<li>On the ridge just after the central sulcus</li>
+<li>(postcentral gyrus)</li>
+<li>Terminals of ascending pathway</li>
+<li>Fine/coarse touch, pain/itch, temperature, proprioception</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="somatotopic-maps">Somatotopic maps</h4>
+
+<ul>
+<li>Surface of the motor and somatosensory cortices can be mapped according to nerve endings on the other end
+<ul>
+<li>&quot;maps&quot; of body parts to the surface of the brain</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="wilder-penfield">Wilder Penfield</h4>
+
+<ul>
+<li>Creator of the cortical homunculus</li>
+<li>Opened peoples brains and prodded them to &quot;map&quot; the sensations at certain points in the brain</li>
+</ul>
+<h4 class="mume-header" id="voluntary-movement-pathway">Voluntary Movement - Pathway</h4>
+
+<p><img src="../static/BIOL373/fig13.11.png" alt="fig 13.11"></p>
+<ul>
+<li>Recall that a motor neuron begins in the primary motor cortex
+<ul>
+<li>Travels down through the thalamus, through the midbrain to the medulla</li>
+<li>&quot;high crossing&quot; neurons cross at the caudal medulla</li>
+<li>&quot;low crossing&quot; neurons cross at the spinal segment</li>
+<li>&quot;high crossing&quot; neurons cross and then enter lateral corticospinal tract</li>
+<li>&quot;low crossing&quot; directly enter the anterior (ventromedial) corticospinal tract</li>
+<li>Exits at the ventral horn</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="voluntary-movement-coordination">Voluntary Movement - Coordination</h4>
+
+<p><img src="../static/BIOL373/fig13.10.png" alt="fig 13.10"></p>
+<ul>
+<li>Most of coordination occurs before the spinal chord</li>
+<li>Sensory Cortex, Prefrontal Cortex and association areas, Basal Ganglia, Cerebellum, all involved</li>
+</ul>
+<h4 class="mume-header" id="inhibiting-reflexes">Inhibiting Reflexes</h4>
+
+<ul>
+<li>Withdrawal reflex on soles of feet are spinal reflexes</li>
+<li>Integration in the spinal chord, also sends signal to brain (nociception)</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

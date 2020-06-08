@@ -1,0 +1,731 @@
+<!DOCTYPE html><html><head>
+      <title>lecture07</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="biol-373">Biol 373</h1>
+
+<h3 class="mume-header" id="fluid-and-electrolyte-balance">Fluid and Electrolyte Balance</h3>
+
+<ul>
+<li>Homeostasis of
+<ul>
+<li>Na, Cl, K, H, Ca, HPO4, HCO3</li>
+</ul>
+</li>
+<li>Kidney is major route of elimination but also sweat feces lungs</li>
+<li>Behavioural mechanisms
+<ul>
+<li>thirst</li>
+<li>Salt appetite</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="responses-to-changes-in-bp">Responses to Changes in BP</h4>
+
+<ul>
+<li>Blood pressure/Blood volume decreases have mechanisms
+<ul>
+<li>Baroreceptor reflex</li>
+<li>Quick vasoconstriction</li>
+<li>Behavioural responses (thirst)</li>
+<li>Kidneys
+<ul>
+<li>Conserve water, minimizes other volume loss</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Water Balance
+<ul>
+<li>Urine is an easily regulated water loss system, compared to loss through sweat/humidity in breath</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="urine-regulation-in-nephrons">Urine regulation in Nephrons</h4>
+
+<ul>
+<li>Distal tubule &quot;decides&quot; how much water is being excreted</li>
+<li>Kidneys excrete urine at different osmolarities
+<ul>
+<li>Eliminate excess water (diuresis, diuretic)
+<ul>
+<li>50 mOsM</li>
+</ul>
+</li>
+<li>Conserve water (antidiuretic)
+<ul>
+<li>1200 mOsM</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Membrane permeability to water
+<ul>
+<li>Water is permeable in membrane</li>
+<li>Water &quot;leaks&quot; through lipid bilayer, but isn&apos;t very fast</li>
+<li>Channels (Aquaporins)
+<ul>
+<li>Allow much higher rate of water movement across membrane</li>
+<li>Water movement regulated by regulation of expression of aquaporins</li>
+<li>TODO: regulation</li>
+</ul>
+</li>
+<li>Permeability to water is adjusted at the collecting duct
+<ul>
+<li>Most of the water is reabsorbed prior to the collecting duct</li>
+<li>Permeability is &quot;fine tuned&quot;</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="permeability-of-distal-nephron">Permeability of Distal Nephron</h4>
+
+<ul>
+<li>Regulated via hormones, induces expression of aquaporins</li>
+<li>Regulatory hormone antidiuretic hormone (ADH) or vasopressin (AVP)</li>
+<li>High vasopressin allows for water to move out of collecting duct</li>
+<li>Low vasopressin does not express vasopressin, dilute urine</li>
+<li>Aquaporins and produced and stored in vesicles</li>
+</ul>
+<h4 class="mume-header" id="avp-insertion-mechanism">AVP insertion mechanism</h4>
+
+<ul>
+<li>AVP binds to V2 receptor, cAMP activates second messenger system and aquaporins added via exocytosis</li>
+<li>Endocytosis remvoes aquaporins from membrane</li>
+<li>&quot;Membrane cycling&quot;</li>
+</ul>
+<h4 class="mume-header" id="avp-synthesized-by-magnocellular-nephron">AVP Synthesized by Magnocellular Nephron</h4>
+
+<h4 class="mume-header" id="vasopressin-release">Vasopressin release</h4>
+
+<ul>
+<li>Plasma osmolarity increase
+<ul>
+<li>Too much solute (salt) in plasma</li>
+<li>Increasing water retension helps correct osmolarity</li>
+</ul>
+</li>
+<li>Low blood volume/pressure</li>
+</ul>
+<h4 class="mume-header" id="homeostasis-of-osmolarity">Homeostasis of Osmolarity</h4>
+
+<ul>
+<li>Osmolarity affects cell size and shape
+<ul>
+<li>Physical integrity of cells</li>
+<li>Ionic strength, activity of macromolecules</li>
+</ul>
+</li>
+<li>Osmolarity fluctuate (normal variation 1-3%)
+<ul>
+<li>Variations in water intake / water loss</li>
+<li>variation in sodium intake</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="osmoreceptors">Osmoreceptors</h4>
+
+<ul>
+<li>Stretch sensitive neurons with mechanoreceptors
+<ul>
+<li>Osmolarity increase makes the cell hypertonic, cell shrinks, higher action potentials</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="peripheral-osmoreceptors">peripheral Osmoreceptors</h4>
+
+<ul>
+<li>Oropharyngeal cavity (back of mouth/throat)</li>
+<li>In blood vessels that collect solutes
+<ul>
+<li>Gastric intake decreases AVP</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="central-osmoreceptors">Central Osmoreceptors</h4>
+
+<ul>
+<li>Circumventricular organs
+<ul>
+<li>Organum vasculosum laminae terminalis (OVLTs)</li>
+<li>Subfornical organ</li>
+</ul>
+</li>
+<li>Supraoptic nucelus in hypothalamus
+<ul>
+<li>Same neurone that releases AVP senses osmolarity in CNS</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="circadian-rhythm-of-avp-secretion">Circadian rhythm of AVP secretion</h4>
+
+<ul>
+<li>Nightly increase in vasopressin</li>
+<li>Urine osmolarity increases in the night</li>
+<li>Urine volume low</li>
+<li>Failure to increase vasopressin at night
+<ul>
+<li>Nocturnal Enuresis</li>
+<li>Developmentally, a change in vasopressin release at night</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="countercurrent-renal-medulla">Countercurrent Renal Medulla</h4>
+
+<ul>
+<li>Countercurrent vasa recta capillary along loop of Henle
+<ul>
+<li>Descending limb permeable to water (aquaporin)</li>
+<li>Ascending limb no aquaporins but pumps Na, K, Cl</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="ion-transport-in-ascending-limb">Ion Transport in Ascending Limb</h4>
+
+<ul>
+<li>NKCC symporter (moves one Na, K, 2 Cl)</li>
+<li>Secondary active transport</li>
+<li>Water cannot follow solute</li>
+<li>K, Cl leave basolateral side via cotransporters/open channels
+<ul>
+<li>Drugs that affect NKCC expression, loop diuretics</li>
+</ul>
+</li>
+<li>Creates the salt gradient for collecting duct</li>
+</ul>
+<h4 class="mume-header" id="why-is-the-loop-of-henle-a-loop">Why is the loop of Henle a loop?</h4>
+
+<ul>
+<li>Salt is pumped out of the ascending limb</li>
+<li>Descending limb - water is drawn out by salty interstitium</li>
+</ul>
+<h4 class="mume-header" id="defense-of-osmolarity">Defense of Osmolarity</h4>
+
+<ul>
+<li>Sodium
+<ul>
+<li>Typical American diet contains 9g of sodium per day</li>
+<li>Kidneys need to clear salt (or intake 1.1L of extra water)</li>
+<li>Kidneys is responsible for majority of sodium excretion</li>
+<li>Cl is not directly regulated, but uses symports and electrochemical gradient</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="homeostatic-response-to-salt-ingestion">Homeostatic Response to Salt Ingestion</h4>
+
+<p><img src="../static/BIOL373/fig20.8.png" alt="fig 20.8"></p>
+<ul>
+<li>70% is reabsorbed in proximal tubule (iso-osmotic)</li>
+<li>25% is reabsorbed in loop of Henle</li>
+<li>Regulated at distal nephron (last 5% is regulated, like water)
+<ul>
+<li>Regulated by aldosterone</li>
+<li>Synthesized on demand by adrenal cortex</li>
+<li>acts via intracellular receptors</li>
+<li>drives transcription of protein pumps, modifies existing pumps</li>
+<li>Influences upstream events</li>
+</ul>
+</li>
+<li>TODO ALDOSTERONE</li>
+</ul>
+<h4 class="mume-header" id="water-and-sodium">Water and Sodium</h4>
+
+<ul>
+<li>Most of reabsorption at proximal tubule ~70%
+<ul>
+<li>ENaC, Na-K-ATPase, water follows</li>
+</ul>
+</li>
+<li>Rest of absorption mostly in loop of Henle
+<ul>
+<li>Sodium - ascending, NKCC</li>
+<li>Water - descending, passive osmosis</li>
+</ul>
+</li>
+<li>Last bit ~5% is regulated, at distal nephron</li>
+<li>Water - AVP, aquaporins</li>
+<li>Na - increased activity and expression of pumps
+<ul>
+<li>Na-K-ATPase</li>
+<li>regulated by aldosterone</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="aldosterone-secretion">Aldosterone Secretion</h4>
+
+<ul>
+<li>Primary action of aldosterone is Na reabsorption (last 5%)</li>
+<li>Plasma potassium -&gt; hyperkalemia</li>
+<li>Blood pressure (complex pathway)<br>
+<img src="../static/BIOL373/fig20.9.png" alt="fig 20.9"></li>
+</ul>
+<h4 class="mume-header" id="potassium-homeostasis">Potassium Homeostasis</h4>
+
+<ul>
+<li>Most of potassium is inside cells, not much in ECF</li>
+<li>ECF concentration must be fairly constant, important for membrane potentials</li>
+<li>Hyperkalemia makes cells depolarized, arrhythmia</li>
+<li>Hypokalemia makes cells hyperpolarized, muscle weakness</li>
+</ul>
+<h4 class="mume-header" id="ras-pathway">RAS pathway</h4>
+
+<ul>
+<li>Stands for renin-angiotensin system</li>
+<li>angiotensinogen -&gt; inactive angiotensin</li>
+<li>renin converts into angiotensin i (at JGA)</li>
+<li>angiotensin converter enzyme converts to angiotensin ii</li>
+<li>angiotensin causes aldosterone production</li>
+<li>aldosterone acts on kidneys</li>
+</ul>
+<h4 class="mume-header" id="ras-activation">RAS Activation</h4>
+
+<ul>
+<li>Started by renin made from JG cells</li>
+<li>JG cells monitor blood pressure</li>
+<li>decrease in BP -&gt; renin</li>
+<li>paracrine feedback from macula densa
+<ul>
+<li>flow rate</li>
+</ul>
+</li>
+<li>Sympathetic pathways from cardio control in medulla end in JG cells</li>
+</ul>
+<h4 class="mume-header" id="angiotensin-ii-mechanism">Angiotensin II mechanism</h4>
+
+<p><img src="../static/BIOL373/fig20.10.png" alt="fig 20.10"></p>
+<ul>
+<li>Blocking angiotensin II is of great interest for treating hypertension
+<ul>
+<li>ACE inhibitors</li>
+<li>angiotensin receptor blockers</li>
+<li>renin inhibitors</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="opposing-avp-and-aldosterone">Opposing AVP and aldosterone</h4>
+
+<ul>
+<li>Both increase BP/BV</li>
+<li>ANP - endrogenous RAS inhibitors
+<ul>
+<li>Atrial Natriuretic Peptide</li>
+<li>produced in myocardial cells, mostly in the atria</li>
+<li>increased cell stretch -&gt; fill and pressure<br>
+<img src="../static/BIOL373/fig20.11.png" alt="fig 20.11"></li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="behavioural-mechanisms-for-salt">Behavioural Mechanisms for Salt</h4>
+
+<ul>
+<li>Replacing water
+<ul>
+<li>triggered by osmoreceptors</li>
+<li>Angiotensin acting on hypothalamus</li>
+<li>drinking water corrects thirst, not osmolarity balance, same way that drinking decreases water retension</li>
+</ul>
+</li>
+<li>Replacing salt
+<ul>
+<li>&quot;salt appetite&quot; analogue of thirst</li>
+<li>Low sodium triggers</li>
+<li>linked to Na balance<br>
+<img src="../static/BIOL373/fig20.12.png" alt="fig 20.12"></li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="acid-base-balance-why-its-necessary">Acid Base Balance - why it&apos;s necessary</h4>
+
+<ul>
+<li>Normal plasma pH is between 7.38-7.42
+<ul>
+<li>That&apos;s an exceptionally small range</li>
+<li>fluids outside the body can have highly varying pH, ie in the GI tract, renal tubules, etc</li>
+</ul>
+</li>
+<li>H+ concentration needs to be closely regulated
+<ul>
+<li>impacts tertiary protein structure and therefore enzyme function</li>
+</ul>
+</li>
+<li>Abnormal pH affects the nervous system
+<ul>
+<li>Acidosis - neurons become less excitable</li>
+<li>alkalosis - hyperexcitable</li>
+</ul>
+</li>
+<li>pH disturbances are associated with K+ disturbances
+<ul>
+<li>Due to H/K-ATPase</li>
+<li>antiporters in acidosis reabsorbs K</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="primary-source-of-h">Primary source of H+</h4>
+
+<ul>
+<li>Comes from CO2 dissolved in water
+<ul>
+<li>CO2 + H20 &lt;-&gt; HCO3- + H+</li>
+</ul>
+</li>
+<li>the more we breathe (aerate) drive reaction to the left</li>
+<li>holding our breath drives reaction to the right</li>
+<li>dealing with the acid produced by cellular respiration is important</li>
+<li>reaction occurs particularly quickly in cells with high levels of carbonic anhydrase
+<ul>
+<li>ie RBCs and renal epithelial cells</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="components-of-ph-hemostasis">Components of pH Hemostasis</h4>
+
+<ul>
+<li>Bicarbonate buffers
+<ul>
+<li>chemical buffers are effective against a fairly large range of concentrations</li>
+</ul>
+</li>
+<li>Ventilation
+<ul>
+<li>Fast</li>
+<li>Corrects large disturbances, (75%) by actually flushing out the CO2</li>
+<li>Same mechanism that causes some disturbances (not breathing, not exhaling)</li>
+</ul>
+</li>
+<li>Renal regulation
+<ul>
+<li>slow but effective</li>
+<li>Directly excreting H+</li>
+<li>Changing the rate at which HCO3 is reabsorbed or excreted, affects the amount of buffer available</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="ph-homeostasis-mechanism">pH homeostasis mechanism</h4>
+
+<ul>
+<li>Buffering is the first line of defense
+<ul>
+<li>Can quickly get overwhelmed, but can fix/reduce the variance of day to day pH differences</li>
+</ul>
+</li>
+<li>If buffering is overwhelmed, respiratory and renal mechanisms pick up</li>
+<li>If the primary cause is respiratory, renal mechanisms need to be able to fix</li>
+<li>If the primary cause is not respiratory, ie metabolic, both can be used
+<ul>
+<li>Think when you pant after exercise, lactic acid buildup overwhelms buffer</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="ventilations-as-a-ph-balancing-mechanism">Ventilations as a pH balancing mechanism</h4>
+
+<ul>
+<li>key reaction is still
+<ul>
+<li>CO2 + H2O &lt;-&gt; H2CO3 &lt;-&gt; HCO3 + H</li>
+</ul>
+</li>
+<li>Hypoventilate -&gt; acidosis</li>
+<li>Hyperventilate -&gt; alkalosis</li>
+</ul>
+<h4 class="mume-header" id="respiratory-compensation-for-acidosis">Respiratory Compensation for Acidosis</h4>
+
+<ul>
+<li>Hypoventilation makes you less efficient in clearing CO2</li>
+<li>Elevated CO2 and elevated H go together</li>
+<li>Chemoreceptors that sense plasma pH (central and aortic) and ones that sense plasma CO2 (central) get the same signal</li>
+<li>drive respiration trigger ventilation muscles (diaphragm) to breathe harder and faster</li>
+<li>Plasma CO2 concentration and H+ goes down</li>
+</ul>
+<h4 class="mume-header" id="renal-compensation-for-acidosis">Renal Compensation for Acidosis</h4>
+
+<ul>
+<li>Cells in the renal tubular epithelium express Carbonic Anhydrase</li>
+<li>Generally, want to excrete H+ and reabsorb HCO3 to treat acidosis, vice versa for alkalosis</li>
+<li>Can also use reactions with amino acids to produce NH4 which uses up one H+</li>
+</ul>
+<h4 class="mume-header" id="reactions-in-renal-acid-base-mechanisms">Reactions in Renal Acid-Base Mechanisms</h4>
+
+<ul>
+<li>acidosis
+<ul>
+<li>Move H+/NH4+ into tubule
+<ul>
+<li>Apical Na/H exchanger NHE</li>
+<li>Apical Na/NH4 antiporter</li>
+<li>Apical H-ATPase</li>
+<li>Apical H/K-ATPase</li>
+</ul>
+</li>
+<li>Move HCO3 into interstitium
+<ul>
+<li>Basolateral Na/HCO3 symporter</li>
+<li>Basolateral Cl/HCO3 antiporter</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>alkalosis
+<ul>
+<li>Move HCO3 into tubule
+<ul>
+<li>Apical Cl/HCO3 antiporter</li>
+</ul>
+</li>
+<li>Move H+/NH4 into interstitium
+<ul>
+<li>Basolateral H-ATPase</li>
+<li>Basolateral H/K-ATPase</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>default is to remove some acid from the proximal tubule and produce HCO3 as buffer</li>
+<li>homeostatic effects can crank up the transporters</li>
+</ul>
+<h4 class="mume-header" id="compensation-mechanisms-at-tubular-segments">Compensation Mechanisms at Tubular Segments</h4>
+
+<ul>
+<li>Huge amounts of bicarb is filtered at the glomerulus
+<ul>
+<li>Proximal tubule reabsorbs most of it to maintain buffering capacity</li>
+<li>Reabsorbed as CO2, since no HCO3 on apical side</li>
+<li>converted using CA in lumen and then transported out</li>
+</ul>
+</li>
+<li>Fine tuning is done in the distal nephron
+<ul>
+<li>uses two types of cells, intercalated cells A/B</li>
+<li>A cells treat Acidosis</li>
+<li>B cells treat Alkalosis</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

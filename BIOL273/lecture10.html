@@ -1,0 +1,445 @@
+<!DOCTYPE html><html><head>
+      <title>lecture10</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@8.5.2/dist/mermaid.min.js"></script>
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="biol-273">Biol 273</h1>
+
+<h4 class="mume-header" id="ventilation">Ventilation</h4>
+
+<ul>
+<li>Physiological term for breathing</li>
+</ul>
+<h4 class="mume-header" id="two-main-factors-for-breathing">Two main factors for breathing</h4>
+
+<ol>
+<li>Compliance (stretchability of the lungs)</li>
+<li>The resistance to air flow in the airways</li>
+</ol>
+<ul>
+<li>resistance is adjustable</li>
+</ul>
+<h4 class="mume-header" id="concept-map">Concept map</h4>
+
+<div class="mermaid">graph TD;
+style A fill:#FFF,stroke:#FFF
+style B fill:#FFF,stroke:#FFF
+style C fill:#FFF,stroke:#FFF
+style D fill:#FFF,stroke:#FFF
+style E fill:#FFF,stroke:#FFF
+style F fill:#FFF,stroke:#FFF
+style G fill:#FFF,stroke:#FFF
+style H fill:#FFF,stroke:#FFF
+style I fill:#FFF,stroke:#FFF
+style J fill:#FFF,stroke:#FFF
+style K fill:#FFF,stroke:#FFF
+style L fill:#FFF,stroke:#FFF
+style M fill:#FFF,stroke:#FFF
+style N fill:#FFF,stroke:#FFF
+style O fill:#FFF,stroke:#FFF
+style P fill:#FFF,stroke:#FFF
+style Q fill:#FFF,stroke:#FFF
+style R fill:#FFF,stroke:#FFF
+style S fill:#FFF,stroke:#FFF
+style T fill:#FFF,stroke:#FFF
+style U fill:#FFF,stroke:#FFF
+style V fill:#FFF,stroke:#FFF
+style W fill:#FFF,stroke:#FFF
+style X fill:#FFF,stroke:#FFF
+A[Respiratory System]--&gt;B[Conducting System]
+A--&gt;C[Pumping System]
+A--&gt;D[Exchange Surface]
+D--&gt;E[Alveoli]
+B--&gt;F[Upper Respiratory Tract]
+B--&gt;G[Lower Respiratory Tract]
+F--&gt;H[mouth, nasal cavity, pharynx, larynx]
+G--&gt;I[trachea, bronchi, branches, lungs]
+C--&gt;J[Ventilation]
+J--&gt;K[Inspiration]
+J--&gt;L[Expiration]
+K--&gt;M[Inspiratory Muscles]
+K--&gt;N[Diaphragm]
+M-- contraction of --&gt;O[External Intercostal, scalenes, sternocleidomastoids]
+N--&gt;X[increased thoracic volume]
+M--&gt;X
+X--&gt;P[Air Moves In]
+L--&gt;Q[Active]
+L--&gt;R[Passive]
+R--&gt;S[Elastic recoil]
+S--&gt;W[Air moves out]
+Q--&gt;T[Expiratory Muscles]
+T--&gt;U[Internal intercostal and abdominal]
+T--&gt;V[Decreased thoracic volume]
+T--&gt;W
+</div><h4 class="mume-header" id="lung-compliance">Lung compliance</h4>
+
+<ul>
+<li>Magnitude of change in lung volume produced by a given change in pressure</li>
+<li>Can result from chronic inhalation of asbestos, silicon, coal dust</li>
+<li>Pulmonary fibrosis (fibrotic lung disease)</li>
+<li>Causes buildup of scar tissue in lungs, reducing compliance</li>
+<li>Systems like cilia-mucus escalator, nasal hairs reduce inhaled foreign objects</li>
+<li>Small particles can bypass systems and get deeper in the lungs, inflaming lungs</li>
+<li>Scar tissue is not the same as the original tissue</li>
+</ul>
+<h4 class="mume-header" id="surfactants">Surfactants</h4>
+
+<ul>
+<li>Most resistance to stretch comes from surface tension within the lungs</li>
+<li>Surface tension arises because of hydrogen bonding between water molecules</li>
+<li>Surfactants contain mixture of lipoproteins that disrupt cohesive forces between water molecules</li>
+<li>Necessary to reduce surface tension</li>
+<li>Makes lung more compliant</li>
+<li>Secretion is stimulated by deep breathing</li>
+<li>Produced by type 2 alveolar cells</li>
+</ul>
+<h4 class="mume-header" id="new-born-respiratory-distress-syndrome">New-born Respiratory Distress Syndrome</h4>
+
+<ul>
+<li>Due to inadequate surfactant production</li>
+<li>Surfactant synthesis becomes adequate at 34 weeks gestation</li>
+<li>Babies born prematurely do not produce enough surfactant</li>
+<li>Very low compliance</li>
+<li>Very difficult to breathe</li>
+<li>Amniocentesis can be used to test pre-birth surfactant production</li>
+<li>If birth cannot be delayed, premature babies can be artificially ventilated</li>
+<li>Artificial surfactants have been developed along with artificial ventilation</li>
+</ul>
+<h4 class="mume-header" id="elastance">Elastance</h4>
+
+<ul>
+<li>Ability to return to resting volume</li>
+<li>When elastance is low, lung does not return to resting volume passively</li>
+<li>Exporation must be active, not passive</li>
+<li>Can have pathological conditions</li>
+<li>Sac-like structures covered by proteins that are elastic</li>
+</ul>
+<h4 class="mume-header" id="emphysema">Emphysema</h4>
+
+<ul>
+<li>Elastin fibres normally found in lungs are destroyed</li>
+<li>Lungs have high compliance, but low elastance</li>
+<li>Expands easily but breathing out is forced</li>
+</ul>
+<h4 class="mume-header" id="airway-resistance">Airway Resistance</h4>
+
+<ul>
+<li>Resistance <span class="mathjax-exps">$R \propto \frac{8L\eta}{\pi r^4}$</span></li>
+<li>Normally work needed to overcome resistance is low relative to resistance to stretch</li>
+<li>Mucus accumulation from allergies or infections can greatly increase resistance of airways</li>
+</ul>
+<h4 class="mume-header" id="bronchiole-diameter">Bronchiole Diameter</h4>
+
+<ul>
+<li>Affected by nervous system, hormones, paracrines (Table 17.2 Fig)</li>
+<li>CO2 causes bronchodilation</li>
+<li>Histamine causes bronchoconstriction</li>
+<li>Histamines are released in response to tissue damage or allergic reactions</li>
+<li>Severe allergic reactions can cause difficulty breathing</li>
+</ul>
+<h4 class="mume-header" id="neural-control-of-bronchioles">Neural control of Bronchioles</h4>
+
+<ul>
+<li>Primarily by parasympathetic neurons that cause bronchoconstriction</li>
+<li>No significant sympathetic innervation</li>
+<li>Circulating epinephrine act on bronchiole smooth muscle cells</li>
+<li>Used as a treatment for asthma</li>
+</ul>
+<h4 class="mume-header" id="lung-volumes">Lung volumes</h4>
+
+<p><img src="../static/BIOL273/fig17.7.png" alt="Fig. 17.7"></p>
+<ol>
+<li>Tidal Volume
+<ul>
+<li>Volume of air moved in a single inspiration or expiration</li>
+</ul>
+</li>
+<li>Inspiratory Reserve Volume
+<ul>
+<li>Volume of air that can be inspired above the tidal volume</li>
+</ul>
+</li>
+<li>Expiratory Reserve Volume
+<ul>
+<li>Amount that can be exhaled after a normal expiration</li>
+</ul>
+</li>
+<li>Residual volume
+<ul>
+<li>Amount of air left in lungs after maximal expiration</li>
+</ul>
+</li>
+<li>Vital Capacity
+<ul>
+<li>Maximum amount of air that can be voluntarily moved in or out of the respiratory system</li>
+</ul>
+</li>
+<li>Total Lung Capacity</li>
+</ol>
+<h4 class="mume-header" id="efficiency-of-breathing">Efficiency of Breathing</h4>
+
+<ul>
+<li>Effectiveness of breathing by measure total pulmonary ventilation -&gt; minute volume</li>
+<li>Dead space, volume of air not involved in gas exchange</li>
+<li>Alveolar ventilation is the amount of air that reaches the alveoli each minute</li>
+<li>Ventilation rate * alveolar volume</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    <script>
+// config mermaid init call
+// http://knsv.github.io/mermaid/#configuration
+//
+// You can edit the 'MERMAID_CONFIG' variable below.
+MERMAID_CONFIG = {
+  startOnLoad: false
+}
+
+if (window['MERMAID_CONFIG']) {
+  window['MERMAID_CONFIG'].startOnLoad = false
+  window['MERMAID_CONFIG'].cloneCssStyles = false
+  window['MERMAID_CONFIG'].theme = "default"
+}
+mermaid.initialize(window['MERMAID_CONFIG'] || {})
+if (typeof(window['Reveal']) !== 'undefined') {
+  function mermaidRevealHelper(event) {
+    var currentSlide = event.currentSlide
+    var diagrams = currentSlide.querySelectorAll('.mermaid')
+    for (var i = 0; i < diagrams.length; i++) {
+      var diagram = diagrams[i]
+      if (!diagram.hasAttribute('data-processed')) {
+        mermaid.init(null, diagram, ()=> {
+          Reveal.slide(event.indexh, event.indexv)
+        })
+      }
+    }
+  }
+  Reveal.addEventListener('slidechanged', mermaidRevealHelper)
+  Reveal.addEventListener('ready', mermaidRevealHelper)
+} else {
+  mermaid.init(null, document.getElementsByClassName('mermaid'))
+}
+</script>
+    
+    
+    
+    
+    
+  
+    </body></html>

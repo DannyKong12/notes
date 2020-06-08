@@ -1,0 +1,603 @@
+<!DOCTYPE html><html><head>
+      <title>lecture08</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="biol-373">Biol 373</h1>
+
+<h3 class="mume-header" id="endocrine-regulatory-systems">Endocrine Regulatory Systems</h3>
+
+<p>Endocrine system is focused on hormones, both endogenous and exogenous.</p>
+<h4 class="mume-header" id="what-is-a-hormone">What is a Hormone?</h4>
+
+<ul>
+<li>A chemical messenger secreted into the blood by specialized cells</li>
+<li>Regulate long term/ongoing functions
+<ul>
+<li>Growth/development</li>
+<li>Metabolism</li>
+<li>regulation of internal environment</li>
+<li>reproduction</li>
+</ul>
+</li>
+<li>Act on cells in many ways, particularly the regulation of
+<ul>
+<li>enzyme activity</li>
+<li>ion transport across membrane</li>
+<li>Gene expression</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="history-of-endocrinology">History of Endocrinology</h4>
+
+<ul>
+<li>Arnold Adolph Berthold
+<ul>
+<li>Knew that removing the testes from farm animals reduced masculine behaviour and phenotype</li>
+<li>Wondered whether the effects were due to neural connections with testes</li>
+<li>Used male chickens as the first formal experiment in endocrinology</li>
+<li>Castration of male chickens resulted in caponization, wherease both reimplantation and transplantation of the testes produced chickens which developed in to normal males.</li>
+</ul>
+</li>
+<li>Charles-Eduard Brown-Sequard claimed that injecting himself (at the age of 74) with extracts of testes from bulls, dogs, guinea pigs, and monkeys, ground up in water caused sexual rejuvenation, extension of life, etc.</li>
+</ul>
+<h4 class="mume-header" id="classic-approaches-in-experimental-endocrinonlogy">Classic Approaches in Experimental Endocrinonlogy</h4>
+
+<ul>
+<li>Ablattion
+<ul>
+<li>Remove the suspected gland</li>
+</ul>
+</li>
+<li>Replace
+<ul>
+<li>Glands, extracts of glands</li>
+</ul>
+</li>
+<li>Create situations of excess
+<ul>
+<li>Isolate active substance</li>
+<li>Characterize them chemically</li>
+</ul>
+</li>
+<li>Many &quot;classic&quot; hormones were identified.</li>
+</ul>
+<h4 class="mume-header" id="exocrine-vs-endocrine-glands">Exocrine vs Endocrine glands</h4>
+
+<p><img src="../static/BIOL373/fig3.11.png" alt="fig 3.11"></p>
+<ul>
+<li>Epithelium protrudes out and either forms a duct or it closes itself off and forms a gland on top of a blood vessel</li>
+</ul>
+<h4 class="mume-header" id="features-of-classic-hormones">Features of &apos;Classic&apos; Hormones</h4>
+
+<ul>
+<li>Secreted by a group of cells derived from epithelial tissue that form discrete glands</li>
+<li>secreted into blood</li>
+<li>travel to distant target</li>
+<li>act at very low concentrations (nano/pico molar)</li>
+<li>Non-classic hormones do not follow at least one of these</li>
+</ul>
+<h4 class="mume-header" id="hormones-act-via-receptors">Hormones act via receptors</h4>
+
+<ul>
+<li>Target cells for a hormone are defined as those having receptors for that hormone
+<ul>
+<li>Target cells affect their sensitivity to a hormone by changing receptor expression</li>
+</ul>
+</li>
+<li>Location of receptor within the target cell is related to the chemical features of the hormone</li>
+<li>binding to receptors sets off intracellular signalling cascasde</li>
+<li>must be able to terminate hormone signalling
+<ul>
+<li>Free in ecf &lt;-&gt; bound to receptor</li>
+<li>Mechanism to remove hormones from receptors
+<ul>
+<li>Hormones have a half life</li>
+<li>Nonspecific proteases break down ECF hormones</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="ways-to-classify-hormones">Ways to Classify Hormones</h4>
+
+<ul>
+<li>Source (gonad, pituitary, etc)</li>
+<li>Mechanism
+<ul>
+<li>GPCRs</li>
+<li>RTKs</li>
+<li>Intracellular (steroid) receptors</li>
+</ul>
+</li>
+<li>Chemistry
+<ul>
+<li>Peptide/protines</li>
+<li>amine/amino acid derivative</li>
+<li>steroid (cholesterol derivative)</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="peptideprotein-hormones">Peptide/Protein Hormones</h4>
+
+<ul>
+<li>The largest group of hormones</li>
+<li>Consist of 3 amino acids, larger peptides, proteins, glycoproteins</li>
+<li>Short half life (seconds to minutes)
+<ul>
+<li>Sustained responses require constant release of the hormone</li>
+</ul>
+</li>
+<li>Hydrophilic</li>
+</ul>
+<h4 class="mume-header" id="peptide-hormone-synthesis-and-secretion">Peptide Hormone Synthesis and Secretion</h4>
+
+<ul>
+<li>Synthesized, packaged and released via secretory pathway</li>
+<li>Product o ribosome is preprohormone (large, inactive precursor to a hormone)</li>
+<li>Signal sequence directs it to rough ER</li>
+<li>Cleaevd to prohormone in the ER/Golgi</li>
+<li>Packaged into vesicles in Golgi, along with enzymes that will carry out final activation
+<ul>
+<li>comes with extensive post-translational processing<br>
+<img src="../static/BIOL373/fig7.3.png" alt="fig 7.3"></li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="signal-transudction-for-peptide-hormones">Signal Transudction for Peptide Hormones</h4>
+
+<h4 class="mume-header" id="amine-hormones">Amine Hormones</h4>
+
+<ul>
+<li>derivatives of tryptophan or tyrosine</li>
+<li>examples:
+<ul>
+<li>Tryptophan -&gt; melatonin from the pineal gland</li>
+<li>Tyrosine -&gt;
+<ul>
+<li>catecholamines
+<ul>
+<li>Act via membrane receptors</li>
+<li>Dopamine</li>
+<li>Epinephrine</li>
+<li>Norepinephrine</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="tyrosine-derived-hormones">Tyrosine-derived Hormones</h4>
+
+<p><img src="../static/BIOL373/fig7.6.png" alt="fig 7.6"></p>
+<h4 class="mume-header" id="steroid-hormones">Steroid Hormones</h4>
+
+<ul>
+<li>only made in a few organs
+<ul>
+<li>need cells that express enzymes to cleave off cholesterol side chains</li>
+<li>Adrenal cortex, gonads, placenta</li>
+</ul>
+</li>
+<li>Steroids are small simple molecules with similar structure</li>
+<li>Chemically stable, remain in circulation from 30m to days</li>
+</ul>
+<h4 class="mume-header" id="steroid-synthesis-and-release">Steroid Synthesis and Release</h4>
+
+<ul>
+<li>Cholesterol imported into cell or synthesized within cell</li>
+<li>steroidogenic enzymes in either smooth ER or inner mitochondrial membrane
+<ul>
+<li>Steroidogenic cells have large smounts of smooth ER</li>
+</ul>
+</li>
+<li>whether a cell makes steroid or what steroids it makes depends on which enzymes are active</li>
+<li>Steroids are not stored
+<ul>
+<li>they are made on demand by increasing activity of enzymes</li>
+<li>Released from cell by simple diffusion</li>
+</ul>
+</li>
+<li>circulate in bloodstream bound to proteins or carriers</li>
+</ul>
+<h4 class="mume-header" id="steroidogenic-pathway">Steroidogenic Pathway</h4>
+
+<p><img src="../static/BIOL373/fig7.5.png" alt="fig 7.5"></p>
+<ul>
+<li>Gonads
+<ul>
+<li>Testes produce DHT (testosterone)</li>
+<li>Ovaries produce estradiol and progesterone</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="steroid-hormone-action">Steroid Hormone Action</h4>
+
+<p><img src="../static/BIOL373/fig7.5.png" alt="fig 7.5"></p>
+<ul>
+<li>steroid receptor proteins are ligand activated transcription factors
+<ul>
+<li>steroids are the ligand that activates them</li>
+</ul>
+</li>
+<li>transcription factors activated by steroids bind to steroid response elements
+<ul>
+<li>regulatory sequences upstream of particular genes</li>
+</ul>
+</li>
+<li>new proteins are typically other transcription factors</li>
+</ul>
+<h4 class="mume-header" id="simple-endocrine-reflex">Simple Endocrine Reflex</h4>
+
+<p><img src="../static/BIOL373/fig7.7.png" alt="fig 7.7"></p>
+<ul>
+<li>An example, the parathyroid hormone
+<ul>
+<li>Low plasma Ca is detected by parathyroid cell, which secretes parathyroid hormone into bones and kidney</li>
+<li>Target cells in the bones increase reabsorption of calcium</li>
+<li>Kidney increases reabsorption</li>
+<li>Calcitriol leads to increase intestinal absorption of Calcium</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="endocrine-and-nervous-system">Endocrine and Nervous System</h4>
+
+<ul>
+<li>Many endocrine reflexes involve the nervous system</li>
+<li>Integration in the CNS influences the secretion of many hormones</li>
+<li>emotional state can influence hormone secretion and action</li>
+<li>specialized groups of neurons secrete neurohormones
+<ul>
+<li>Adrenal medulla</li>
+<li>epinephrine produced by chromaffin cells in the adrenal medulla</li>
+<li>Analogous to postganglionic sympathetic neurons</li>
+<li>Hypothalamus
+<ul>
+<li>produces neurohormones that are stored in and secreted by the posterior pituitary gland</li>
+<li>Produces neurohormones that control release of hormones from anterior pituitary gland</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="neural-pathways-for-vision">Neural Pathways for Vision</h4>
+
+<p><img src="../static/BIOL373/fig10.25b.png" alt="fig 10.25"></p>
+<h4 class="mume-header" id="development-of-the-pituitary-gland">Development of the Pituitary Gland</h4>
+
+<ul>
+<li>Hypo + Physis means to grow under</li>
+<li>Neuro hypophysis = pars nervosa = posterior pituitary</li>
+<li>adeno hypophysis = pars distalis = anterior pituitary</li>
+<li>hypophys ectomy = removal of the pituitary gland</li>
+</ul>
+<h4 class="mume-header" id="posterior-pituitary-gland">Posterior Pituitary Gland</h4>
+
+<p><img src="../static/BIOL373/fig7.8.png" alt="fig 7.8"></p>
+<ul>
+<li>Neurohormones like oxytocin and vasopressin produced and packaged in the posterior pituitary Gland</li>
+</ul>
+<h4 class="mume-header" id="anterior-pituitary-gland">Anterior Pituitary Gland</h4>
+
+<p><img src="../static/BIOL363/fig7.8.png" alt="fig 7.8"></p>
+<ul>
+<li>Neurons synthesizing neurohormones release them in to the first capillary bed of portal system</li>
+<li>Portal veins carry neurohormones directly to second capillary bed in anterior pituitary gland</li>
+<li>Endocrine cells release peptide hormones into second set of capillaries, peptides exit via venous drainage</li>
+</ul>
+<h4 class="mume-header" id="hypothalamic-pituitary-axis">Hypothalamic-Pituitary Axis</h4>
+
+<p><img src="../static/BIOL373/fig7.9.png" alt="fig 7.9"></p>
+<ul>
+<li>The hypothalamic-pituitary axis is separated into 3 tiers</li>
+<li>Hypothalamus produces hormones that become different derivatives in the pituitary gland</li>
+<li>Anterior Pituitary gland has a spearate set of hormones, some are controlled by the horomes in the hypothalamus</li>
+<li>Endocrine targets secrete final hormones to targets</li>
+</ul>
+<h4 class="mume-header" id="feedback-loops-involving-hypothalamus-pituitary-are-complex">Feedback loops involving Hypothalamus-Pituitary are complex</h4>
+
+<ul>
+<li>Typically involve three integrating centres
+<ul>
+<li>hypothalamus</li>
+<li>Anterior pituitary gland</li>
+<li>Edocrine target of pituitary gland</li>
+</ul>
+</li>
+<li>Hormones themselves are often the feedback signal
+<ul>
+<li>blood levels of hormone vs downstream target like blood pressure</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="feedback-loops-in-the-hypothalamic-pituitary-x-axis">Feedback Loops in the Hypothalamic-Pituitary-X Axis</h4>
+
+<p><img src="../static/BIOL373/fig7.11.png" alt="fig 7.11"></p>
+<h4 class="mume-header" id="why-not-monitor-a-response-rather-than-the-hormones">Why not Monitor a response rather than the hormones?</h4>
+
+<h4 class="mume-header" id="hormone-hormone-interactions">Hormone-Hormone interactions</h4>
+
+<ul>
+<li>Synergism
+<ul>
+<li>There are hormone combinations where the effect is greater than the sum of the individual effects</li>
+</ul>
+</li>
+<li>Permissiveness
+<ul>
+<li>hormone is required but not enough for full effect, require secondary hormone</li>
+</ul>
+</li>
+<li>Antagonism
+<ul>
+<li>One hormone can oppose the other</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="synergistic-effects-on-blood-glucose">Synergistic effects on Blood Glucose</h4>
+
+<ul>
+<li>Glucagon+Epinephrine+cortisol triad increases blood glucose more and for longer than the action of any subset of the 3 can on their own</li>
+</ul>
+<h4 class="mume-header" id="thyroid-hormone-is-permissive-for-onset-of-puberty">Thyroid hormone is permissive for onset of puberty</h4>
+
+<ul>
+<li>Thyroid hormone alone produces no reproductuve maturation</li>
+<li>Reproductive hormones alone produces no reproductive maturation</li>
+<li>when both hormones are present, puberty begins</li>
+</ul>
+<h4 class="mume-header" id="endocrine-pathologies">Endocrine Pathologies</h4>
+
+<ul>
+<li>excesses (hypersecretion
+<ul>
+<li>Benign tumors (adenomas) or cancerous tumors of glands</li>
+<li>Issues with feedback regulation</li>
+</ul>
+</li>
+<li>deficiencies (hyposecretion
+<ul>
+<li>Unable to produce a hormone
+<ul>
+<li>Total loss of function gene mutations</li>
+<li>Atrophy of the gland due to disease processes</li>
+<li>Iodine deficiencies - cannot produce thyroid hormones</li>
+</ul>
+</li>
+<li>side effects of exogenous hormones</li>
+</ul>
+</li>
+<li>Abnormal responsiveness of target tissues
+<ul>
+<li>Anbormally high hormone levels for extended time can lead to down-regulation of target cells</li>
+<li>mutations in receptor proteins or downstream steps in the pathway*</li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>

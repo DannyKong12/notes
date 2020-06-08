@@ -1,0 +1,618 @@
+<!DOCTYPE html><html><head>
+      <title>lecture10</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+      <h1 class="mume-header" id="biol-373">Biol 373</h1>
+
+<h3 class="mume-header" id="control-of-gi-function">Control of GI Function</h3>
+
+<p><img src="../static/BIOL373/fig21.11.png" alt="fig 21.11"></p>
+<ul>
+<li>Nerve plexuses between muscle layers of the GI tract</li>
+<li>Enteric Nervous System (gut brain)</li>
+<li>Distension/presence of food/osmolarity/acid influences sensory cells and neurons</li>
+<li>Integration occurs within the GI tract</li>
+</ul>
+<h4 class="mume-header" id="parallels-between-enteric-and-central-nervous-system">Parallels between Enteric and Central Nervous System</h4>
+
+<ul>
+<li>Has intrinsic neurons that lie entirely within gut (like interneurons of CNS)
+<ul>
+<li>Autonomic neurons that bring signals from CNS to gut are considered extrinsic</li>
+</ul>
+</li>
+<li>Releases 30+ different NTs and neuromodulators
+<ul>
+<li>But not NE/E/AcH</li>
+</ul>
+</li>
+<li>Has glial support cells (similar to astrocytes)</li>
+<li>Diffusion barrier - capillaries surrounding ganglia are not very permeable</li>
+<li>act as integrating center - <em>can autoregulate without CNS</em></li>
+</ul>
+<h4 class="mume-header" id="reflexes-involving-gut-peptides">Reflexes Involving Gut Peptides</h4>
+
+<ul>
+<li>Look at short vs. long reflexes in slide</li>
+</ul>
+<h4 class="mume-header" id="beginnings-of-endocrinology">Beginnings of Endocrinology</h4>
+
+<ul>
+<li>Pancreas produces bicarb (not all the time) and secretes into duodenum
+<ul>
+<li>How does pancreas know exactly when to secrete bicarb into duodenum?</li>
+<li>Pavlov: Idea is that pancreatic secretion is controlled by the vagus nerve</li>
+<li>Bayliss and Starling: dissected away all nerves surrounding pancreas duodenum, acid in the duodenum still induces still secreted</li>
+<li>New hypothesis becomes: acid release of signal from duodenum into blood</li>
+<li>Treated lining of duodenum with acid, injected back into blood intravenously, induced bicarb secretion</li>
+<li>Found that bicarb secretion is possible without nervous input</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="family-of-gut-hormones">Family of Gut Hormones</h4>
+
+<ul>
+<li>Gastrin family
+<ul>
+<li>Major targets are stomach</li>
+</ul>
+</li>
+<li>Secretin Family
+<ul>
+<li>secretin, vasoactive intestinal peptide, gastric inhibitory peptide, glucagon like peptide 1</li>
+</ul>
+</li>
+<li>Motilin Family
+<ul>
+<li>motilin acts on gut smooth muscle</li>
+<li>regulates migrating motor complexes</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="overview-of-gi-function-control-points">Overview of GI Function - Control points</h4>
+
+<p><img src="../static/BIOL373/fig21.12.png" alt="fig 21.12"></p>
+<ul>
+<li>Oral cavity</li>
+<li>Upper esophageal sphincter</li>
+<li>Lower esophageal sphincter</li>
+<li>Pylorus</li>
+<li>Ileocecal valve</li>
+<li>Rectum</li>
+<li>Anal</li>
+</ul>
+<h4 class="mume-header" id="digestion-begins-in-the-mouth">Digestion begins in the mouth</h4>
+
+<ul>
+<li>Saliva - secretion under autonomic control
+<ul>
+<li>Softens and lubricates food</li>
+<li>salivary amylase and some lipases begin to act on starches and fats</li>
+<li>Chewing (mastication) begins mechanical action of digestion</li>
+<li>transfers to stomach (deglutition)</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="swallowing-reflex">Swallowing Reflex</h4>
+
+<p><img src="../static/BIOL373/fig21.14.png" alt="fig 21.14"></p>
+<ul>
+<li>Trachea and esophagus are very close together</li>
+<li>Epiglottis is the only thing blocking the trachea/esophagus</li>
+<li>Integration of reflex happens in the medulla</li>
+<li>sensory afferents in the cranial nerve IX and somatic motor and autonomic neurons mediate the reflex</li>
+</ul>
+<h4 class="mume-header" id="transition-into-the-stomach">Transition into the Stomach</h4>
+
+<ul>
+<li>Lining of the stomach is uniquely able to handle extremely low pH</li>
+<li>Don&apos;t want acid to splash back up into esophagus: default closed</li>
+</ul>
+<h4 class="mume-header" id="cephalic-and-gastric-phase">Cephalic and Gastric phase</h4>
+
+<ul>
+<li>Gastric phase is presence of food in the stomach, Cephalic is anticipation</li>
+<li>Sensory information (sight/smell/etc) input into brain and integration
+<ul>
+<li>Medulla oblongata down vagus nerve into enteric plexus, which is an integrating center</li>
+<li>Secretion of target cells</li>
+<li>(relatively) Long-term <em>feedforward</em> reflex</li>
+</ul>
+</li>
+<li>Gastric senses (distension/acid)
+<ul>
+<li>short loop reflex</li>
+<li>Sensory to the enteric plexus</li>
+<li>Enteric plexus decides action</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="gastric-phase">Gastric Phase</h4>
+
+<ul>
+<li>Stomach has three main functions
+<ul>
+<li>storage:
+<ul>
+<li>Neurally mediated, receptive relaxation of upper stomach</li>
+<li>Gastric Dumping Syndrome</li>
+</ul>
+</li>
+<li>Digestion:</li>
+<li>Protection:
+<ul>
+<li>Low pH and stomach enzymes protect against foreign organisms</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="secretory-cells-of-gastric-mucosa">Secretory cells of Gastric Mucosa</h4>
+
+<p><img src="../static/BIOL373/fig21.15.png" alt="fig 21.15"></p>
+<ul>
+<li>Enterochromaffin like cell (ECL)
+<ul>
+<li>Recall: Chromaffin cell was a cell in the adrenal medulla, produces epinephrine/norepinephrine (neurosecretory cells/neuroendocrine)</li>
+<li>ECL Secretes histamine</li>
+</ul>
+</li>
+<li>Parietal Cells
+<ul>
+<li>Produces gastric acid and the intrinsic factor</li>
+<li>Stimulated by ACh, gastrin, histamine</li>
+</ul>
+</li>
+<li>G Cells
+<ul>
+<li>releases Gastrin</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="functions-of-gastric-secretory-products">Functions of Gastric Secretory Products</h4>
+
+<ul>
+<li>Parietal Cells -&gt; Acid
+<ul>
+<li>Activates pepsin</li>
+<li>denatures proteins, makes them more accessible</li>
+<li>Anti-microbial</li>
+</ul>
+</li>
+<li>Chief cells -&gt; pepsinogen -&gt; pepsin
+<ul>
+<li>Endopeptidase
+<ul>
+<li>particularly effective on collagen</li>
+</ul>
+</li>
+<li>Also produces gastric lipases</li>
+</ul>
+</li>
+<li>ECL cells -&gt; histamine
+<ul>
+<li>binds to H2 receptors on parietal cells -&gt; promotes acid secretion</li>
+</ul>
+</li>
+<li>Gastrin
+<ul>
+<li>Triggered by both long and short loop reflexes</li>
+</ul>
+</li>
+<li>Somatostatin from D cells
+<ul>
+<li>shuts down secretion of acid and pepsinogen</li>
+<li>negative feedback regulator</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="integration-of-cephalic-and-gastric-phases">Integration of Cephalic and Gastric Phases</h4>
+
+<p><img src="../static/BIOL373/fig21.16.png" alt="fig 21.16"></p>
+<ul>
+<li>Cephalic (food anticipation) can start stomach (Gastric) function
+<ul>
+<li>Input via vagus nerve</li>
+<li>Stimulates G cells, ECL cells, Parietal cells</li>
+<li>Negative pathway:
+<ul>
+<li>D cells produce Somatostatin</li>
+<li>Influences G/Parietal/ECL to stop</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Gastric Phases
+<ul>
+<li>Regardless of Vagus Nerve Stimulation</li>
+<li>Food/AAs/Peptides stimulates enteric sensory neuron</li>
+<li>G cell produces gastrin, which stimulates acid secretion and histamine secretion</li>
+<li>Less &quot;push&quot;</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="preventiontreatment-of-peptic-ulcers">Prevention/Treatment of Peptic Ulcers</h4>
+
+<ul>
+<li>Peptic ulcers occur when the mucosal surface is damaged
+<ul>
+<li>The muscus layer destroyed by acid and pepsin</li>
+<li>Damage can extend into submucosa and muscularis layers</li>
+</ul>
+</li>
+<li>Main treatment was antacids</li>
+<li>Modern approaches include
+<ul>
+<li>H2 receptor</li>
+<li>H/K ATPase</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="stimulation-of-parietal-cell-acid-secretion">Stimulation of Parietal Cell Acid Secretion</h4>
+
+<ul>
+<li>Resting parietal Cell has fewer H/K-ATPase channels than active</li>
+<li>Similar to vasopressin story with aquaporins, signals (Gastrin/Histamine/ACh) dump vesicle bound channels into the epithelium</li>
+</ul>
+<h4 class="mume-header" id="integration-of-gastric-and-intestinal-phase">Integration of Gastric and Intestinal Phase</h4>
+
+<ul>
+<li>Intestinal phase begins with controlled entry of chyme into small intestine<br>
+<img src="../static/BIOL373/fig21.17a.png" alt="fig 21.17"></li>
+<li>Intestinal phases slow down the stomach
+<ul>
+<li>GIP/GLP-1/CCK/Secretin</li>
+</ul>
+</li>
+<li>Acid in the small intestine stimulates secretin production, which induces pancreatic secretion</li>
+<li>Fats/Proteins stimulate CCK production, pancreatic enzyme secretion (biles)</li>
+<li>Carbs stimulate GIP/GLP-1 (think G -&gt; glucose) induce insulin secretion</li>
+</ul>
+<h4 class="mume-header" id="enterohepatic-circulation-of-bile-salts">Enterohepatic Circulation of Bile Salts</h4>
+
+<ul>
+<li>Bile Salts are released into duodenum, absorbed in terminal ileum, enter portal circulation, travel back to liver
+<ul>
+<li>Bile salts circulate between liver and intestines, possibly many times during a meal</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="summary-of-secretions-during-intestinal-phase">Summary of Secretions during Intestinal Phase</h4>
+
+<ul>
+<li>Recall: intestines break down just about all organic molecules</li>
+</ul>
+<h4 class="mume-header" id="activation-of-pancreatic-zymogens">Activation of Pancreatic Zymogens</h4>
+
+<p><img src="../static/BIOL373/fig21.17b.png" alt="fig 21.17"></p>
+<ul>
+<li>Zymogens are secreated along with trypsinogen</li>
+<li>Trypsinogen is activated by enteropeptidase in brush border</li>
+<li>Activates trypsinogen -&gt; trypsin</li>
+<li>Trypsin in turn activates the zymogens
+<ul>
+<li>Chymotrypsinogen -&gt; Chymotrypsin</li>
+<li>Procarboxypeptidase -&gt; Carboxypeptidase</li>
+<li>Procolipase -&gt; Colipase</li>
+<li>Prophospholipase -&gt; Phospholipase</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="absorption-in-small-intestine">Absorption in Small Intestine</h4>
+
+<ul>
+<li>Most of the fluid is absorbed in small intestine (c.f. water balance)
+<ul>
+<li>Transport of organic nutrients and ions creates an osmotic gradient</li>
+<li>most absorbed nutrients move into capillaries in villi then into hepatic portal vein</li>
+<li>fats go to lymphatic system</li>
+</ul>
+</li>
+<li>Xenobiotics pass through liver</li>
+</ul>
+<h4 class="mume-header" id="large-intestine">Large intestine</h4>
+
+<ul>
+<li>Removes most of remaining water and formation of feces</li>
+<li>Motility
+<ul>
+<li>Much less water -&gt; harder motility</li>
+<li>Ileocecal valve (small/large intestine) relaxes each time a peristaltic wave reaches it
+<ul>
+<li>Relaxes when food leaves somach as well</li>
+</ul>
+</li>
+<li>Most of movement is segmental aside from a few mass movements</li>
+<li>Peristaltic movement occurs 3-4 times a day to move bolus forwards</li>
+<li>Triggers defecation reflex</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="diarrhea">Diarrhea</h4>
+
+<ul>
+<li>Imbalance between intestinal absorption and secretion
+<ul>
+<li>Osmotic diarrhea
+<ul>
+<li>unabsorbed, osmotically active solutes
+<ul>
+<li>sorbitol, olestra, undigested lactose</li>
+<li>Osmotic laxatives</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Secretory Diarrhea - bacteral toxins increase Cl- secretion
+<ul>
+<li>cholera</li>
+<li>can also be adaptive (flushing out infections)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Can lead to dehydration</li>
+<li>metabolic acidosis
+<ul>
+<li>excess acid production</li>
+<li>Bicarb from the small intestine is drained quickly</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="cholera">Cholera</h4>
+
+<ul>
+<li>Intestinal infection
+<ul>
+<li>Contaminated food</li>
+<li>Contaminated water</li>
+</ul>
+</li>
+<li>Need to ingest ~100million bacteria
+<ul>
+<li>but lower doses can cause infection in immune suppressed</li>
+<li>young children, reduced gastric acidity</li>
+</ul>
+</li>
+<li>100k deaths per year</li>
+</ul>
+<h4 class="mume-header" id="cholera-vs-cystic-fibrosis">Cholera vs. Cystic Fibrosis</h4>
+
+<ul>
+<li>CF most common fatal, recessive single-gene disorder of northern Europeans and descendants<br>
+<em>Why is the frequency of this disease so high?</em></li>
+<li>CF decreases CFTR ability, Cholera is excess CFTR activity</li>
+<li>CF heterozygotes have ~50% functional CFTRs
+<ul>
+<li>Enough for normal function but allows them to resist death from cholera due to reduced Cl secretion</li>
+</ul>
+</li>
+<li>CFTR also involved in other diseases like typhoid, bronchia asthma</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
