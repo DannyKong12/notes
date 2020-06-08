@@ -27,7 +27,7 @@ jobs:
         npm install @shd101wyy/mume
         node compile.js
         cd ..
-        ./src/list.sh .
+        ./src/link.sh .
     - name: Commit files
       run: |
         git config --local user.email "action@github.com"
