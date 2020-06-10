@@ -5,7 +5,7 @@ do
   if [ -d "$f" -a "$f" != "./src" ]
   then
     cd $f
-    ../src/insert_link.sh
+    ../src/insert_links.sh
     cd ..
   fi
 done
