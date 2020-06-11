@@ -35,7 +35,9 @@ jobs:
         git stash --include-untracked
         git fetch
         git checkout -f master
-        git stash pop
+        git checkout stash -- .
+        git checkout stash^3 -- .
+        git stash drop
         git add */*.html
         git commit -m "Compiled changes from develop"
     - name: Push changes
