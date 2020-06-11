@@ -38,6 +38,7 @@ jobs:
         git checkout stash -- .
         git checkout stash^3 -- .
         git stash drop
+        git reset
         git add */*.html
         git commit -m "Compiled changes from develop"
     - name: Push changes
