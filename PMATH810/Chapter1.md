@@ -1,3 +1,0 @@
-# Chapter Banach Space Theory
-
-
