@@ -32,7 +32,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git add -a
+        git add -A
         git stash --include-untracked
         git fetch
         git checkout -f master
