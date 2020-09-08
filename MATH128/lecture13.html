@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture12</title>
+      <title>lecture13</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -216,44 +216,22 @@ pre[data-line] {
     <body for="html-export">
       <div class="mume markdown-preview  ">
  			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture11.html">prev</a>
+				<a style="display: flex; flex: 1;" href="./lecture12.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture13.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture14.html">next</a>
 			</nav>
       <h1 class="mume-header" id="math-128">Math 128</h1>
 
-<h1 class="mume-header" id="series">Series</h1>
+<h1 class="mume-header" id="series-pt-2">Series pt. 2</h1>
 
-<h4 class="mume-header" id="series-convergence-1">Series convergence 1</h4>
+<h4 class="mume-header" id="theorem">Theorem:</h4>
 
-<ul>
-<li>If the limit of the partial sums does not converge, the series cannot converge</li>
-</ul>
-<p><strong>Ex1:</strong>  Harmonic Series<br>
-</p><div class="mathjax-exps">$$\begin{align} \sum_n^\infty \frac{1}{n} \\ \end{align}$$</div><br>
-Proof by Contradiction:<br>
-Suppose the series converges to S<br>
-Let <span class="mathjax-exps">$S=\sum_n^\infty \frac{1}{n}$</span><br>
-then <span class="mathjax-exps">$S=1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+\frac{1}{5}...$</span><br>
-By association, <span class="mathjax-exps">$S=(1+\frac{1}{2})+(\frac{1}{3}+\frac{1}{4})+(\frac{1}{5}+\frac{1}{6})...$</span><br>
-Adjust the first term to be equal to the second in each pair<br>
-<span class="mathjax-exps">$S^\prime=(\frac{1}{2}+\frac{1}{2})+(\frac{1}{4}+\frac{1}{4})+(\frac{1}{6}+\frac{1}{6})...$</span><br>
-<span class="mathjax-exps">$S^\prime={1+\frac{1}{2}+\frac{1}{3}+\frac{1}{4}+...}$</span><br>
-We recognize S again, in a series equal to <span class="mathjax-exps">$S^\prime$</span> which we defined as greater than S. <span class="mathjax-exps">$S&gt;S^\prime=S$</span> which is a contradiction.<p></p>
-<p><strong>Ex2:</strong> Telescoping Series<br>
-</p><div class="mathjax-exps">$$\begin{align} \sum_n^\infty \frac{1}{n(n+1)} \\ \textbf{by partial fractions: }\\ \sum_n^\infty \frac{1}{n}-\frac{1}{n+1} \end{align}$$</div><br>
-Now consider the partial sums<br>
-<div class="mathjax-exps">$$\begin{align} S_1&amp;=1-\frac{1}{2} \\ S_2&amp;=1-\frac{1}{2}+(\frac{1}{2}+\frac{1}{3})\\ S_3&amp;=1-\frac{1}{3}+(\frac{1}{3}+\frac{1}{4})\\ \end{align}$$</div><p></p>
-<p><strong>Ex3:</strong> Practice<br>
-</p><div class="mathjax-exps">$$\begin{align} \textbf{show that:}\\ &amp;\sum_n^\infty e^{\frac{1}{n}}-e^{\frac{1}{n+1}}=e-1 \end{align}$$</div><p></p>
-<h4 class="mume-header" id="theorem-if-sum_ninfty-a_n-and-sum_ninfty-b_n-are-both-convergent">Theorem: if <span class="mathjax-exps">$\sum_n^\infty a_n$</span> and <span class="mathjax-exps">$\sum_n^\infty b_n$</span> are both convergent</h4>
-
-<ul>
-<li>Multiplicative: e.g. <span class="mathjax-exps">$\sum_n^\infty ca_n = c \sum_n^\infty a_n$</span></li>
-<li>Additive: e.g. <span class="mathjax-exps">$\sum_n^\infty a_n + \sum_n^\infty b_n = \sum_n^\infty (a_n+b_n)$</span></li>
-<li>Adding or subtracting a finite number of terms does not change convergence e.g. if <span class="mathjax-exps">$\sum_n^\infty a_n$</span> converges then <span class="mathjax-exps">$\sum_n^\infty a_n + C$</span> converges</li>
-<li></li>
-</ul>
+<p>If a series is convergent, then <span class="mathjax-exps">$\lim_{n\to\infty} a_n=0$</span></p>
+<p>Contrapositive:<br>
+If <span class="mathjax-exps">$\lim_{n\to\infty} a_n \neq 0$</span> then the series is not convergent.</p>
+<p><strong>Ex1:</strong> Show that the following series diverges<br>
+General technique, show that one or more of the convergence tests does not hold. Begin with the limit divergence test.</p>
+<p></p><div class="mathjax-exps">$$\begin{align} \sum_n^\infty \frac{4^n-3^n}{4^n+2^n}\\ \lim_{n\to\infty} \frac{4^n-3^n}{4^n+2^n}\\ \lim_{n\to\infty} \frac{1+\frac{3^n}{4^n}}{1+\frac{2^n}{4^n}}\\ \lim_{n\to\infty} \frac{1}{1}\\ \textbf{diverges}\\ \end{align}$$</div><p></p>
 
       </div>
       
