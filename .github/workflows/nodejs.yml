@@ -22,7 +22,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: |
+    - name: Compile HTML 
+      run: |
         cd src
         npm install @shd101wyy/mume
         node compile.js
@@ -32,16 +33,17 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git status
-        git add -A
-        git status
-        git stash --include-untracked
+        echo "Adding files to stash"
+        git add */*.html
+        git add QIC890/lecture01.html
+        git stash
+        git stash show
+        echo "Checking out master"
         git fetch
         git checkout -f master
-        git checkout stash -- .
-        git checkout stash^3 -- .
-        git stash drop
-        git reset
+        git stash show
+        git stash pop
+        git status
         git add */*.html
         git commit -m "Compiled changes from develop"
     - name: Push changes

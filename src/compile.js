@@ -40,7 +40,7 @@ async function compile(path) {
 (async () => {
   for await (const f of getFiles('../')) {
     console.log('Compiling file: ', f);
-    compile(f);
+    await compile(f);
   }
   return process.exit()
 })()
