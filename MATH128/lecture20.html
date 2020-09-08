@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture15</title>
+      <title>lecture20</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -216,18 +216,59 @@ pre[data-line] {
     <body for="html-export">
       <div class="mume markdown-preview  ">
  			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture14.html">prev</a>
+				<a style="display: flex; flex: 1;" href="./lecture19.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture16.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture21.html">next</a>
 			</nav>
       <h1 class="mume-header" id="math-128">Math 128</h1>
 
-<h4 class="mume-header" id="more-series">More series</h4>
+<h4 class="mume-header" id="rational-functions-of-the-form-fx-fracpxqx">Rational functions of the form <span class="mathjax-exps">$f(x)$</span> = <span class="mathjax-exps">$\frac{P(x)}{Q(x)}$</span></h4>
 
 <ul>
-<li>Absolute convergence is stronger than conditional convergence e.g. absolute convergence implies conditional convergence</li>
-<li>Radius of convergence</li>
+<li>Degree on the top must be less than the degree on the bottom</li>
+<li>if <span class="mathjax-exps">$deg(P(x))]\geq deg(Q(x))$</span>
+<ul>
+<li><span class="mathjax-exps">$(f(x))$</span> is an improper rational function and we must simplify to get <span class="mathjax-exps">$f(x)=S(x)+\frac{R(x)}{Q(x)}$</span></li>
 </ul>
+</li>
+<li>if <span class="mathjax-exps">$deg(P(x))]&lt; deg(Q(x))$</span> then <span class="mathjax-exps">$f(x)$</span> is a proper rational function</li>
+<li>Partial fraction expansion</li>
+</ul>
+<p><strong>Ex2:</strong> <span class="mathjax-exps">$\int \frac{3x^2-5}{x-2}dx$</span></p>
+<ul>
+<li>long division first</li>
+</ul>
+<p></p><div class="mathjax-exps">$$\begin{align} \int \frac{3x^2-5}{x-2}dx &amp;= \int {3x+6 dx} + \int \frac{7}{x-2} dx \\ &amp;= \frac{3}{2}x^2+6x+7\ln |x-2| +C \end{align}$$</div><p></p>
+<h4 class="mume-header" id="general-strategy">General Strategy</h4>
+
+<table>
+<thead>
+<tr>
+<th style="text-align:center">If <span class="mathjax-exps">$Q(x)$</span> looks like...</th>
+<th style="text-align:center">Partial Fractions look like...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">ditinct linear factors <span class="mathjax-exps">$(a_1x+b_1)(a_2x+b_2)...$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\frac{A_1}{(a_1x+b_1)}+\frac{A_2}{(a_2x+b_2)}...$</span></td>
+</tr>
+<tr>
+<td style="text-align:center"><span class="mathjax-exps">$(a_1x+b_1)^k+...$</span></td>
+<td style="text-align:center"><span class="mathjax-exps">$\frac{A_1}{(a_1x+b_1)}+\frac{A_2}{(a_1x+b_1)}^2...\frac{A_3}{(a_kx+b_k)}^k$</span></td>
+</tr>
+<tr>
+<td style="text-align:center">irreducible quadratic factor (<span class="mathjax-exps">$ax^2+bx+c$</span>)</td>
+<td style="text-align:center"><span class="mathjax-exps">$\frac{Ax+B}{ax^2+bx+c}$</span></td>
+</tr>
+<tr>
+<td style="text-align:center">repeated quadratic (<span class="mathjax-exps">$ax^2+bx+c$</span>)</td>
+<td style="text-align:center"><span class="mathjax-exps">$\frac{A_1x+B_1}{ax^2+bx+c}+\frac{A_2x+B_2}{ax^2+bx+c}^2...\frac{A_kx+B_k}{ax^2+bx+c}^k$</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Ex3:</strong> <span class="mathjax-exps">$\int \frac{3x-1}{x^2-5x-6}$</span></p>
+<p></p><div class="mathjax-exps">$$\begin{align} \int \frac{3x-1}{x^2-5x-6} &amp;=\int \frac{3x-1}{(x-5)(x+1)} \\ \frac{3x-1}_x^2-5x-6} = \frac{A}{x+1} + \frac{B}{x-6} \\ &amp;= A(x-6)+B(x-1) \\ 3x-1=A(-1-6), A=\frac{4}{7} \\ &amp;= \frac{17}{7} \end{align}$$</div><p></p>
 
       </div>
       

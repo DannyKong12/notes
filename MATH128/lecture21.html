@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture15</title>
+      <title>lecture21</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -215,19 +215,51 @@ pre[data-line] {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
- 			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture14.html">prev</a>
+ 			<nav style="display: flex; flex: 1;">
+				<a href="./lecture19.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture16.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href=""></a>
 			</nav>
       <h1 class="mume-header" id="math-128">Math 128</h1>
 
-<h4 class="mume-header" id="more-series">More series</h4>
+<h4 class="mume-header" id="recap-type-i-improper-integrals">Recap: Type I improper integrals</h4>
 
 <ul>
-<li>Absolute convergence is stronger than conditional convergence e.g. absolute convergence implies conditional convergence</li>
-<li>Radius of convergence</li>
+<li>you must split the integral from <span class="mathjax-exps">$\int_\infty^\infty f(x)dx$</span> into two integrals with a limit for each side</li>
 </ul>
+<p><strong>Ex1:</strong><br>
+</p><div class="mathjax-exps">$$\begin{align} \int_\infty^\infty (1-x)e^{-x}dx &amp;= \lim_{b\to\infty} \int_0^b (1-x)e^{-x}dx \\ &amp;= \lim_{b\to\infty} -(1-x)e^{-x}|^b_0 - \lim_{b\to\infty}\int_0^b e^{-x}dx\\ &amp;= \lim_{b\to\infty} \bigg[-e^{-x} + xe^{-x} +e^{-x}\bigg]^b_0 \end{align}$$</div><p></p>
+<p><strong>Ex2: P-Test</strong><br>
+LET a, p &lt; 0 be constants. For what values of p does <span class="mathjax-exps">$\int_a^\infty \frac{1}{x^p}dx$</span> converge?</p>
+<p></p><div class="mathjax-exps">$$\begin{align} \int^\infty_a \frac{1}{x^p} &amp;= \lim_{b\to\infty} \int^b_a \frac{1}{x^p} dx \\ &amp;= \lim_{b\to\infty} \int_a^b x^{-p} dx \\ &amp;= \lim_{b\to\infty} \frac{x^{-p+1}}{-p+1}|^b_a \\ &amp;= \lim_{b\to\infty} \frac{-1}{p-1} \frac{1}{x^{p-1}} \\ &amp;= \lim_{b\to\infty} \frac{-1}{p-1} \frac{1}{b^{p-1}}+\frac{1}{p-1} \frac{1}{a^{p-1}} \\ &amp; \begin{cases} \text{converges} &amp; p &gt; 1 \\ \text{diverges} &amp; p &lt; 1 \\ \int_a^b \frac{1}{x} &amp; p = 1 \end{cases} \\ \int_a^b\frac{1}{x}dx &amp;= \lim_{b\to\infty} \int_a^b\frac{1}{x}dx \\ &amp;= \lim_{b\to\infty} \ln |x| |^b_a \\ &amp;= lim{b\to\infty} \ln{b}-\ln{a} \text{, diverges for large b} \end{align}$$</div><p></p>
+<h4 class="mume-header" id="type-ii-improper-integrals">Type II improper integrals</h4>
+
+<ol>
+<li>If <span class="mathjax-exps">$f$</span> is continuous on <span class="mathjax-exps">$[a,b)$</span> but discontinuous at b, then <span class="mathjax-exps">$\int_a^b f(x)dx$</span> converges if <span class="mathjax-exps">$\lim_{t \to b^-} \int_a^t f(x)dx$</span> exists</li>
+<li>If <span class="mathjax-exps">$f$</span> is continuous on <span class="mathjax-exps">$(a,b]$</span> but discontinuous at a, then <span class="mathjax-exps">$\int_a^b f(x)dx$</span> converges if <span class="mathjax-exps">$\lim_{t \to a^+} \int_t^b f(x)dx$</span> exists</li>
+<li>For both of the above, the integral diverges if the limit does not exist</li>
+<li>If <span class="mathjax-exps">$f$</span> has a discontinuity at c, where <span class="mathjax-exps">$a&lt;c&lt;b$</span> and both <span class="mathjax-exps">$\int_a^c f(x)dx$</span> and <span class="mathjax-exps">$\int_c^b f(x)dx$</span> converge, then <span class="mathjax-exps">$\int_a^b f(x)dx = \int_a^c f(x)dx +\int_c^b f(x)dx$</span></li>
+</ol>
+<p><strong>Ex3:</strong><br>
+Heres what happens if we ignore the discontinuity<br>
+</p><div class="mathjax-exps">$$\begin{align} \int_0^4 \frac{2x}{x^2-1}dx &amp;= \ln|x^2-1| |^4_0\\ &amp;= \ln(3) \end{align}$$</div><p></p>
+<p>Evaluating the proper way:</p>
+<p></p><div class="mathjax-exps">$$\begin{align} \int_0^4 \frac{2x}{x^2-1}dx &amp;= \int_0^1 \frac{2x}{x^2-1}dx+\int10^4 \frac{2x}{x^2-1}dx \\ \text{Evaluating the first term}\\ \int_0^1 \frac{2x}{x^2-1}dx &amp;= \lim_{b\to1^-}\int\frac{2x}{x^2-1}dx \\ &amp;= \lim_{b\to1^-} ln|b^2-1|-ln|-1| \\ &amp; \text{Diverges} \end{align}$$</div><p></p>
+<p><strong>Ex4:</strong><br>
+</p><div class="mathjax-exps">$$\begin{align} \int \frac{1}{9-x^2}dx &amp;= \lim_{b\to3^-}\int_a^b\frac{1}{sqrt{9-x^2}}dx \\ &amp;= \lim_{b\to3^-} \arcsin(\frac{x}{3})|^b_0 \\ &amp;= \lim_{b\to3^-} \arcsin(\frac{x}{3}) - \arcsin(0) \\ &amp;= \arcsin(1) = \frac{\pi}{2} \\ &amp; \text{it converge} \end{align}$$</div><p></p>
+<p><strong>Ex5:</strong><br>
+this shit will fuck you up fam<br>
+</p><div class="mathjax-exps">$$\begin{align} \int_\frac{1}{3}^\infty \frac{1}{3x-1}^2dx &amp;= \int_\frac{1}{3}^1 \frac{1}{3x-1}^2dx+\int_1^\infty \frac{1}{3x-1}^2dx \text{, Lets evaluate first integral}\\ \int_\frac{1}{3}^1 \frac{1}{3x-1}^2dx &amp;= \lim_{a\to\frac{1}{3}^+}\int_\frac{1}{3}^1 \frac{1}{3x-1}^2dx \\ &amp;= \lim_{a\to\frac{1}{3}^+} \frac{1}{3} \frac{1}{3x+1}|^1_a \\ &amp;= \frac{-1}{6}+\lim_{a\to\frac{1}{3}^+}\frac{1}{3a-1} \\ \text{first integral diverges, entire integral diverges} \end{align}$$</div><p></p>
+<h4 class="mume-header" id="theorem-comparison-test-for-the-improper-integral">Theorem: comparison test for the improper integral</h4>
+
+<ul>
+<li>Suppose <span class="mathjax-exps">$f$</span> and <span class="mathjax-exps">$g$</span> are continuous and satisfies the condition:<br>
+<span class="mathjax-exps">$f(x) \geq g(x) \geq 0$</span>, for <span class="mathjax-exps">$x\geq a$</span></li>
+</ul>
+<ol>
+<li>If <span class="mathjax-exps">$\int_a^\infty f(x) dx$</span> converges, then <span class="mathjax-exps">$\int_a^\infty g(x) dx$</span> converges</li>
+<li>If <span class="mathjax-exps">$\int_a^\infty g(x) dx$</span> diverges, then <span class="mathjax-exps">$\int_a^\infty f(x) dx$</span> diverges</li>
+</ol>
 
       </div>
       

@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture15</title>
+      <title>lecture18</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -216,18 +216,71 @@ pre[data-line] {
     <body for="html-export">
       <div class="mume markdown-preview  ">
  			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture14.html">prev</a>
+				<a style="display: flex; flex: 1;" href="./lecture17.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture16.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture19.html">next</a>
 			</nav>
       <h1 class="mume-header" id="math-128">Math 128</h1>
 
-<h4 class="mume-header" id="more-series">More series</h4>
+<h2 class="mume-header" id="trigonometric-integrals">Trigonometric Integrals</h2>
 
+<h4 class="mume-header" id="how-do-we-evaluate-integrals-of-the-form">How do we evaluate integrals of the form?</h4>
+
+<p></p><div class="mathjax-exps">$$\begin{align} \int \sin^n(x) \cos^m(x) dx \\ \int \tan^n(x) \sec^m(x) dx \end{align}$$</div><p></p>
+<h4 class="mume-header" id="useful-trig-identities">Useful Trig Identities</h4>
+
+<p></p><div class="mathjax-exps">$$\begin{align*} \cos^2(x)+\sin^2(x)=1 \\ \tan^2(x)+1=\sec^2(x) \\ \end{align*}$$</div><br>
+<div class="mathjax-exps">$$\begin{align*} \int\sec(x)dx = \ln|sec(x)+\tan(x)|+C \end{align*}$$</div><p></p>
+<p>Reduction formula for <span class="mathjax-exps">$\int \sec^n(x)dx$</span><br>
+</p><div class="mathjax-exps">$$\begin{align} \int \sec^n(x)dx = \frac{\tan(x)sec^{n-2}(x)}{n-1}+\frac{n=2}{n-1}\int\sec^{n-2}xdx \end{align}$$</div><p></p>
+<h5 class="mume-header" id="cases-of-the-form-int-sinmx-cosnx-dx">Cases of the form <span class="mathjax-exps">$\int \sin^m(x) \cos^n(x) dx$</span></h5>
+
+<p><strong>Case 1:</strong> If m is odd, let <span class="mathjax-exps">$m=2k+1$</span>:<br>
+</p><div class="mathjax-exps">$$\begin{align} \int \sin^n(x) \cos^m(x) dx   &amp;=\int \sin^{2k+1}(x) \cos^n(x) dx \\   &amp;=\int (1-\cos(x))^{k}\cos^n(x) \sin(x) dx \end{align}$$</div><br>
+<strong>Ex1:</strong><br>
+<div class="mathjax-exps">$$\begin{align} \int \sin^3(x)\cos^{5000}(x)dx &amp;= \int \sin^2(x)\sin(x)\cos^{5000}(x)dx \\ &amp;= \int (1-\cos^2(x))\sin(x)\cos^{5000}(x)dx \\ &amp;= \int (\cos^{5000}(x)-\cos^{5002}(x))\sin(x)dx \\ \end{align}$$</div><br>
+If <span class="mathjax-exps">$U=\cos(x)$</span>, <span class="mathjax-exps">$dU=\sin(x)dx$</span><br>
+<div class="mathjax-exps">$$\begin{align} &amp;= \int -U^{5000}+U^{5002}dU \\ &amp;= \frac{-U^{5001}}{5001}+\frac{U^{5003}}{5003}\\ &amp;= \frac{-cos^{5001}(x)}{5001}+\frac{cos^{5003}(x)}{5003}\\ \end{align}$$</div><br>
+<strong>Case 2:</strong> If n is odd, let <span class="mathjax-exps">$n=2k+1$</span><br>
+<div class="mathjax-exps">$$\begin{align} \int \sin^m(x) \cos^n(x) dx &amp;= \int \sin^m(x) \cos^{2k+1}(x) dx \\ &amp;= \int \sin^m(x) \cos^{2k}(x)\cos(x) dx \\ &amp;= \int \sin^m(x) (1-\sin^{k})(x)\cos(x) dx \\ \end{align}$$</div><p></p>
+<p><strong>Ex2:</strong><br>
+</p><div class="mathjax-exps">$$\begin{align} \int\frac{cos^5(\theta)}{\sqrt{sin(\theta)}}d\theta &amp;=\int \sin^{-\frac{1}{2}}(\theta) \cos^4(\theta)\cos(\theta) d\theta \\ &amp;=\int \sin^{-\frac{1}{2}}(\theta) (1-\sin^2(\theta))^2\cos(\theta) d\theta \end{align}$$</div><p></p>
+<p><strong>Case 3:</strong> if m and n are both even (includes <span class="mathjax-exps">$m, n = 0$</span>)<br>
+USE HALF ANGLE FORMULAS:<br>
+</p><div class="mathjax-exps">\[\sin^2(x)=\frac{1}{2}(1-\cos(2x))\]</div><br>
+<div class="mathjax-exps">\[\cos^2(x)=\frac{1}{2}(1+\cos(2x))\]</div><br>
+<div class="mathjax-exps">\[\sin(x)\cos(x)=\frac{1}{2}\sin(2x)\]</div><p></p>
+<p><strong>Ex2:</strong><br>
+</p><div class="mathjax-exps">$$\begin{align} \int \cos^2(x) dx &amp;= \int \frac{1}{2} (1+\cos(2x)) dx \\ &amp;= \frac{1}{2}\int 1+\cos(2x) dx \\ &amp;= \frac{1}{2}x + \frac{1}{4}\sin(2x) +C \\ \end{align}$$</div><br>
+<strong>Ex3:</strong><br>
+<div class="mathjax-exps">$$\begin{align} &amp;=\int(\cos(x)\sin(x))^2dx \\ &amp;=\int(\frac{1}{2}\sin(2x))^2dx \\ &amp;=\frac{1}{4}\int(\sin^2(2x))dx \\ &amp;=\frac{1}{8}\int(1-\cos(4x))dx \\ &amp;= \frac{1}{8}x-\frac{1}{32}\sin(4x) + C \end{align}$$</div><p></p>
+<h4 class="mume-header" id="integrals-of-the-form-int-tanmxsecnxdx">Integrals of the form <span class="mathjax-exps">$\int tan^m(x)sec^n(x)dx$</span></h4>
+
+<p><strong>Case 1:</strong> if M is ODD<br>
+Keep a factor of <span class="mathjax-exps">$\sec(x)\tan(x)$</span>, and let <span class="mathjax-exps">$U=\sec(x)$</span><br>
+</p><div class="mathjax-exps">$$\begin{align} \int \tan^{2k+1}(x)\sec^n(x)dx &amp;= \int \tan^{2k}(x)\sec^{n-1}(x)\sec(x)\tan(x)dx \\ &amp;= \int (\sec^2(x)-1)^{k}(x)\sec^{n-1}(x)\sec(x)\tan(x)dx \end{align}$$</div><br>
+<strong>Ex5:</strong> <span class="mathjax-exps">$\int \tan^3(x)\sec^3(x) dx$</span><br>
+<div class="mathjax-exps">$$\begin{align} &amp;=\int\tan^2(x)\sec^2(x)\sec(x)\tan(x)dx \\ &amp;=\int(\sec^2(x)-1)\sec^2(x)\sec(x)\tan(x)dx \\ &amp;=\int(\sec^4(x)-sec^2(x))\sec(x)\tan(x)dx \\ &amp;= \int U^4-U^2 dU  \\ &amp;= \frac{U^5}{5}-\frac{U^3}{3}  \\ &amp;= \frac{\sec^5(x)}{5}-\frac{\sec^3(x)}{3}  \\ \end{align}$$</div><p></p>
+<p><strong>Case 2:</strong> if n is EVEN<br>
+Keep one factor of <span class="mathjax-exps">$\sec^2(x)$</span> and use <span class="mathjax-exps">$U=\tan(x)$</span><br>
+</p><div class="mathjax-exps">$$\begin{align} &amp;= \int \tan^{m}(x)\sec^{2k}(x)dx \\ &amp;= \int \tan^{m}(x)\sec^{2k-2}(x)\sec^2(x)dx \\ &amp;= \int \tan^{m}(x)(1-\tan^2(x))^{k-1}\sec^2(x)dx \\ \end{align}$$</div><p></p>
+<p><strong>Ex6:</strong> <span class="mathjax-exps">$\int\tan^2(x)\sec^4(x)dx$</span><br>
+</p><div class="mathjax-exps">$$\begin{align} &amp;= \int\tan^2(x)\sec^2(x)\sec^2(x)dx \\ &amp;= \int\tan^2(x)(1+tan^2(x))\sec^2(x)dx \\ &amp;= \int\tan^2(x)+\tan^4(x))\sec^2(x)dx \\ \end{align}$$</div><p></p>
+<p><strong>Case 3:</strong> if M is even and N is odd</p>
+<p><strong>Exercise:</strong> show that <span class="mathjax-exps">$\int\sec^3(x)dx=\frac{1}{2}\sec(x)\tan(x)+\frac{1}{2}\ln|\sec(x)+\tan(x)|+C$</span></p>
+<h4 class="mume-header" id="for-integrals-of-the-form">For integrals of the form:</h4>
+
+<p><span class="mathjax-exps">$\int \sin(mx)\cos(nx)dx$</span><br>
+<span class="mathjax-exps">$\int \sin(mx)\sin(nx)dx$</span><br>
+<span class="mathjax-exps">$\int \cos(mx)\cos(nx)dx$</span></p>
+<p>Identities</p>
 <ul>
-<li>Absolute convergence is stronger than conditional convergence e.g. absolute convergence implies conditional convergence</li>
-<li>Radius of convergence</li>
+<li><span class="mathjax-exps">$\sin(A)\cos(B)=\frac{1}{2}(\sin(A-B)+\sin(A+B))$</span></li>
+<li><span class="mathjax-exps">$\sin(A)\sin(B)=\frac{1}{2}(\cos(A-B)-\cos(A+B))$</span></li>
+<li><span class="mathjax-exps">$\cos(A)\cos(B)=\frac{1}{2}(\cos(A-B)+\cos(A+B))$</span></li>
 </ul>
+<p><strong>Ex7:</strong> <span class="mathjax-exps">$\int \sin(4x)\cos(5x)dx$</span><br>
+</p><div class="mathjax-exps">$$\begin{align} \int \sin(4x)\cos(5x)dx &amp;= \frac{1}{2}\int \sin(-x)+sin(9x) dx \\ &amp;= \frac{1}{2}\int -\sin(x)+sin(9x) dx \\ &amp;= \frac{1}{2}cos(x)-\frac{1}{18}sin(9x) dx \end{align}$$</div><p></p>
 
       </div>
       

@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture15</title>
+      <title>lecture01</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -215,19 +215,59 @@ pre[data-line] {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
- 			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture14.html">prev</a>
+ 			<nav style="display: flex; flex: 1;">
+				<a href="./lecture01.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture16.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href=""></a>
 			</nav>
-      <h1 class="mume-header" id="math-128">Math 128</h1>
+ 			<nav style="display: flex;">
+				<a style="display: flex; flex: 1;"></a>
+				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture01.html">next</a>
+			</nav>
+      <h1 class="mume-header" id="qic-890-quntum-communication">QIC 890 - Quntum Communication</h1>
 
-<h4 class="mume-header" id="more-series">More series</h4>
+<h2 class="mume-header" id="lecture-1">Lecture 1</h2>
+
+<h4 class="mume-header" id="what-is-communication-of-data">What is communication of Data?</h4>
 
 <ul>
-<li>Absolute convergence is stronger than conditional convergence e.g. absolute convergence implies conditional convergence</li>
-<li>Radius of convergence</li>
+<li>Simplest scenario is the case with one &quot;sender&quot; and one &quot;receiver&quot;</li>
+<li>Alice (the sender) is given some input, and is allowed some set of operations with the receiver</li>
+<li>Bob (the receiver) after some operations with Alice, is expected to produce some output</li>
+<li>If the input and the output is the same, then we assume that this &quot;data&quot; is communicated from Alice to Bob</li>
 </ul>
+<p><strong>An example:</strong></p>
+<ul>
+<li>Let the input be distributed on <span class="mathjax-exps">$\{ 0, 1 \}$</span> (if the message were fixed, there is no need to communicate, so there needs to be some sort of variability in the message)</li>
+<li>Some Rules
+<ol>
+<li>Alive and bob are allowed some state, but must be independent on the value of the message <span class="mathjax-exps">$m$</span></li>
+<li>Only after the input is given to Alice can she make operations depending on the value of <span class="mathjax-exps">$m$</span></li>
+<li>Bob&apos;s operations cannot depend on <span class="mathjax-exps">$m$</span> explicitly, but is allowed to depend on data communicated from Alice.</li>
+</ol>
+</li>
+<li>Bob&apos;s output (<span class="mathjax-exps">$m^\prime$</span>) is also some random variable, we would like <span class="mathjax-exps">$m^\prime \approx m$</span>.</li>
+</ul>
+<p><em>Definition:</em> A noisy classical channel <span class="mathjax-exps">$N$</span> from Alice to Bob with input alphabet <span class="mathjax-exps">$X$</span> and output alphabet <span class="mathjax-exps">$Y$</span> is specified by <span class="mathjax-exps">$Pr(Y = y | X = x)$</span> for all possible <span class="mathjax-exps">$x, y$</span>.</p>
+<p>TODO: basic communication protocol</p>
+<p><em>Definition:</em> The noiseless classical channel over <span class="mathjax-exps">$X$</span> has <span class="mathjax-exps">$X \subseteq Y$</span> and <span class="mathjax-exps">$Pr(Y = y | X = x) = \delta_{xy}$</span></p>
+<p>Consider the example where Alice would like to communicate a classical message <span class="mathjax-exps">$m \in \{ 0, 1 \}$</span>, they can use <em>once</em> a noiseless channel <span class="mathjax-exps">$N$</span> of <span class="mathjax-exps">$|X| = 2$</span>, Alice can ocmmunicate <span class="mathjax-exps">$M$</span> to Bob by choosing channel input <span class="mathjax-exps">$x = m$</span>. Alice and Bob can choose a suitable bijection from the sets <span class="mathjax-exps">$M, X, Y$</span>.</p>
+<p>We think of the channel <span class="mathjax-exps">$N$</span> as a consumed resource in the above protocol, and also produces the resource in the ability to communicate <span class="mathjax-exps">$M$</span>.</p>
+<h4 class="mume-header" id="problem-with-linearity">Problem with Linearity</h4>
+
+<p>In the same example, the state <span class="mathjax-exps">$m$</span> given to Alice is converted to <span class="mathjax-exps">$x$</span>, and produces <span class="mathjax-exps">$y$</span> which is given to Bob. We expect Bob then to decode <span class="mathjax-exps">$y$</span> to obtain <span class="mathjax-exps">$m$</span>. Since this is true for every <span class="mathjax-exps">$m$</span>, we can propose a sequence of state transformations that describes this.</p>
+<p></p><div class="mathjax-exps">$$\begin{align} \sum p_m |m\rangle\langle m|_A &amp;\rightarrow_{enc} \sum p_m |m\rangle\langle m|_X \\ &amp;\rightarrow_N \sum p_m |m\rangle\langle m|_Y \\ &amp;\rightarrow_{dec} \sum p_m |m\rangle\langle m|_B \\ \end{align}$$</div><p></p>
+<p>This model keeps track of the density matrix state of our input and output, and verifies that they are the same.</p>
+<p>However, this isn&apos;t quite correct. Notice that the initial state is a maximally mixed state, and also the final state. Although the distribution appears to be &quot;communicated&quot;, the value of the final line doesn&apos;t depend on the input, it simply represents a random mixture that could have been created without the input. Moreover, there is no way to check for correctness, since the symbols <span class="mathjax-exps">$m$</span> that Bob holds is not necessarily the same as the symbol that Alice holds.</p>
+<p>One way we rectify this problem is to havea sort of referee, whom we call Richard. The referee may hold a copy of <span class="mathjax-exps">$m$</span> but is non-participating. We may update our sequence of state transformations with a referee holding a copy of the correct state</p>
+<p></p><div class="mathjax-exps">$$\begin{align} \sum p_m |m\rangle\langle m|_A &amp;\rightarrow_{enc} \sum p_m |m\rangle\langle m|_R \sum p_m |m\rangle\langle m|_X \\ &amp;\rightarrow_N \sum p_m |m\rangle\langle m|_R \sum p_m |m\rangle\langle m|_Y \\ &amp;\rightarrow_{dec} \sum p_m |m\rangle\langle m|_R \sum p_m |m\rangle\langle m|_B \\ \end{align}$$</div><p></p>
+<p>This resolves our problem, explicitly imposes correctness as Bob must hold the same symbol as the referee. Without loss of generality we assume that the bases <span class="mathjax-exps">$B$</span> and <span class="mathjax-exps">$R$</span> are the same.</p>
+<h4 class="mume-header" id="quantum-data">Quantum Data</h4>
+
+<p>In the quantum case, the state is some variable <span class="mathjax-exps">$s \in S$</span> some quantum state. The input is now a quantum system <span class="mathjax-exps">$S$</span> that is given to Alice (such as a spin or a photon, etc.) but is not given a description of the quantum data explicitly. Bob is now expected to produce an output system that has the same information, that is for each input <span class="mathjax-exps">$\rho$</span> on <span class="mathjax-exps">$S$</span>, the output on <span class="mathjax-exps">$S^\prime$</span> from bob is also <span class="mathjax-exps">$\rho$</span> (or approximately so)</p>
+<p><em>Definition:</em> A <em>quantum</em> channel <span class="mathjax-exps">$N$</span> (sometimes <span class="mathjax-exps">$\eta$</span>) from a d1-dim system <span class="mathjax-exps">$X$</span> to <span class="mathjax-exps">$d2-dim$</span> system <span class="mathjax-exps">$Y$</span> is a function from <span class="mathjax-exps">$d1 \times d1$</span> matrices to <span class="mathjax-exps">$d_2 \times d_2$</span> matrices that are linear, trace-preserving, and completely positive (<span class="mathjax-exps">$TPCP$</span>, <span class="mathjax-exps">$Q$</span>-ops, etc.)</p>
+<p><em>Definition:</em> A noiseless quantum channel <span class="mathjax-exps">$N$</span> on a d-dim ysstem is given by the identity map on <span class="mathjax-exps">$d \times d$</span> matrices (can also embed in an output space with dimension bigger than <span class="mathjax-exps">$d$</span>).</p>
 
       </div>
       

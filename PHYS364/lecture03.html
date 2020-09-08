@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture15</title>
+      <title>lecture03</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -216,18 +216,29 @@ pre[data-line] {
     <body for="html-export">
       <div class="mume markdown-preview  ">
  			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture14.html">prev</a>
+				<a style="display: flex; flex: 1;" href="./lecture02.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture16.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture04.html">next</a>
 			</nav>
-      <h1 class="mume-header" id="math-128">Math 128</h1>
+      <h1 class="mume-header" id="phys-364">Phys 364</h1>
 
-<h4 class="mume-header" id="more-series">More series</h4>
+<h4 class="mume-header" id="fourier-transformation">Fourier Transformation</h4>
 
-<ul>
-<li>Absolute convergence is stronger than conditional convergence e.g. absolute convergence implies conditional convergence</li>
-<li>Radius of convergence</li>
-</ul>
+<p></p><div class="mathjax-exps">$$\begin{align}   f(x) &amp;= \sum_{n\to-\infty}^\infty c_ne^{inx} \\   c_n &amp;= \frac{1}{2\pi}\int_{-\pi}^\pi f(x) e^{inx} dx \end{align}$$</div><p></p>
+<h4 class="mume-header" id="symmetry-of-x-space-and-k-space">Symmetry of x-space and k-space</h4>
+
+<p></p><div class="mathjax-exps">$$\begin{align}   f(x) &amp;= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty g(k)e^{inx} dk \\   g(k) &amp;= \frac{1}{\sqrt{2\pi}} \int_{-\infty}^\infty f(x)e^{-inx} dx \end{align}$$</div><p></p>
+<h4 class="mume-header" id="persevels-theorem">Persevel&apos;s Theorem</h4>
+
+<p></p><div class="mathjax-exps">$$\begin{align} \int_{-\infty}^\infty |f(x)|^2 dx = 2\pi \int_{-\infty}^\infty |g(k)|^2 dk \end{align}$$</div><p></p>
+<h4 class="mume-header" id="dirac-delta">Dirac Delta</h4>
+
+<p>We can define a function <span class="mathjax-exps">$f(x)$</span> s.t.<br>
+</p><div class="mathjax-exps">$$\begin{align}   f(x) =   \bigg\{   \begin{array} {l l}   0 &amp; x \neq 0 \\   1 &amp; x = 0   \end{array} \end{align}$$</div><p></p>
+<p>and more generally, if <span class="mathjax-exps">$f(x-x_0) = \delta(x-x_0)$</span></p>
+<p></p><div class="mathjax-exps">$$\begin{align}   f(x) =   \bigg\{   \begin{array} {l l}   0 &amp; x \neq x_0 \\   1 &amp; x = x_0   \end{array} \end{align}$$</div><p></p>
+<p>Take the Fourier transform to see that<br>
+</p><div class="mathjax-exps">$$\begin{align}   g(k) &amp;= \frac{1}{2\pi} \int_{-\infty}^\infty \delta(x) e^{inx} dx \\   &amp;= \frac{1}{2\pi}e^{-ikx_0} \end{align}$$</div><p></p>
 
       </div>
       

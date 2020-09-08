@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture15</title>
+      <title>lecture19</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -216,18 +216,70 @@ pre[data-line] {
     <body for="html-export">
       <div class="mume markdown-preview  ">
  			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture14.html">prev</a>
+				<a style="display: flex; flex: 1;" href="./lecture18.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture16.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture20.html">next</a>
 			</nav>
       <h1 class="mume-header" id="math-128">Math 128</h1>
 
-<h4 class="mume-header" id="more-series">More series</h4>
+<h4 class="mume-header" id="trigonometric-substitutions">Trigonometric Substitutions</h4>
 
 <ul>
-<li>Absolute convergence is stronger than conditional convergence e.g. absolute convergence implies conditional convergence</li>
-<li>Radius of convergence</li>
+<li>instead of <span class="mathjax-exps">$U=f(x)$</span>, we choose <span class="mathjax-exps">$U=f(\theta)$</span> where <span class="mathjax-exps">$f$</span> is a trig. function</li>
+<li>leads to good simplifications</li>
+<li>Strategies:</li>
 </ul>
+<table>
+<thead>
+<tr>
+<th>Expression</th>
+<th>Substitution</th>
+<th>Restriction</th>
+<th>Reason</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="mathjax-exps">$a^2-x^2$</span></td>
+<td><span class="mathjax-exps">$a=sin(\theta)$</span></td>
+<td><span class="mathjax-exps">$-\frac{\pi}{2}\leq\theta\leq\frac{\pi}{2}$</span></td>
+<td><span class="mathjax-exps">$1-\sin^2(x)=\cos^2(x)$</span></td>
+</tr>
+<tr>
+<td><span class="mathjax-exps">$a^2+b^2$</span></td>
+<td><span class="mathjax-exps">$x=a\tan(x)$</span></td>
+<td><span class="mathjax-exps">$-\frac{\pi}{2}\leq\theta\leq\frac{\pi}{2}$</span></td>
+<td><span class="mathjax-exps">$1+\tan^2(x)=\sec^2(x)$</span></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>May require simplifications first</li>
+<li>Be aware of restrictions on \theta</li>
+<li><em>WILL TEST YOUR TRIG SKILLS kill me now</em></li>
+<li></li>
+</ul>
+<p><strong>Ex1:</strong> <span class="mathjax-exps">$\int \frac{1}{1+x^2}dx$</span><br>
+</p><div class="mathjax-exps">$$\begin{align} \int \frac{1}{1+x^2}dx &amp;= \int \frac{1}{1+\tan^2(\theta)} \sec^2(\theta)d\theta \\ &amp;= \int 1 d\theta \\ &amp;= \theta +C \\ &amp;= \arctan(x) +C \end{align}$$</div><p></p>
+<p><strong>Ex2:</strong> <span class="mathjax-exps">$\int\sqrt{1-x^2}dx$</span></p>
+<p></p><div class="mathjax-exps">$$\begin{align} \int\sqrt{1-x^2}dx &amp;= \int \sqrt{1-\sin^2(\theta)}d\theta \\ &amp;= \int \sqrt{\cos^2(\theta)}\cos(\theta)d\theta \\ &amp;= \int |\cos(\theta)|\cos(\theta) d\theta, \cos(\theta) \\ &amp;= \int \cos^2(\theta) d\theta \\ &amp;= \frac{1}{2} \int 1+\cos(2\theta)d\theta \\ &amp;= \frac{1}{2}\theta + \frac{1}{4}\sin(2\theta)+C \\ \end{align}$$</div><br>
+Draw a triangle, find <span class="mathjax-exps">$\sin(\theta)$</span>, <span class="mathjax-exps">$\theta$</span>, and <span class="mathjax-exps">$\cos(\theta)$</span> for <span class="mathjax-exps">$\sin(2\theta)$</span><p></p>
+<p>should equal:<br>
+</p><div class="mathjax-exps">$$\frac{1}{2}x \sqrt{1-x^2}+\frac{1}{2}\arcsin(x)+C$$</div><p></p>
+<p><strong>Ex3:</strong> <span class="mathjax-exps">$\int\sqrt{3-2x-2x^2}dx$</span><br>
+</p><div class="mathjax-exps">$$\begin{align} \int\sqrt{3-2x-x^2}dx &amp;= ??? &amp;&amp; \text{Complete the square} \\ 3-2x-x^2 &amp;= 3-(x^2+2x) \\ &amp;= 3-(x^2+2x+1-1) \\ &amp;= 3-((x+1)^2-1) \\ &amp;=4-(x+1^2) \end{align}$$</div><p></p>
+<p></p><div class="mathjax-exps">$$\begin{align} \int\sqrt{3-2x-x^2}dx &amp;= \sqrt{4-(x+1)^2} dx \\ &amp;= \int \sqrt{4-(x+1)^2} dx \\ &amp;= \int \sqrt(4-4sin^2(\theta)) d\theta \\ &amp;= 4\int \sqrt(1-\sin^2(x))\cos(\theta)d\theta \\ &amp;= 4\int \sqrt(\cos(\theta))\cos(\theta)d\theta \\ &amp;= 4\int |\cos(\theta)|\cos(\theta)d\theta \\ &amp;= 4\int \cos^2(\theta) d\theta \\ &amp;= 2\int \cos(2\theta)+1 d\theta \\ &amp;= \sin(\theta)+2\sin(\theta)+C \end{align}$$</div><p></p>
+<p>Draw triangle<br>
+</p><div class="mathjax-exps">$$\begin{align} \int\sqrt{3-2x-x^2}dx &amp;= \frac{x+1}{2}\sqrt{4-(x+1)^2}+2\arcsin(\frac{x+1}{2})+C \end{align}$$</div><p></p>
+<p><strong>Ex4:</strong> <span class="mathjax-exps">$\frac{\sqrt{x^2-25}{x}}dx$</span><br>
+Let <span class="mathjax-exps">$x=5\sec(\theta)$</span>, <span class="mathjax-exps">$dx = 5\sec(\theta)\tan(\theta)d\theta$</span><br>
+</p><div class="mathjax-exps">$$\begin{align} \frac{\sqrt{x^2-25}{x}}dx &amp;= \int \frac{25\sin^2(\theta)-25}{5\sec(\theta)}{5\sec(\theta)\tan(\theta)}d\theta \\ &amp;= 5\int \sqrt{\sec^(\theta)-1}\tan(\theta)d\theta \\ &amp;= 5\int \sqrt{\tan^2(\theta)}\tan{\theta}d\theta \\ &amp;= 5\int |\tan(\theta)|\tan(\theta)d\theta &amp;&amp; \text{tan positive on interval} \\ &amp;= 5\int \tan^2(\theta) d\theta \\ &amp;= 5\int \sec^2(\theta)-1 d\theta \\ &amp;= 5\tan(\theta)-5\theta +C \\ \end{align}$$</div><p></p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
+<p></p><div class="mathjax-exps">$$\frac{\sqrt{x^2-25}{x}}dx = \sqrt{x^2-25}-5\arccos(\frac{5}{x})$$</div><p></p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
+<p>&#xA0;</p>
 
       </div>
       

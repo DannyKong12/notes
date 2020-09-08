@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture15</title>
+      <title>lecture01</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -216,17 +216,35 @@ pre[data-line] {
     <body for="html-export">
       <div class="mume markdown-preview  ">
  			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture14.html">prev</a>
+				<a style="display: flex; flex: 1;"></a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture16.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture02.html">next</a>
 			</nav>
-      <h1 class="mume-header" id="math-128">Math 128</h1>
+      <h1 class="mume-header" id="phys-364">Phys 364</h1>
 
-<h4 class="mume-header" id="more-series">More series</h4>
+<h4 class="mume-header" id="coordinates">Coordinates</h4>
 
+<p>Suppose we introduce a set of coordinates <span class="mathjax-exps">$q_1 ... q_i$</span> by the relation<br>
+</p><div class="mathjax-exps">$$\begin{align} x &amp;= x(q_1, q_2, q_3) \\ y &amp;= y(q_1, q_2, q_3) \\ z &amp;= z(q_1, q_2, q_3) \\ \end{align}$$</div><p></p>
+<p>In <span class="mathjax-exps">$\mathbb{R}^3$</span> we can have at most 3 coordinates.</p>
+<p>We can rearrange our coordinate transformation to be functions of our &quot;normal&quot; cartesian coordinates</p>
+<p></p><div class="mathjax-exps">$$\begin{align} q_1 &amp;= q_1(x, y, z) \\ q_2 &amp;= q_2(x, y, z) \\ q_3 &amp;= q_3(x, y, z) \\ \end{align}$$</div><p></p>
+<p>Consider the very trivial case where we have</p>
+<p></p><div class="mathjax-exps">$$\begin{align} q_1 &amp;= x \\ q_2 &amp;= y \\ q_3 &amp;= z \\ \end{align}$$</div><p></p>
+<p>We can calculate the length of a vector in this new coordinate system, and it would be the same as the cartesian case, but in general this is not true. Suppose for example, instead of <span class="mathjax-exps">$q_1 = x$</span> we had <span class="mathjax-exps">$q_1 = 2x$</span>, the cartesian norm very obviously does not work for our new coordinate system. We could define a new norm for our system.</p>
+<p>In order to generalize our transforms, we can define a scale factor<br>
+</p><div class="mathjax-exps">$$\begin{align} h_i &amp;= q_{ii} = \left(\frac{\partial x}{\partial q_i} \right)^2 + \left(\frac{\partial y}{\partial q_i} \right)^2 + \left(\frac{\partial z}{\partial q_i} \right)^2 \end{align}$$</div><p></p>
+<p>In our new coordinates, the <span class="mathjax-exps">$\vec\nabla$</span> operator:<br>
+</p><div class="mathjax-exps">$$\begin{align} \vec\nabla \Phi &amp;= \sum_{i=1}^3 \frac{1}{h^2}\frac{\partial}{\partial q_i} \hat{\mathbf{e}}_i \\ \vec\nabla \cdot \mathbf{V} &amp;= \\ \vec\nabla \times \mathbf{V} &amp;= \frac{1}{h_1h_2h_3} \begin{vmatrix}   \hat{\mathbf{e}}_1 h_1 &amp; \hat{\mathbf{e}}_2 h_2 &amp; \hat{\mathbf{e}}_3 h_3 \\   \frac{\partial}{\partial q_1} &amp; \frac{\partial}{\partial q_2} &amp; \frac{\partial}{\partial q_3} \\   h_1\mathbf{V}_1 &amp; h_2\mathbf{V}_2 &amp; h_3\mathbf{V}_3 \\ \end{vmatrix} \end{align}$$</div><p></p>
 <ul>
-<li>Absolute convergence is stronger than conditional convergence e.g. absolute convergence implies conditional convergence</li>
-<li>Radius of convergence</li>
+<li>We can make a table for our typical curvilinear coordinates, spherical and cylindrical.<br>
+<div class="mathjax-exps">$$\begin{array}{|l|} \hline \text{Cylindrical} &amp; \text{Spherical} \\ \hline 1 \to r, 2 \to \phi, 3 \to z &amp; 1 \to \rho, 2 \to \theta, 3 \to \phi \\ h_1 = , h_2 = , h_3 = &amp; h_1 = , h_2 = , h_3 = \\ \vec\nabla \Phi =  &amp; \vec\nabla \Phi = \\ \vec\nabla \cdot \mathbf{V} = &amp; \vec\nabla \cdot \mathbf{V} = \\ \vec\nabla \times \mathbf{V} = &amp; \vec\nabla \times \mathbf{V} = \\ \hline \end{array}$$</div></li>
+<li>Examples:
+<ol>
+<li><span class="mathjax-exps">$\vec{B}$</span> field given by <span class="mathjax-exps">$\vec{B} = \frac{I\mu}{2\pi}\frac{1}{\rho}\hat{e}_{\phi}$</span>, find the cross product <span class="mathjax-exps">$\vec\nabla \times \vec{B}$</span></li>
+<li><span class="mathjax-exps">$\vec{E}$</span> field given by <span class="mathjax-exps">$\vec{E}=\frac{1}{r^2}\hat{e}_r$</span>, find the gradient <span class="mathjax-exps">$\vec\nabla \vec{E}$</span></li>
+</ol>
+</li>
 </ul>
 
       </div>

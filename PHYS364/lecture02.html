@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture15</title>
+      <title>lecture02</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -216,18 +216,36 @@ pre[data-line] {
     <body for="html-export">
       <div class="mume markdown-preview  ">
  			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture14.html">prev</a>
+				<a style="display: flex; flex: 1;" href="./lecture01.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture16.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture03.html">next</a>
 			</nav>
-      <h1 class="mume-header" id="math-128">Math 128</h1>
+      <h1 class="mume-header" id="phys-364">Phys 364</h1>
 
-<h4 class="mume-header" id="more-series">More series</h4>
+<h4 class="mume-header" id="partial-differential-equations">Partial Differential Equations</h4>
 
 <ul>
-<li>Absolute convergence is stronger than conditional convergence e.g. absolute convergence implies conditional convergence</li>
-<li>Radius of convergence</li>
+<li>PDEs is generally a broad and complex topic, we focus on a few problems that are particularly pertinent in physics. Common examples include the Laplace equation, Wave equations, sound waves.</li>
+<li>Laplace equations, of the form <span class="mathjax-exps">$\nabla^2 \Phi = 0$</span> are common in electric potential, heat equations, etc.</li>
+<li>Wave equation as a component of the <span class="mathjax-exps">$\vec{E}$</span> field, satisfy <span class="mathjax-exps">$\nabla^2 Phi = \frac{1}{c^2}{{\ddot{E}}}$</span>. as well as the acoustic equation of a vibrating string.</li>
+<li>TD-Schrodinger equation, <span class="mathjax-exps">$\frac{\hbar}{2m}\nabla^2\Psi+V\Psi = E\Psi$</span></li>
+<li>These equations in particular are second order, and involves partial derivatives, and multiple variables.</li>
 </ul>
+<h4 class="mume-header" id="methods-of-solving-pdes">Methods of solving PDEs</h4>
+
+<p>(a) Separation of Variables</p>
+<p>(b) Green&apos;s function</p>
+<p>(c) Series Expansion</p>
+<p>(d) Numerical Calculation</p>
+<h4 class="mume-header" id="separation-of-variables-boas-622-633">Separation of Variables [Boas 622-633]</h4>
+
+<ul>
+<li>attempt to turn one PDE into several ODEs<br>
+<span class="mathjax-exps">$\begin{align} \text{Ex: } \nabla^2 \psi &amp;= -k^2\psi \\ (a) \text{ Consider}&amp; \text{ in cartesian coordinates} \\ \text{Assume }\psi &amp;= X(x)Y(y)Z(z) \\ \nabla^2 \psi &amp;= \left(\frac{d}{dx}X\right)YZ + \left(\frac{d}{dy}X\right)XZ + \left(\frac{d}{dz}X\right)XY = -k^2XYZ \\ 0 &amp;= \frac{1}{X}X_{xx} + \frac{1}{Y}Y_{yy} + \frac{1}{Z}Z_{zz} \\ \frac{1}{X}X_{xx} &amp;= -k^2-\frac{Y_yy}{Y}-\frac{Z_zz}{Z} \\ \text{We notice} &amp; \text{ the RHS does not involve } x \\ X_{xx} &amp;= -l^2 X \\ Y_{yy} &amp;= -m^2 Y \\ Z_{zz} &amp;= -n^2 Z \\ \end{align}$</span></li>
+</ul>
+<p>For a Laplacian equation <span class="mathjax-exps">$\nabla^2 \psi = 0$</span>, we have</p>
+<p></p><div class="mathjax-exps">$$\begin{align}   Y \frac{d^2X}{dx^2} + X \frac{d^2Y}{2y^2} &amp;= 0 \\   X \frac{d^2X}{dx^2} = - Y \frac{d^2Y}{2y^2} &amp;= -k^2 \end{align}$$</div><p></p>
+<p></p><div class="mathjax-exps">$$\begin{align}   X &amp;=   \left\{     \begin{matrix}     \sin(kx) \\     \cos(kx)     \end{matrix}   \right . \\   Y &amp;=   \left\{     \begin{matrix}     e^{kx} \\     e^{-kx}     \end{matrix}   \right . \\ \end{align}$$</div><p></p>
 
       </div>
       

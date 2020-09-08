@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture15</title>
+      <title>lecture05</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -215,19 +215,65 @@ pre[data-line] {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
- 			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture14.html">prev</a>
+ 			<nav style="display: flex; flex: 1;">
+				<a href="./lecture03.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture16.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href=""></a>
 			</nav>
-      <h1 class="mume-header" id="math-128">Math 128</h1>
+      <h1 class="mume-header" id="phys-364">Phys 364</h1>
 
-<h4 class="mume-header" id="more-series">More series</h4>
+<h3 class="mume-header" id="vector-analysis">Vector analysis</h3>
 
-<ul>
-<li>Absolute convergence is stronger than conditional convergence e.g. absolute convergence implies conditional convergence</li>
-<li>Radius of convergence</li>
-</ul>
+<h4 class="mume-header" id="vectors">Vectors</h4>
+
+<ol>
+<li>We define vectors as mathematical objects with certain properties</li>
+</ol>
+<p>Vectors can be constant or varying, and can be differential elements.</p>
+<ol start="2">
+<li>Cross products<br>
+Prove:<br>
+(A X B)^2 = |A|<sup>2|B|</sup>2 = |A*B|^2</li>
+</ol>
+<p>v = (w X r)<br>
+T = mv^2/2<br>
+= m(w X r)^2/m<br>
+= m(|w|<sup>2|r|</sup>2-|w*r|^2)</p>
+<ol start="3">
+<li>Triple products (scalar)<br>
+def: A * (B X C)</li>
+</ol>
+<p>Using property of determinants, and row operations</p>
+<p>A * (B X C) = | Ax Ay Az |<br>
+= | Bx By Bz |<br>
+= | Cx Cy Cz |</p>
+<p>switching rows in the determinant gives us a negative sign</p>
+<p>Produces a cyclic relationship<br>
+[...ABCAB...] = A * (B X C)<br>
+[...CBACB...] = A * (C X B)</p>
+<h4 class="mume-header" id="direction-cosines">Direction cosines</h4>
+
+<p></p><div class="mathjax-exps">$$\begin{align}   \cos \alpha &amp;= \frac{A_x}{|A|} \\   \cos \beta &amp;= \frac{A_y}{|A|} \\   \cos \gamma &amp;= \frac{A_z}{|A|} \\ \end{align}$$</div><p></p>
+<h4 class="mume-header" id="scalar-product">Scalar product</h4>
+
+<p>The scalar product between two vectors is defined as</p>
+<p></p><div class="mathjax-exps">$$\begin{align} \vec u \cdot \vec v = \sum_i u_i v_i \end{align}$$</div><p></p>
+<h4 class="mume-header" id="vector-product">Vector product</h4>
+
+<p>The vector product between two vectors in <span class="mathjax-exps">$\mathbb{R}^3$</span> is defined as</p>
+<p></p><div class="mathjax-exps">$$\begin{align}   \vec u \times \vec v = \det \begin{vmatrix} i &amp; j &amp; k \\ u_x &amp; u_y &amp; u_z \\ v_x &amp; v_y &amp; v_z \end{vmatrix} \end{align}$$</div><p></p>
+<h4 class="mume-header" id="ex">Ex:</h4>
+
+<p>Show that<br>
+</p><div class="mathjax-exps">$$\begin{align}   (\vec A \times \vec B)^2 = |\vec A|^2 |\vec B|^2 - |\vec A \cdot \vec B|^2   \end{align}$$</div><p></p>
+<h3 class="mume-header" id="vector-calculus">Vector Calculus</h3>
+
+<p>Just as we can do calculus on real numbers, we can perform calculus operations on vectors</p>
+<h4 class="mume-header" id="differentiation-of-vectors">Differentiation of vectors</h4>
+
+<p>The derivative operator <span class="mathjax-exps">$\frac{d}{dx}$</span> can be applied to a vector as well. For example if the vector evolves in time,</p>
+<p></p><div class="mathjax-exps">$$\begin{align}   \vec A &amp;= \vec A(t) \end{align}$$</div><p></p>
+<p>We can define the time derivative as the time derivative of all of its components.</p>
 
       </div>
       
