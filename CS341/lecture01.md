@@ -17,7 +17,7 @@ We use a *model of computation* to specify the elementary computations from whic
   * With some cautions: some pseudo-code lines are problematic, e.g. reading in an array on one line, the number of time steps is not $1$
   * Integers can grow large, pseudo-code may not be easily implemented in real life if we have numbers that overflow on 32 or 64 bit numbers
 1. bit cost
-  * Example: computing $a * b$, the size of a number is the number of bits in binary ($\floor{\log_2(a)}+1$)
+  * Example: computing $a * b$, the size of a number is the number of bits in binary ($\lfloor\log_2(a) \rfloor+1$)
   * Computing $a*b$ takes $O((\log a)(\log b))$ using the schoolbook method instead of 1 time step, can be improved with better algorithms
 1. RAM model
   * abstracts assembly language

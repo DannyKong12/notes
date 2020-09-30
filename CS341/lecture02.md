@@ -50,7 +50,7 @@ $$T(n) = aT(n/b) + cn^k$$
 
 With $a \geq 1$, $b > 1$, $c > 0$ and $k \geq 0$. The master theorem states
 
-$$T(n) = \in \left \{ \begin{array}{c c} \Theta(n^k) & a < b^k \\ \Theta(n^k\log n) & a = b^k \\ \Theta(n^{\log_b a}) & a > b^k \end{array} \right .$$
+$$T(n) \in \left \{ \begin{array}{c c} \Theta(n^k) & a < b^k \\ \Theta(n^k\log n) & a = b^k \\ \Theta(n^{\log_b a}) & a > b^k \end{array} \right .$$
 
 An intuition for the theorem is follows from our analysis of the recursion tree. Summing the layers of the tree, the first layer sums to $cn^k$, the second layer sums to $ac(n/b)^k$, and the third $a^2c(n/b^2)^k$, and so on. This sum is a geometric series, which converges to our result
 
