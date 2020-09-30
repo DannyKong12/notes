@@ -1,0 +1,371 @@
+<!DOCTYPE html><html><head>
+      <title>lecture01</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({"extensions":["tex2jax.js"],"jax":["input/TeX","output/HTML-CSS"],"messageStyle":"none","tex2jax":{"processEnvironments":false,"processEscapes":true,"inlineMath":[["$","$"],["\\(","\\)"]],"displayMath":[["$$","$$"],["\\[","\\]"]]},"TeX":{"extensions":["AMSmath.js","AMSsymbols.js","noErrors.js","noUndefined.js"]},"HTML-CSS":{"availableFonts":["TeX"]}});
+        </script>
+        <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js"></script>
+        
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      <style>
+      /* http://prismjs.com/download.html?themes=prism&languages=markup+css+clike+javascript+abap+actionscript+ada+apacheconf+apl+applescript+asciidoc+aspnet+autoit+autohotkey+bash+basic+batch+c+brainfuck+bro+bison+csharp+cpp+coffeescript+ruby+css-extras+d+dart+django+diff+docker+eiffel+elixir+erlang+fsharp+fortran+gherkin+git+glsl+go+graphql+groovy+haml+handlebars+haskell+haxe+http+icon+inform7+ini+j+jade+java+jolie+json+julia+keyman+kotlin+latex+less+livescript+lolcode+lua+makefile+markdown+matlab+mel+mizar+monkey+nasm+nginx+nim+nix+nsis+objectivec+ocaml+oz+parigp+parser+pascal+perl+php+php-extras+powershell+processing+prolog+properties+protobuf+puppet+pure+python+q+qore+r+jsx+reason+rest+rip+roboconf+crystal+rust+sas+sass+scss+scala+scheme+smalltalk+smarty+sql+stylus+swift+tcl+textile+twig+typescript+vbnet+verilog+vhdl+vim+wiki+xojo+yaml */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+
+code[class*="language-"],
+pre[class*="language-"] {
+	color: black;
+	background: none;
+	text-shadow: 0 1px white;
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+pre[class*="language-"]::-moz-selection, pre[class*="language-"] ::-moz-selection,
+code[class*="language-"]::-moz-selection, code[class*="language-"] ::-moz-selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+pre[class*="language-"]::selection, pre[class*="language-"] ::selection,
+code[class*="language-"]::selection, code[class*="language-"] ::selection {
+	text-shadow: none;
+	background: #b3d4fc;
+}
+
+@media print {
+	code[class*="language-"],
+	pre[class*="language-"] {
+		text-shadow: none;
+	}
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: 1em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+:not(pre) > code[class*="language-"],
+pre[class*="language-"] {
+	background: #f5f2f0;
+}
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .1em;
+	border-radius: .3em;
+	white-space: normal;
+}
+
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+	color: slategray;
+}
+
+.token.punctuation {
+	color: #999;
+}
+
+.namespace {
+	opacity: .7;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.deleted {
+	color: #905;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.inserted {
+	color: #690;
+}
+
+.token.operator,
+.token.entity,
+.token.url,
+.language-css .token.string,
+.style .token.string {
+	color: #a67f59;
+	background: hsla(0, 0%, 100%, .5);
+}
+
+.token.atrule,
+.token.attr-value,
+.token.keyword {
+	color: #07a;
+}
+
+.token.function {
+	color: #DD4A68;
+}
+
+.token.regex,
+.token.important,
+.token.variable {
+	color: #e90;
+}
+
+.token.important,
+.token.bold {
+	font-weight: bold;
+}
+.token.italic {
+	font-style: italic;
+}
+
+.token.entity {
+	cursor: help;
+}
+
+/* highlight */
+pre[data-line] {
+	position: relative;
+	padding: 1em 0 1em 3em;
+  }
+  pre[data-line] .line-highlight-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: transparent;
+	display: block;
+	width: 100%;
+  }
+  
+  pre[data-line] .line-highlight {
+	position: absolute;
+	left: 0;
+	right: 0;
+	padding: inherit 0;
+	margin-top: 1em;
+	background: hsla(24, 20%, 50%,.08);
+	background: linear-gradient(to right, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
+	pointer-events: none;
+	line-height: inherit;
+	white-space: pre;
+  }
+  
+  pre[data-line] .line-highlight:before, 
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-start);
+	position: absolute;
+	top: .4em;
+	left: .6em;
+	min-width: 1em;
+	padding: 0 .5em;
+	background-color: hsla(24, 20%, 50%,.4);
+	color: hsl(24, 20%, 95%);
+	font: bold 65%/1.5 sans-serif;
+	text-align: center;
+	vertical-align: .3em;
+	border-radius: 999px;
+	text-shadow: none;
+	box-shadow: 0 1px white;
+  }
+  
+  pre[data-line] .line-highlight[data-end]:after {
+	content: attr(data-end);
+	top: auto;
+	bottom: .4em;
+  }html body{font-family:"Helvetica Neue",Helvetica,"Segoe UI",Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ul,html body>ol{margin-bottom:16px}html body ul,html body ol{padding-left:2em}html body ul.no-list,html body ol.no-list{padding:0;list-style-type:none}html body ul ul,html body ul ol,html body ol ol,html body ol ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:bold;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:bold}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em !important;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::before,html body code::after{letter-spacing:-0.2em;content:"\00a0"}html body pre>code{padding:0;margin:0;font-size:.85em !important;word-break:normal;white-space:pre;background:transparent;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;font-size:.85em !important;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:before,html body pre tt:before,html body pre code:after,html body pre tt:after{content:normal}html body p,html body blockquote,html body ul,html body ol,html body dl,html body pre{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body pre,html body code{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview .pagebreak,.markdown-preview .newpage{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center !important}.markdown-preview:not([for="preview"]) .code-chunk .btn-group{display:none}.markdown-preview:not([for="preview"]) .code-chunk .status{display:none}.markdown-preview:not([for="preview"]) .code-chunk .output-div{margin-bottom:16px}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0}@media screen and (min-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode]) .markdown-preview{font-size:14px !important;padding:1em}}@media print{html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for="html-export"]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,0.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,0.66);border:4px solid rgba(150,150,150,0.66);background-clip:content-box}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{padding:0 1.6em;margin-top:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc li{margin-bottom:.8em}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc ul{list-style-type:none}html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% -  300px);padding:2em calc(50% - 457px -  150px);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for="html-export"]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for="html-export"]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+    </head>
+    <body for="html-export">
+      <div class="mume markdown-preview  ">
+ 			<nav style="display: flex;">
+				<a style="display: flex; flex: 1;"></a>
+				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture02.html">next</a>
+			</nav>
+      <h1 class="mume-header" id="cs666">CS666</h1>
+
+<h4 class="mume-header" id="goals-of-this-course">Goals of this course</h4>
+
+<ul>
+<li>Through algorithmic techniques, explore several models of computation (deterministic, randomized, parallel, distributed, memory0efficient, online, interactive, etc.)</li>
+<li>Expand understanding of analytic techniques, randomness, amortized analysis, NP complete problems</li>
+</ul>
+<h3 class="mume-header" id="amortized-anlysis-and-union-find">Amortized Anlysis and Union Find</h3>
+
+<h4 class="mume-header" id="amortized-analysis">Amortized Analysis</h4>
+
+<ul>
+<li>A first attempt at analyzing algorithms leads to &quot;worst-case&quot;, &quot;average-case&quot;, &quot;best-case&quot; complexity (per query)</li>
+<li>As an example, we may have some data structures, such as ordered arrays, hash tables, linked lists, etc. and find the search/insertion/deletion time in worst-case</li>
+<li>Typically, when given as a table we will see analysis as a worst-case per query or at least average-case per query</li>
+<li>In amortized analysis, one averages the total time required to perform a sequence of data-structure operations over all operations performed
+<ul>
+<li>Per query, some operations may have bad worst-case performance, but doesn&apos;t necessarily have bad performance overall</li>
+<li>In the case that you are doing many searches but few insertions, certain data structures may be better even if their insertion time is worse, since their performance is better overall</li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="types-of-amortized-analysis">Types of Amortized Analysis</h4>
+
+<ul>
+<li>(aggregate analysis) Determine upper bound <span class="mathjax-exps">$T(n)$</span> on the total cost of a sequence of <span class="mathjax-exps">$n$</span> operations, amortized complexity is <span class="mathjax-exps">$T(n)/n$</span></li>
+<li>(accounting method) assign certain charges to each operation, if an operation is cheaper than the charge credit is given to be used later</li>
+<li>(potential energy method) one comes up with the &quot;potential energy&quot; of a data structure which maps the entire data structure state to a real number, like accounting method but for the data structure as a whole instead of assigning credit to each operation</li>
+</ul>
+<h4 class="mume-header" id="union-find">Union Find</h4>
+
+<ul>
+<li>Certain problems requires us to maintain/group distinct elements into a collection of disjoint sets
+<ul>
+<li>i.e. maintain components of a graph that are connected which keeps changing over time</li>
+</ul>
+</li>
+<li>Union find requires two operations:
+<ul>
+<li>Given an input element <span class="mathjax-exps">$v$</span> from the universe of elements, we would like to output the set containing <span class="mathjax-exps">$v$</span></li>
+<li>given two sets <span class="mathjax-exps">$A$</span>, and <span class="mathjax-exps">$B$</span> from your current collection of sets, we would like to take the union of <span class="mathjax-exps">$A \cup B$</span> and it to the collection, and also remove <span class="mathjax-exps">$A$</span> and <span class="mathjax-exps">$B$</span></li>
+</ul>
+</li>
+</ul>
+<p><strong>Example:</strong> Kruskal&apos;s minimum spanning tree algorithm</p>
+<ul>
+<li>Given a graph <span class="mathjax-exps">$G(V, E)$</span> and edge weights <span class="mathjax-exps">$w: E \rightarrow \mathbb{N}$</span>, output spanning tree <span class="mathjax-exps">$T$</span> of minimum weight</li>
+<li>Procedure:
+<ol>
+<li>sort the edges <span class="mathjax-exps">$e_1, ..., e_{|E|}$</span></li>
+<li>set <span class="mathjax-exps">$T \leftarrow \emptyset$</span></li>
+<li>for <span class="mathjax-exps">$i$</span> = <span class="mathjax-exps">$1, ..., |E|$</span>:</li>
+<li>if endpoints of <span class="mathjax-exps">$e_i$</span> are in different connected components of <span class="mathjax-exps">$T$</span> (using two find operations on the endpoints)</li>
+</ol>
+<pre class="language-text">* $T \leftarrow T \cup \{ e_i \}$
+* Combine the connected components of $e_i$ (union operation)
+</pre>
+<ol>
+<li>return <span class="mathjax-exps">$T$</span></li>
+</ol>
+</li>
+<li>In this procedure, we don&apos;t really care about the worst case costs of the union/find operations, we care more about the total cost of all the unions and all the finds used in this algorithm (use amortized analysis)</li>
+</ul>
+<h4 class="mume-header" id="implementing-union-find">Implementing Union Find</h4>
+
+<ul>
+<li><span class="mathjax-exps">$n$</span> is the number of elements, <span class="mathjax-exps">$m$</span> is the number of operations, so <span class="mathjax-exps">$m$</span> is the sum of the unions and finds</li>
+<li><span class="mathjax-exps">$FIND(k)$</span> is the subroutine that finds the set containing <span class="mathjax-exps">$k$</span> out of the current collection of disjoint sets</li>
+<li><span class="mathjax-exps">$UNION(A, B)$</span> removes <span class="mathjax-exps">$A, B$</span> from the current collection and adds <span class="mathjax-exps">$A \cup B$</span>
+<ul>
+<li>In general we have more <span class="mathjax-exps">$FIND$</span> operations than <span class="mathjax-exps">$UNION$</span> operations, since <span class="mathjax-exps">$n - 1$</span> unions of a set with <span class="mathjax-exps">$n$</span> elements creates one remaining set<br>
+<strong>Naive approach</strong>:</li>
+</ul>
+</li>
+<li>We can use an array of size <span class="mathjax-exps">$n$</span> to keep track of the set containing each of the elements that we have
+<ul>
+<li>A <span class="mathjax-exps">$FIND$</span> operation takes <span class="mathjax-exps">$O(1)$</span></li>
+<li>A <span class="mathjax-exps">$UNION$</span> operation takes <span class="mathjax-exps">$O(|A| + |B|)$</span> (<span class="mathjax-exps">$\Theta(n)$</span> worst case)</li>
+</ul>
+</li>
+<li>A small optimization can be made by taking <span class="mathjax-exps">$UNION$</span> to be <span class="mathjax-exps">$A = A + B$</span> since they are disjoint, so only the names of the smallest set are changed</li>
+<li>Using aggregate analysis
+<ul>
+<li>Look at the cost of all the <span class="mathjax-exps">$UNION$</span> operations, every time the set containing an element <span class="mathjax-exps">$i$</span> (<span class="mathjax-exps">$S[i]$</span>) changes, the size of that set at least doubles, since changing means we have taken the union of the set <span class="mathjax-exps">$S[i]$</span> with a larger set, therefore the <span class="mathjax-exps">$UNION$</span> operation may change each <span class="mathjax-exps">$S[i]$</span> at most <span class="mathjax-exps">$\log(n)$</span> times</li>
+<li>In our aggregate analysis method, we have a worst case of <span class="mathjax-exps">$O(\frac{n\log n} + 1)$</span><br>
+<strong>Tree representation</strong></li>
+</ul>
+</li>
+<li>The next step is based on the assumption that <span class="mathjax-exps">$FIND$</span> operations tend to be less common than <span class="mathjax-exps">$UNION$</span> operations, specifically we suppose that <span class="mathjax-exps">$m = o(n\log n)$</span>.
+<ul>
+<li>We may represent each set as a tree, represented by its root and contains all the nodes in the tree</li>
+<li><span class="mathjax-exps">$FIND(k)$</span> walk up the tree from <span class="mathjax-exps">$k$</span> and output the node at the root</li>
+<li><span class="mathjax-exps">$UNION(A, B)$</span> link the trees by making the smaller tree&apos;s root point to the larger tree&apos;s root as its parent<br>
+<strong>Path Compression</strong></li>
+</ul>
+</li>
+<li>We realize that first of all we can no longer take the &quot;smaller&quot; tree during the <span class="mathjax-exps">$UNION$</span> step, since smaller is not well defined
+<ul>
+<li>i.e., shorter height vs. smaller elements, but both give a new problem which is that the tree is increasing in height</li>
+<li>&quot;compress&quot; the path by flattening the tree on every <span class="mathjax-exps">$FIND$</span> operation, take <span class="mathjax-exps">$k$</span> and all of its direct parents and push them to the root</li>
+<li>Now the height changes every <span class="mathjax-exps">$FIND$</span> operation, why don&apos;t we just do flatten after union?
+<ul>
+<li>Flatten only when necessary, to avoid doing extra work</li>
+<li>There is no need to flatten a tall branch if it is never queried</li>
+</ul>
+</li>
+<li>Instead of comparing by height, we define the rank of the tree with root <span class="mathjax-exps">$r$</span>, define <span class="mathjax-exps">$RANK(r)$</span> to be 0 for empty tree, and <span class="mathjax-exps">$max(r_1, r_2+1)$</span> for two roots when performing a <span class="mathjax-exps">$UNION$</span>
+<ul>
+<li>This scheme allows us to increase the rank on every <span class="mathjax-exps">$UNION$</span>, but also compare by rank</li>
+<li>This is similar to taking the height of an <em>uncompressed</em> tree<br>
+<strong>Analysis</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Tarjan 75: The amortized cost per operation of union-find is <span class="mathjax-exps">$\Theta(\alpha(m, n))$</span> where <span class="mathjax-exps">$\alpha(m, n)$</span> is the inverse Ackerman function</li>
+<li>We will prove: a weaker amortized bound of <span class="mathjax-exps">$O(log*(n))$</span> using the accounting method
+<ul>
+<li>note: <span class="mathjax-exps">$\log^*(n) \equiv \text{argmin}_i(\log^{(i)}(n) \leq 1)$</span></li>
+<li>The accounting method tells us to choose <span class="mathjax-exps">$\hat{c}_i$</span> such that <span class="mathjax-exps">$\sum \hat{c}_i \geq \sum c_i$</span> where <span class="mathjax-exps">$c_i$</span> is the actual cost of every operation</li>
+<li>Claim: when an element <span class="mathjax-exps">$k$</span> is assigned a rank <span class="mathjax-exps">$RANK(k) = r$</span> then <span class="mathjax-exps">$k$</span> has at least <span class="mathjax-exps">$2^r$</span> descendants
+<ul>
+<li>Can prove by induction, if rank is <span class="mathjax-exps">$0$</span>, then there is 1 element which is itself, but when rank is equal to <span class="mathjax-exps">$r+1$</span>, then there was a union of two trees with <span class="mathjax-exps">$r_1 = r_2 = r$</span></li>
+<li>Also we have that <span class="mathjax-exps">$rank(k) &lt; rank(parent(k))$</span></li>
+<li>We can also show that the number of vertices of rank <span class="mathjax-exps">$r$</span> is less than equal to <span class="mathjax-exps">$n/2^r$</span></li>
+</ul>
+</li>
+<li>divide vertices based on rank, a vertex of rank <span class="mathjax-exps">$r$</span> will be in the group indexed by <span class="mathjax-exps">$\log^*(r)$</span>, with <span class="mathjax-exps">$\log^*(n)$</span> groups</li>
+<li>The charge of each<span class="mathjax-exps">$FIND$</span> operation is increased by 1 for each vertex that is in the same group as it&apos;s parent</li>
+<li><span class="mathjax-exps">$UNION$</span> is 1 cost</li>
+<li>The charging scheme for <span class="mathjax-exps">$FIND$</span> will always cover the actual cost of <span class="mathjax-exps">$FIND$</span> because either the node on the path or the operation <span class="mathjax-exps">$FIND$</span></li>
+</ul>
+</li>
+</ul>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
