@@ -41,11 +41,15 @@ jobs:
         echo "Checking out master"
         git fetch
         git checkout -f master
+        git reset HEAD
         git stash show
         git stash pop
         git status
+        echo "Git add"
         git add */*.html
+        echo "Git commit"
         git commit -m "Compiled changes from develop"
+        echo "Done!"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
