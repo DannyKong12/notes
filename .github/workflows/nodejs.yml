@@ -35,13 +35,13 @@ jobs:
         git config --local user.name "GitHub Action"
         echo "Adding files to stash"
         git add */*.html
-        git add QIC890/lecture01.html
         git stash
         git stash show
         echo "Checking out master"
         git fetch
         git checkout -f master
-        git reset HEAD
+        git status
+        git reset --hard HEAD
         git stash show
         git stash pop
         git status
