@@ -46,6 +46,7 @@ jobs:
         rm CS666/lecture04.html
         rm CS341/lecture01.html
         rm CS341/lecture02.html
+        echo "[WORKFLOW] Applying Stash"
         git stash pop
         git status
         echo "[WORKFLOW] Git add"
