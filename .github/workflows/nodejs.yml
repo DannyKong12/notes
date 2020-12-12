@@ -33,10 +33,10 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        echo "Adding files to stash"
+        echo "[WORKFLOW] Adding files to stash"
         git add */*.html
         git stash
-        echo "Checking out master"
+        echo "[WORKFLOW] Checking out master"
         git fetch
         git checkout -f master
         git status
@@ -47,11 +47,11 @@ jobs:
         rm CS341/lecture02.html
         git stash pop
         git status
-        echo "Git add"
+        echo "[WORKFLOW] Git add"
         git add */*.html
-        echo "Git commit"
+        echo "[WORKFLOW] Git commit"
         git commit -m "Compiled changes from develop"
-        echo "Done!"
+        echo "[WORKFLOW] Done!"
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
