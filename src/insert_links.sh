@@ -17,4 +17,4 @@ do
 done
 
 b=$(ls *.html | tail -n 2 | head -n 1)
-sed -i '/<div class=\"mume markdown-preview  \">/ a\ \t\t\t<nav style=\"display: flex; flex: 1;\">\n\t\t\t\t<a href=\"./'$a'\">prev</a>\n\t\t\t\t<a style=\"flex: 1; display: flex; justify-content: center;\" href="../index.html">home</a>\n\t\t\t\t<a style=\"flex: 1; display: flex; justify-content: flex-end;\" href=\"\"></a>\n\t\t\t</nav>' $(ls *.html | tail -n 1)
+sed -i '/<div class=\"mume markdown-preview  \">/ a\ \t\t\t<nav style=\"display: flex; flex: 1;\">\n\t\t\t\t<a style="display: flex; flex: 1;" href=\"./'$a'\">prev</a>\n\t\t\t\t<a style=\"flex: 1; display: flex; justify-content: center;\" href="../index.html">home</a>\n\t\t\t\t<a style=\"flex: 1; display: flex; justify-content: flex-end;\" href=\"\"></a>\n\t\t\t</nav>' $(ls *.html | tail -n 1)
