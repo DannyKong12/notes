@@ -47,7 +47,7 @@ jobs:
         rm CS341/lecture01.html
         rm CS341/lecture02.html
         echo "[WORKFLOW] Applying Stash"
-        git merge --squash --strategy-option=theirs stash
+        git checkout stash -- .
         git status
         echo "[WORKFLOW] Git add"
         git add */*.html
