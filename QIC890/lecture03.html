@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture04</title>
+      <title>lecture03</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -216,30 +216,82 @@ pre[data-line] {
     <body for="html-export">
       <div class="mume markdown-preview  ">
  			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture03.html">prev</a>
+				<a style="display: flex; flex: 1;" href="./lecture02.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture18.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture04.html">next</a>
 			</nav>
-      <h1 class="mume-header" id="cs666">CS666</h1>
+      <h1 class="mume-header" id="qic890">QIC890</h1>
 
-<h3 class="mume-header" id="coupon-collector-problem">Coupon Collector Problem</h3>
+<h3 class="mume-header" id="composable-communication">Composable Communication</h3>
 
-<p>Again, we will use the framework of balls/bins, and we ask for what value of <span class="mathjax-exps">$m$</span> do we expect to have no empty bins?</p>
-<p>Suppose each bin is a coupon, and we buy a coupon at random, what is the number of coupons we need to buy to collect all the coupons?</p>
-<p>Let <span class="mathjax-exps">$X_i$</span> be the number of balls thrown to get from <span class="mathjax-exps">$i+1$</span> empty bins to <span class="mathjax-exps">$i$</span> empty bins. <span class="mathjax-exps">$X = \sum X_i$</span> is the toal number of balls until no empty bins. <span class="mathjax-exps">$X_i$</span> is the geometric random variable with <span class="mathjax-exps">$p=i/n$</span>.</p>
-<p>The expectation value of <span class="mathjax-exps">$X$</span> is the sum of the expectation value of each <span class="mathjax-exps">$X_i$</span> (by linearity of expectation values) which is equal to <span class="mathjax-exps">$1/p$</span>. Taking the sum of <span class="mathjax-exps">$1/p$</span> for each <span class="mathjax-exps">$X_i$</span>, we have</p>
-<p></p><div class="mathjax-exps">$$E[X] = \sum_i p_i = \sum_i \frac{n}{i} = nH_n \approx n \ln n$$</div><p></p>
-<p>Where <span class="mathjax-exps">$H_n$</span> is the <span class="mathjax-exps">$n$</span>th harmonic number.</p>
-<h4 class="mume-header" id="power-of-two-choices">Power of Two Choices</h4>
+<p>Let <span class="mathjax-exps">$\Lambda$</span> be a comunication resource, and <span class="mathjax-exps">$\Pi$</span> be a protocol approximately creating the resource. We defined how good this approximation is in terms of the diamond norm, so we would like to look at why the diamond norm is a natural choice.</p>
+<p>Specifically, we will show that if <span class="mathjax-exps">$|| \Lambda - \Pi ||_{\meddiamond}$</span> then we have the property of composition</p>
+<h4 class="mume-header" id="composability">Composability</h4>
 
-<p>Recall that when <span class="mathjax-exps">$n$</span> balls are thrown into <span class="mathjax-exps">$n$</span> bins, the maximum load is <span class="mathjax-exps">$\Theta(\ln n / \ln \ln n)$</span> with high probability.</p>
-<p>Consider the alternative case where before we throw the ball, we choose two bins at random, and throw the ball into the bin with the fewer number of balls already in it.</p>
-<p>Theorem: This alternative problem reduces the maximum load to <span class="mathjax-exps">$O(\ln \ln n)$</span></p>
-<p>The intuition for this problem is that, given a bin with <span class="mathjax-exps">$h$</span> balls inside, there must be at least two bins with <span class="mathjax-exps">$h$</span> balls inside (there are two bins such that <span class="mathjax-exps">$h$</span> is the lower of two bins).</p>
-<p>Let <span class="mathjax-exps">$N_h$</span> be the number of bins with at least <span class="mathjax-exps">$h$</span> balls inside. The probability that there exists a bin with <span class="mathjax-exps">$h+1$</span> balls inside must be less than the probability of selecting two bins of height <span class="mathjax-exps">$h$</span>, which can be given by <span class="mathjax-exps">$(N_h/n)^2$</span>.</p>
-<p>let <span class="mathjax-exps">$\beta_4 = n/4$</span>, and <span class="mathjax-exps">$\beta_{i+1} = 2\beta_i^2/n$</span>. Let <span class="mathjax-exps">$E(h, t)$</span> be that after <span class="mathjax-exps">$t$</span> balls are thrown, <span class="mathjax-exps">$N_h \leq \beta_h$</span>. Then the probability <span class="mathjax-exps">$Pr[E(4, n)] = 1$</span>. To prove this, <span class="mathjax-exps">$n \geq N_4*4$</span>, so <span class="mathjax-exps">$N_h \leq n/4$</span> which is the event we are interested in.</p>
-<p>Let us also define <span class="mathjax-exps">$Y_t(h)$</span> be the indicator variable that the <span class="mathjax-exps">$t$</span>th ball thrown was placed in a bin that had height <span class="mathjax-exps">$h$</span>.</p>
-<p>Recall that for the binomial r.v. <span class="mathjax-exps">$B(n, p)$</span>, the probability of <span class="mathjax-exps">$Pr[B(n, p) \geq 2np] \leq e^{-np/3}$</span>.</p>
+<p>Suppose we have a protocol consuming <span class="mathjax-exps">$\Lambda$</span> as a resource. If <span class="mathjax-exps">$\Lambda \approx \Pi$</span> then replacing <span class="mathjax-exps">$\Lambda$</span> by <span class="mathjax-exps">$\Pi$</span> in the protocol then the new protocol is approximately equal to the one with <span class="mathjax-exps">$\Lambda$</span>.</p>
+<p><em>Proof Sketch</em>: Suppose we have protocol <span class="mathjax-exps">$P$</span> that consumes <span class="mathjax-exps">$\Lambda$</span>, and we replace <span class="mathjax-exps">$\Lambda$</span> by <span class="mathjax-exps">$\Pi$</span> making a new protocol <span class="mathjax-exps">$P^\prime$</span>. Then we have</p>
+<p></p><div class="mathjax-exps">$$\begin{align} ||P - P^\prime||_{\meddiamond} = max || I \otimes P (|\psi \rangle\langle \psi | - I \otimes P^\prime(|\psi\rangle\langle\psi|)||_t \end{align}$$</div><p></p>
+<p>In the protocol up until the point where <span class="mathjax-exps">$\Lambda$</span> is consumed, the protocol is exactly the same in both protocols. The global state <span class="mathjax-exps">$\sigma_{RW}$</span> must be the same across both protocols. The subsequent operations are also the same. Note that since the protocol after the substitution is also the same the final state is no more distinguishable than the state immediately after the substitution (<em>Note</em>: I believe this is a result from Niesen and Chuang).</p>
+<p>The important part of the proof is the following: Since <span class="mathjax-exps">$|| \Lambda - \Pi ||_{\meddiamond} &lt; \epsilon$</span>, then we have that for any state <span class="mathjax-exps">$\xi$</span> (i.e. the global state immediately before the <span class="mathjax-exps">$\Lambda$</span> step) the trace distance between <span class="mathjax-exps">$\Lambda(|\xi\rangle\langle\xi|)$</span> and <span class="mathjax-exps">$\Pi(|\xi\rangle\langle\xi|)$</span> must also be less than <span class="mathjax-exps">$\epsilon$</span>. Combined with the fact that subsequent quantum operations may not increase the trace distance beween the states (TPCP maps are contractive) we have our proof.</p>
+<h3 class="mume-header" id="no-signalling-principle">No-Signalling Principle</h3>
+
+<h4 class="mume-header" id="locality-of-quantum-mechanics">Locality of Quantum Mechanics</h4>
+
+<p>Consider a situation where Alice and Bob share a quantum state, Alice proceeds to make a measurement, on her system with outcome <span class="mathjax-exps">$k$</span>. To Alice, the global state appears to change, but since Bob does not know the value of <span class="mathjax-exps">$k$</span>, even though for each value of <span class="mathjax-exps">$k$</span> the global state looks different, if we take the weighted average of states for all <span class="mathjax-exps">$k$</span> we recover the original state.</p>
+<p>This example essentially shows that although it <em>appears</em> to an omniscient observer that something has changed the moment Alice makes a measurement, nothing is <em>communicated</em>. This is summarized by the no-signalling principle</p>
+<blockquote>
+<p>Alice cannot communicate 1 classical bit to Bob if no system physically moves from Alice to Bob</p>
+</blockquote>
+<p>This statement is implied by the following</p>
+<ol>
+<li>Without a system moving between Alice and Bob, their operations commute</li>
+<li>Bob&apos;s state is well defined</li>
+</ol>
+<ul>
+<li>Communication causes state change, if you can have a state change (without communication) then you don&apos;t have a valid, well defined state</li>
+</ul>
+<ol start="3">
+<li>Quantum Mechanics</li>
+</ol>
+<ul>
+<li>Quantum mechanics is a more restricted setup</li>
+<li>Similar to the example, any operation on Bob&apos;s side cannot be dependent on the input message</li>
+</ul>
+<h4 class="mume-header" id="consequences">Consequences</h4>
+
+<ol>
+<li>No-signalling holds even if we allow unlimited amount of entanglement</li>
+</ol>
+<ul>
+<li>Straightforward to see from viewpoint 3.</li>
+</ul>
+<ol start="2">
+<li>Cannot communicate 1 out of <span class="mathjax-exps">$s+t$</span> messages using a noiseles classical channel with input size <span class="mathjax-exps">$s$</span> even with unlimited entanglement for any integers <span class="mathjax-exps">$t, s$</span></li>
+</ol>
+<ul>
+<li>Entanglement cannot &quot;augment&quot; a classical protocol</li>
+</ul>
+<ol start="3">
+<li>Cannot communicate a <span class="mathjax-exps">$s+t$</span> dimension system using a noiseless quantum channel with input dimension <span class="mathjax-exps">$s$</span>, even with unlimited entanglement</li>
+</ol>
+<p><em>Note: 1. is sometimes referred to as no free lunch, 2. and 3. are sometimes referred to as no discounted lunch</em></p>
+<h4 class="mume-header" id="proving-the-consequences-c2">Proving the Consequences (C2)</h4>
+
+<p>Suppose we have a protocol that we suspect might be too good to be true, we can attempt to verify this by replacing the communication by a random guess of the message, and obtain a contradiction.</p>
+<p>Suppose the opposite of C2, suppose there exist <span class="mathjax-exps">$s, t$</span> and protocol <span class="mathjax-exps">$P$</span> such that we can communicate 1 out of <span class="mathjax-exps">$s+t$</span> messages using a noiseless classical channel consuming some state <span class="mathjax-exps">$|\psi\rangle$</span> and for all <span class="mathjax-exps">$m \in \{1, ..., s+t\}$</span>, <span class="mathjax-exps">$m^\prime = m$</span>.</p>
+<p>WLOG we can model this situation as the following:</p>
+<ol>
+<li>The input <span class="mathjax-exps">$m$</span> is given to Alice, and upon receiving <span class="mathjax-exps">$m$</span> she may perform some arbitrary operation that ends in a classical message <span class="mathjax-exps">$b$</span> (so she performs a generalized measurement operation).</li>
+<li>She then sends <span class="mathjax-exps">$b$</span> to Bob through the channel</li>
+<li>Bob performs a generalized measurement operation, and obtains the output message <span class="mathjax-exps">$m^\prime$</span>.</li>
+</ol>
+<p>We will modify this protocol by removing the channel <span class="mathjax-exps">$N$</span>. Instead of communicating, Alice does nothing in this step, and Bob randomly generates a message <span class="mathjax-exps">$b^\prime$</span> completely randomly in his own lab. Since <span class="mathjax-exps">$b$</span> is a message that may be any 1 of <span class="mathjax-exps">$s$</span> messages, with probability <span class="mathjax-exps">$1/s$</span> <span class="mathjax-exps">$b^\prime = b$</span> and <span class="mathjax-exps">$m^\prime = m$</span> . Since <span class="mathjax-exps">$m$</span> varies over <span class="mathjax-exps">$s+t$</span> values, <span class="mathjax-exps">$m$</span> and <span class="mathjax-exps">$m^\prime$</span> must not be independent, so there is a contradiction. This concludes the proof of C2</p>
+<h4 class="mume-header" id="proving-the-consequences-c3">Proving the Consequences (C3)</h4>
+
+<p>Recall that because of Superdense Coding and Teleportation, <span class="mathjax-exps">$1 qbit = 2cbits$</span>.</p>
+<p>Suppose there is a protocol <span class="mathjax-exps">$P$</span> approximating the identity map from <span class="mathjax-exps">$X_1$</span> to <span class="mathjax-exps">$X_2$</span> in diamond norm by consuming an <span class="mathjax-exps">$s$</span>-dimentional noiseless quantum channel. We perform a very similar protocol as in he proof for C2. Alice performs some operations on her work qubits and produces a new state <span class="mathjax-exps">$Y_1$</span>, which is sent over the channel. Upon arriving we change the name to <span class="mathjax-exps">$Y_2$</span> and Bob is allowed to use this state in addition to his own shared entanglement states. Finally, Bob produces <span class="mathjax-exps">$X_2$</span>.</p>
+<p>This time, we make <span class="mathjax-exps">$P^\priem$</span> by replacing <span class="mathjax-exps">$N$</span> by using teleportation. We consume entanglement, and send 1 in <span class="mathjax-exps">$s^2$</span> classical messages and we teleport <span class="mathjax-exps">$Y_1$</span> into <span class="mathjax-exps">$Y_2$</span>.</p>
+<p>In the second step, we use the entire protocol (including the teleportation modification) to perform superdense coding. Recall that in superdense coding, we require the use of a quantum channel. Instead of the quantum channel, we use our protocol <span class="mathjax-exps">$P^\prime$</span> which sends 1 in <span class="mathjax-exps">$s^2$</span> messages. However, since <span class="mathjax-exps">$X_2$</span> has a dimension <span class="mathjax-exps">$s+t$</span>, superdense coding allows us to communicate 1 out of <span class="mathjax-exps">$(s+t)^2$</span> classical messages, which violates no-signalling.</p>
 
       </div>
       

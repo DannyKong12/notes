@@ -258,7 +258,7 @@ pre[data-line] {
 <p>We often get a relation in the form</p>
 <p></p><div class="mathjax-exps">$$T(n) = aT(n/b) + cn^k$$</div><p></p>
 <p>With <span class="mathjax-exps">$a \geq 1$</span>, <span class="mathjax-exps">$b &gt; 1$</span>, <span class="mathjax-exps">$c &gt; 0$</span> and <span class="mathjax-exps">$k \geq 0$</span>. The master theorem states</p>
-<p></p><div class="mathjax-exps">$$T(n) = \in \left \{ \begin{array}{c c} \Theta(n^k) &amp; a &lt; b^k \\ \Theta(n^k\log n) &amp; a = b^k \\ \Theta(n^{\log_b a}) &amp; a &gt; b^k \end{array} \right .$$</div><p></p>
+<p></p><div class="mathjax-exps">$$T(n) \in \left \{ \begin{array}{c c} \Theta(n^k) &amp; a &lt; b^k \\ \Theta(n^k\log n) &amp; a = b^k \\ \Theta(n^{\log_b a}) &amp; a &gt; b^k \end{array} \right .$$</div><p></p>
 <p>An intuition for the theorem is follows from our analysis of the recursion tree. Summing the layers of the tree, the first layer sums to <span class="mathjax-exps">$cn^k$</span>, the second layer sums to <span class="mathjax-exps">$ac(n/b)^k$</span>, and the third <span class="mathjax-exps">$a^2c(n/b^2)^k$</span>, and so on. This sum is a geometric series, which converges to our result</p>
 
       </div>

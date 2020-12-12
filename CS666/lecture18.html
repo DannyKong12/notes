@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture04</title>
+      <title>lecture18</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -215,31 +215,141 @@ pre[data-line] {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
- 			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture03.html">prev</a>
+ 			<nav style="display: flex; flex: 1;">
+				<a href="./lecture03.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture18.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href=""></a>
 			</nav>
       <h1 class="mume-header" id="cs666">CS666</h1>
 
-<h3 class="mume-header" id="coupon-collector-problem">Coupon Collector Problem</h3>
+<h3 class="mume-header" id="hardness-of-approximation">Hardness of Approximation</h3>
 
-<p>Again, we will use the framework of balls/bins, and we ask for what value of <span class="mathjax-exps">$m$</span> do we expect to have no empty bins?</p>
-<p>Suppose each bin is a coupon, and we buy a coupon at random, what is the number of coupons we need to buy to collect all the coupons?</p>
-<p>Let <span class="mathjax-exps">$X_i$</span> be the number of balls thrown to get from <span class="mathjax-exps">$i+1$</span> empty bins to <span class="mathjax-exps">$i$</span> empty bins. <span class="mathjax-exps">$X = \sum X_i$</span> is the toal number of balls until no empty bins. <span class="mathjax-exps">$X_i$</span> is the geometric random variable with <span class="mathjax-exps">$p=i/n$</span>.</p>
-<p>The expectation value of <span class="mathjax-exps">$X$</span> is the sum of the expectation value of each <span class="mathjax-exps">$X_i$</span> (by linearity of expectation values) which is equal to <span class="mathjax-exps">$1/p$</span>. Taking the sum of <span class="mathjax-exps">$1/p$</span> for each <span class="mathjax-exps">$X_i$</span>, we have</p>
-<p></p><div class="mathjax-exps">$$E[X] = \sum_i p_i = \sum_i \frac{n}{i} = nH_n \approx n \ln n$$</div><p></p>
-<p>Where <span class="mathjax-exps">$H_n$</span> is the <span class="mathjax-exps">$n$</span>th harmonic number.</p>
-<h4 class="mume-header" id="power-of-two-choices">Power of Two Choices</h4>
+<h4 class="mume-header" id="why-study-hardness-of-approximation">Why Study Hardness of Approximation?</h4>
 
-<p>Recall that when <span class="mathjax-exps">$n$</span> balls are thrown into <span class="mathjax-exps">$n$</span> bins, the maximum load is <span class="mathjax-exps">$\Theta(\ln n / \ln \ln n)$</span> with high probability.</p>
-<p>Consider the alternative case where before we throw the ball, we choose two bins at random, and throw the ball into the bin with the fewer number of balls already in it.</p>
-<p>Theorem: This alternative problem reduces the maximum load to <span class="mathjax-exps">$O(\ln \ln n)$</span></p>
-<p>The intuition for this problem is that, given a bin with <span class="mathjax-exps">$h$</span> balls inside, there must be at least two bins with <span class="mathjax-exps">$h$</span> balls inside (there are two bins such that <span class="mathjax-exps">$h$</span> is the lower of two bins).</p>
-<p>Let <span class="mathjax-exps">$N_h$</span> be the number of bins with at least <span class="mathjax-exps">$h$</span> balls inside. The probability that there exists a bin with <span class="mathjax-exps">$h+1$</span> balls inside must be less than the probability of selecting two bins of height <span class="mathjax-exps">$h$</span>, which can be given by <span class="mathjax-exps">$(N_h/n)^2$</span>.</p>
-<p>let <span class="mathjax-exps">$\beta_4 = n/4$</span>, and <span class="mathjax-exps">$\beta_{i+1} = 2\beta_i^2/n$</span>. Let <span class="mathjax-exps">$E(h, t)$</span> be that after <span class="mathjax-exps">$t$</span> balls are thrown, <span class="mathjax-exps">$N_h \leq \beta_h$</span>. Then the probability <span class="mathjax-exps">$Pr[E(4, n)] = 1$</span>. To prove this, <span class="mathjax-exps">$n \geq N_4*4$</span>, so <span class="mathjax-exps">$N_h \leq n/4$</span> which is the event we are interested in.</p>
-<p>Let us also define <span class="mathjax-exps">$Y_t(h)$</span> be the indicator variable that the <span class="mathjax-exps">$t$</span>th ball thrown was placed in a bin that had height <span class="mathjax-exps">$h$</span>.</p>
-<p>Recall that for the binomial r.v. <span class="mathjax-exps">$B(n, p)$</span>, the probability of <span class="mathjax-exps">$Pr[B(n, p) \geq 2np] \leq e^{-np/3}$</span>.</p>
+<ul>
+<li>Even before we formally knew about NP, we were already noticing that certain combinatorial problems were much harder to solve than others</li>
+<li>Many early problems came in the form of combinatorial optimization</li>
+<li>Saw the same question that we have, what do we do when we see such a hard problem?
+<ul>
+<li>Design algoritm which is efficient on &quot;most&quot; instances and always gives us the exact/best answer</li>
+<li>Design (always) efficient algorithm, but only finds suboptimal algorithms</li>
+<li>For <span class="mathjax-exps">$\alpha \geq 1$</span>, an algorithm is <span class="mathjax-exps">$\alpha$</span>-approximate for a minimization problem if on every input instance the algorithm finds solution with cost <span class="mathjax-exps">$\leq \alpha \cdot OPT$</span></li>
+<li>But, there are some approximations that are too good to be true. Having an <span class="mathjax-exps">$\alpha$</span>-approximation is essentially the same as exactly solving the problem</li>
+</ul>
+</li>
+<li>The point of hardness of approximation is to discover the limits of approximation algorithms</li>
+</ul>
+<h4 class="mume-header" id="proving-hardness-of-approximation">Proving Hardness of Approximation</h4>
+
+<ul>
+<li>A &quot;reduction&quot; in the sense of NP-completness for example:
+<ul>
+<li>Maps every <em>YES</em> instance of <em>L</em> to a <em>YES</em> instance of <em>C</em></li>
+<li>Maps every <em>NO</em> instance of <em>L</em> to a <em>NO</em> instance of <em>C</em></li>
+</ul>
+</li>
+<li>A hardness of approximation reduction requires more robustness
+<ul>
+<li>Maps <em>YES</em> for every instance of <em>L</em> to a <em>YES</em> instance of <em>C</em></li>
+<li>Maps <em>NO</em> instance of <em>L</em> to a <em>VERY-MUCH-NO</em> instance of <em>C</em></li>
+</ul>
+</li>
+<li>i.e. in the <em>CLIQUE</em> problem, a <em>NO</em> instance maps to a graph with a max clique size much less than <span class="mathjax-exps">$k$</span> (say, <span class="mathjax-exps">$k/3$</span>)</li>
+<li>The robust approximation allows us to reduce a problem to a different problem with lax requirements. Suppose we reduce <span class="mathjax-exps">$SAT$</span> to <span class="mathjax-exps">$CLIQUE$</span>, then we take a <span class="mathjax-exps">$YES$</span> instance of <span class="mathjax-exps">$SAT$</span> to a graph with clique of size <span class="mathjax-exps">$k$</span>, we find this with our approximation algorithm to be greater than <span class="mathjax-exps">$k/2$</span>. If we map a <span class="mathjax-exps">$NO$</span> instance, then our approximation algorithm finds a clique with small size (less than <span class="mathjax-exps">$k/3$</span>). If we have a 2-approximation algorithm for <em>MAX-CLIQUE</em>, then we can solve <span class="mathjax-exps">$SAT$</span>.</li>
+</ul>
+<h4 class="mume-header" id="traveling-salesman-problem">Traveling Salesman Problem</h4>
+
+<ul>
+<li>We k now that General TSP without repetitions <em>TSP-NR</em>
+<ul>
+<li>If <span class="mathjax-exps">$P \neq NP$</span> then there is no poly-time constant-approximation algorithm for General <em>TSP-NR</em></li>
+<li>more generally, if there is any function <span class="mathjax-exps">$r: \mathbb{N} \rightarrow \mathbb{N}$</span> such that <span class="mathjax-exps">$r(n)$</span> is computable in polynomial time then it is hard to <span class="mathjax-exps">$r(n)$</span>-approximate General <em>TSP-NR</em> if we assume that <span class="mathjax-exps">$P \neq NP$</span></li>
+</ul>
+</li>
+<li>We can prove this by reducing to Hamiltonian Cycle</li>
+</ul>
+<p><strong>Hamiltonian Cycle Problem</strong>: Given a graph <span class="mathjax-exps">$G(V, E)$</span> decide whether there exists a cycle which passes through every vertex at most once</p>
+<ol>
+<li>If we had an algorithm <span class="mathjax-exps">$M$</span> which solved the <span class="mathjax-exps">$\alpha$</span>-approximate <em>TSP-NR</em> problem, then</li>
+</ol>
+<ul>
+<li>From graph <span class="mathjax-exps">$G$</span>, construct a weighted graph <span class="mathjax-exps">$H(V, F, w)$</span> such that all edges <span class="mathjax-exps">$\{u, v\}$</span> \in <span class="mathjax-exps">$F$</span></li>
+<li><span class="mathjax-exps">$w(u, v) = 1$</span> if <span class="mathjax-exps">$\{ u, v\} \in E$</span>, <span class="mathjax-exps">$(1+\alpha)*|V|$</span> otherwise</li>
+</ul>
+<ol start="2">
+<li>If <span class="mathjax-exps">$G$</span> has a Hamiltonian cycle, then <span class="mathjax-exps">$OPT$</span> for <em>TSP</em> has value <span class="mathjax-exps">$\leq |V|$</span></li>
+<li>If there does not exist a Hamiltonian Cycle, then <em>TSP</em> has optimal value greater than <span class="mathjax-exps">$(1+\alpha) \cdot |V|$</span>, since it must use an edge that is not in <span class="mathjax-exps">$E$</span>.</li>
+<li>Thus <span class="mathjax-exps">$M$</span> will output a Hamiltonian cycle of <span class="mathjax-exps">$G$</span> if <span class="mathjax-exps">$G$</span> has one or output a solution with value <span class="mathjax-exps">$\geq (1+\alpha)\cdot|V|$</span></li>
+</ol>
+<ul>
+<li>Some additional intuition for this proof is to consider the region of solutions that exist for <em>TSP-NR</em>, there is an optimal value in the region, but everything that is <span class="mathjax-exps">$\alpha\cdotOPT$</span> is empty by construction of our graph. All other solutions have value much greater than <span class="mathjax-exps">$\alpha \cdot OPT$</span>, so we can easily tell the difference.</li>
+</ul>
+<h4 class="mume-header" id="proofs-hardness-of-approximatioon">Proofs &amp; Hardness of Approximatioon</h4>
+
+<p>Recall some important complexity classes</p>
+<ul>
+<li><strong>NP</strong>: The set of languages <span class="mathjax-exps">$L \subseteq \{ 0, 1\}^*$</span> such that there exists a poly-time Turing Machine <span class="mathjax-exps">$V$</span> with one input such that <span class="mathjax-exps">$x \in L \iff \exists w \in \{0, 1\}^{poly(|x|)} s.t. V(x, w) = 1$</span>, i.e. a <em>YES</em> instance has a polynomial time verifier</li>
+<li><strong>BPP</strong>: The set of langages <span class="mathjax-exps">$L \subseteq \{ 0, 1 \}^*$</span> such that there exists a poly-time Turing machine <span class="mathjax-exps">$M$</span> such that <span class="mathjax-exps">$x \in L \iff \Pr_{R\in \{ 0, 1}^{poly(|x|)}} [M(x, R) = 1] \geq 2/3$</span>, i.e. using some polynomially bounded randomness, the probability that <span class="mathjax-exps">$M$</span> accepts is greater than <span class="mathjax-exps">$2/3$</span></li>
+<li><strong>RP</strong>: The set of languages <span class="mathjax-exps">$L \subseteq \{ 0, 1 \}^*$</span> such that there exists a poly-time Turing machine <span class="mathjax-exps">$M$</span> such that:
+<ul>
+<li><span class="mathjax-exps">$x \in L \implies \Pr_{R\in \{ 0, 1}^{poly(|x|)}} [M(x, R) = 1] \geq 2/3$</span></li>
+<li><span class="mathjax-exps">$x \notin L \implies \Pr_{R\in \{ 0, 1}^{poly(|x|)}} [M(x, R) = 1] = 0$</span></li>
+</ul>
+</li>
+<li><strong>co-RP</strong>: The set of languages <span class="mathjax-exps">$L \subseteq \{ 0, 1 \}^* s.t. \bar L \in RP$</span></li>
+</ul>
+<h4 class="mume-header" id="proof-systems">Proof Systems</h4>
+
+<ul>
+<li>Prover and Verifier agree on the following:
+<ul>
+<li>The prover must provide proofsi n a certain format</li>
+<li>The verifier can use algorithms from a certain complexity class for verification</li>
+</ul>
+</li>
+<li>A statement is given to both the prover and the verifier (for instance &quot;Graph <span class="mathjax-exps">$G(V,E)$</span> has a Hamiltonian Cycle&quot;)</li>
+<li><em>NP</em> as a proof system: <span class="mathjax-exps">$L \subseteq \{ 0, 1\}^n$</span> is the language, and verifier can use a poly-time turing machine, the witness is the proof</li>
+</ul>
+<h4 class="mume-header" id="interactive-proofs">Interactive Proofs</h4>
+
+<p>(<span class="mathjax-exps">$P$</span>, <span class="mathjax-exps">$V$</span>) is an interactive proof system, where</p>
+<ul>
+<li><span class="mathjax-exps">$V$</span> is a randomized polynomial time algorithm</li>
+<li>and there is an honest prover <span class="mathjax-exps">$P$</span> that is all powerful</li>
+<li>for any <span class="mathjax-exps">$x \in \{ 0, 1 \}^*$</span>
+<ul>
+<li><span class="mathjax-exps">$x \in L \implies$</span> for an honest prover <span class="mathjax-exps">$P$</span>, we always accept</li>
+<li>if <span class="mathjax-exps">$x \notin L \implies$</span> for any prover <span class="mathjax-exps">$P^\prime$</span>, we accept w.p. <span class="mathjax-exps">$\leq 1/2$</span></li>
+</ul>
+</li>
+</ul>
+<h4 class="mume-header" id="probabilistic-proof-systems">Probabilistic Proof Systems</h4>
+
+<ul>
+<li>Given a language <span class="mathjax-exps">$L$</span>, <span class="mathjax-exps">$x \in L \implies$</span> there exists a proof <span class="mathjax-exps">$w$</span> such that <span class="mathjax-exps">$\Pr[V(x, w) = 1] = 1$</span>, and <span class="mathjax-exps">$x \notin L \implies$</span> for any proof <span class="mathjax-exps">$w$</span>, we have <span class="mathjax-exps">$\Pr[V(x, w) = 1 \leq 1/2$</span></li>
+<li><span class="mathjax-exps">$V$</span> i a verifier that runs in polynomial time</li>
+<li><span class="mathjax-exps">$PCP[r(n), q(n)]$</span> consists of all languages <span class="mathjax-exps">$L \in PCP$</span> such that on an input of length <span class="mathjax-exps">$n$</span>, we use <span class="mathjax-exps">$O(r(n))$</span> random bits and check <span class="mathjax-exps">$O(q(n))$</span> bits of a proof <span class="mathjax-exps">$w$</span> to verify</li>
+<li>Theorem (PCP theorem [AS&apos;98. ALMSS&apos;98]): <span class="mathjax-exps">$PCP[\log n, 1] = NP$</span></li>
+</ul>
+<h4 class="mume-header" id="pcp-and-approximability-of-max-sat">PCP and Approximability of MAX-SAT</h4>
+
+<ul>
+<li>The PCP theorem implies that there is an <span class="mathjax-exps">$\epsilon \geq 0$</span> such that there is no polynomial time <span class="mathjax-exps">$(1+\epsilon)$</span>-approximation algorithm for <em>MAX-3SAT</em>, unless <span class="mathjax-exps">$P = NP$</span></li>
+<li>Moreover if <em>MAX-3SAT</em> is hard to approximate within a factor of <span class="mathjax-exps">$(1+\epsilon)$</span>, then the <em>PCP</em> theorem holds.<br>
+<strong>Proof</strong>:</li>
+</ul>
+<p>Reverse direction is an exercise</p>
+<p>Assume the PCP theorem holds, then we have a PCP verifier <span class="mathjax-exps">$V$</span>. Given an instance <span class="mathjax-exps">$x$</span> of problem <span class="mathjax-exps">$L$</span>, construct <span class="mathjax-exps">$3CNF$</span> formula <span class="mathjax-exps">$\psi_x$</span> with <span class="mathjax-exps">$m$</span> clauses such that for some <span class="mathjax-exps">$\epsilon$</span> we have</p>
+<ul>
+<li><span class="mathjax-exps">$x \in L \implies \psi_x_x$</span> is satisfiable</li>
+<li><span class="mathjax-exps">$x \notin L \implies$</span> no assignment satisfies more than <span class="mathjax-exps">$(1-\epsilon)\cdot m$</span> clauses of <span class="mathjax-exps">$\psi_x$</span></li>
+</ul>
+<p>Enumerate all random inputs <span class="mathjax-exps">$R$</span> for the verifier <span class="mathjax-exps">$V$</span></p>
+<ul>
+<li>Length of each string is <span class="mathjax-exps">$O(\log(n))$</span>, so the number of random inputs is <span class="mathjax-exps">$poly(n)$</span>. For each <span class="mathjax-exps">$R$</span>, <span class="mathjax-exps">$V$</span> chooses <span class="mathjax-exps">$q$</span> positions and a boolean function <span class="mathjax-exps">$f_R: \{0, 1\}^r \rightarrow \{0, 1 \}$</span> and accepts iff <span class="mathjax-exps">$f_R(w_{r_1}, w_{r_q}) = 1$</span> i.e. <span class="mathjax-exps">$V$</span> checks the proof <span class="mathjax-exps">$w$</span> at <span class="mathjax-exps">$q$</span> positions.</li>
+</ul>
+<p>Now, we have <span class="mathjax-exps">$poly(n)$</span> number of functions, we can simulate the computation of <span class="mathjax-exps">$f_R$</span> with a CNF of size <span class="mathjax-exps">$2^q$</span>, convert into a 3CNF or size <span class="mathjax-exps">$q2^q$</span>. We then put together all the 3CNFs we constructed together and call it <span class="mathjax-exps">$\psi_x$</span>. If <span class="mathjax-exps">$x \in L$</span>, there is a witness such that <span class="mathjax-exps">$V(x, w)$</span> accepts for every random string <span class="mathjax-exps">$R$</span>, so <span class="mathjax-exps">$\psi_x$</span> is satisfiable.</p>
+<p>If <span class="mathjax-exps">$x \notin L$</span>, then the verifier says <span class="mathjax-exps">$NO$</span> for half of the random strings <span class="mathjax-exps">$R$</span>, that means for at least one of the clauses constructed per string will fail. In <span class="mathjax-exps">$\psi_x$</span>, <span class="mathjax-exps">$1/2q2^q$</span> will fail.</p>
 
       </div>
       

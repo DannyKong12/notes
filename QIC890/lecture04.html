@@ -215,31 +215,32 @@ pre[data-line] {
     </head>
     <body for="html-export">
       <div class="mume markdown-preview  ">
- 			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture03.html">prev</a>
+ 			<nav style="display: flex; flex: 1;">
+				<a href="./lecture02.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture18.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href=""></a>
 			</nav>
-      <h1 class="mume-header" id="cs666">CS666</h1>
+      <h1 class="mume-header" id="qic890">QIC890</h1>
 
-<h3 class="mume-header" id="coupon-collector-problem">Coupon Collector Problem</h3>
+<h3 class="mume-header" id="superdense-coding-and-teleportation">Superdense Coding and Teleportation</h3>
 
-<p>Again, we will use the framework of balls/bins, and we ask for what value of <span class="mathjax-exps">$m$</span> do we expect to have no empty bins?</p>
-<p>Suppose each bin is a coupon, and we buy a coupon at random, what is the number of coupons we need to buy to collect all the coupons?</p>
-<p>Let <span class="mathjax-exps">$X_i$</span> be the number of balls thrown to get from <span class="mathjax-exps">$i+1$</span> empty bins to <span class="mathjax-exps">$i$</span> empty bins. <span class="mathjax-exps">$X = \sum X_i$</span> is the toal number of balls until no empty bins. <span class="mathjax-exps">$X_i$</span> is the geometric random variable with <span class="mathjax-exps">$p=i/n$</span>.</p>
-<p>The expectation value of <span class="mathjax-exps">$X$</span> is the sum of the expectation value of each <span class="mathjax-exps">$X_i$</span> (by linearity of expectation values) which is equal to <span class="mathjax-exps">$1/p$</span>. Taking the sum of <span class="mathjax-exps">$1/p$</span> for each <span class="mathjax-exps">$X_i$</span>, we have</p>
-<p></p><div class="mathjax-exps">$$E[X] = \sum_i p_i = \sum_i \frac{n}{i} = nH_n \approx n \ln n$$</div><p></p>
-<p>Where <span class="mathjax-exps">$H_n$</span> is the <span class="mathjax-exps">$n$</span>th harmonic number.</p>
-<h4 class="mume-header" id="power-of-two-choices">Power of Two Choices</h4>
+<p>If entanglement is free, the communication protocols superdense coding and teleportation are inverses of one another, in the sense that the resources required/produced are opposites.</p>
+<h4 class="mume-header" id="optimality-of-teleportation">Optimality of Teleportation</h4>
 
-<p>Recall that when <span class="mathjax-exps">$n$</span> balls are thrown into <span class="mathjax-exps">$n$</span> bins, the maximum load is <span class="mathjax-exps">$\Theta(\ln n / \ln \ln n)$</span> with high probability.</p>
-<p>Consider the alternative case where before we throw the ball, we choose two bins at random, and throw the ball into the bin with the fewer number of balls already in it.</p>
-<p>Theorem: This alternative problem reduces the maximum load to <span class="mathjax-exps">$O(\ln \ln n)$</span></p>
-<p>The intuition for this problem is that, given a bin with <span class="mathjax-exps">$h$</span> balls inside, there must be at least two bins with <span class="mathjax-exps">$h$</span> balls inside (there are two bins such that <span class="mathjax-exps">$h$</span> is the lower of two bins).</p>
-<p>Let <span class="mathjax-exps">$N_h$</span> be the number of bins with at least <span class="mathjax-exps">$h$</span> balls inside. The probability that there exists a bin with <span class="mathjax-exps">$h+1$</span> balls inside must be less than the probability of selecting two bins of height <span class="mathjax-exps">$h$</span>, which can be given by <span class="mathjax-exps">$(N_h/n)^2$</span>.</p>
-<p>let <span class="mathjax-exps">$\beta_4 = n/4$</span>, and <span class="mathjax-exps">$\beta_{i+1} = 2\beta_i^2/n$</span>. Let <span class="mathjax-exps">$E(h, t)$</span> be that after <span class="mathjax-exps">$t$</span> balls are thrown, <span class="mathjax-exps">$N_h \leq \beta_h$</span>. Then the probability <span class="mathjax-exps">$Pr[E(4, n)] = 1$</span>. To prove this, <span class="mathjax-exps">$n \geq N_4*4$</span>, so <span class="mathjax-exps">$N_h \leq n/4$</span> which is the event we are interested in.</p>
-<p>Let us also define <span class="mathjax-exps">$Y_t(h)$</span> be the indicator variable that the <span class="mathjax-exps">$t$</span>th ball thrown was placed in a bin that had height <span class="mathjax-exps">$h$</span>.</p>
-<p>Recall that for the binomial r.v. <span class="mathjax-exps">$B(n, p)$</span>, the probability of <span class="mathjax-exps">$Pr[B(n, p) \geq 2np] \leq e^{-np/3}$</span>.</p>
+<p>Any method to communicate one qubit using unlimited entanglement must send at list 2 cbits. Even further, if we send a <span class="mathjax-exps">$d$</span> dimensional system, we must send no less than <span class="mathjax-exps">$2\log(d)$</span> classical bits (no economies of scale).</p>
+<p><em>Proof</em>: Suppose there is a protocol <span class="mathjax-exps">$T$</span> that communicates a qubit by sending <span class="mathjax-exps">$c &lt; 2$</span> classical bits. If we use <span class="mathjax-exps">$T$</span> to be the protocol that communicates one qubit. Such a protocol communicates <span class="mathjax-exps">$2$</span> classical bits while sending <span class="mathjax-exps">$c &lt; 2$</span> classical bits, which violates C2.</p>
+<h4 class="mume-header" id="optimality-of-superdense-coding">Optimality of Superdense Coding</h4>
+
+<p><em>Proof</em>: We can prove this in the same manner as Teleportation.</p>
+<h3 class="mume-header" id="cobits">Cobits</h3>
+
+<p>Recall the definition of a cobit of communication, aka <span class="mathjax-exps">$\forall x |x\rangle_A \rightarrow |x\rangle_B|x\rangle_{A^\prime}|0\rangle$</span>.</p>
+<p>The Cobit is involved in a few resource inequalities:</p>
+<p></p><div class="mathjax-exps">$$qbit \geq cobit \geq cbit$$</div><p></p>
+<p>and</p>
+<p></p><div class="mathjax-exps">$$cobit \geq ebit$$</div><p></p>
+<p>However, suppose that ebits are not free. Then SD and TP convert between 1 qbit + 1 ebit and 2 qbits. We will define a basis change <span class="mathjax-exps">$|\alpha\rangle \mapsto (\sigma_\alpha \otimes I |\Phi\rangle$</span> where <span class="mathjax-exps">$\alpha \in \{0,1,2,3\}$</span>. We use this to modify SD. Presented as a sequence of state transformations:</p>
+<p></p><div class="mathjax-exps">$$\begin{align} |\Psi\rangle &amp;= |\alpha\rangle_A \frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)_{AB} \\ &amp;\mapsto |\alpha\rangle_A\left[(\sigma_\alpha \otimes I)\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)_{AB}\right] \\ &amp;\mapsto |\alpha\rangle_A\left[(\sigma_\alpha \otimes I)\frac{1}{\sqrt{2}}(|00\rangle+|11\rangle)_{CB}\right] \\ &amp;\mapsto |\alpha\rangle_A|\alpha\rangle_B \end{align}$$</div><p></p>
 
       </div>
       

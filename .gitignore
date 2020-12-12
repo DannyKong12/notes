@@ -1,0 +1,12 @@
+# Ignore in progres courses
+BIOL487/
+PHYS256/
+PHYS263/
+PHYS334/
+PHYS335/
+PHYS342/
+PHYS358/
+PHYS704/
+PHYS476/
+
+src/node_modules/

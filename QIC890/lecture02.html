@@ -1,5 +1,5 @@
 <!DOCTYPE html><html><head>
-      <title>lecture04</title>
+      <title>lecture02</title>
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       
@@ -216,30 +216,38 @@ pre[data-line] {
     <body for="html-export">
       <div class="mume markdown-preview  ">
  			<nav style="display: flex;">
-				<a style="display: flex; flex: 1;" href="./lecture03.html">prev</a>
+				<a style="display: flex; flex: 1;" href="./lecture01.html">prev</a>
 				<a style="flex: 1; display: flex; justify-content: center;" href="../index.html">home</a>
-				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture18.html">next</a>
+				<a style="flex: 1; display: flex; justify-content: flex-end;" href="./lecture03.html">next</a>
 			</nav>
-      <h1 class="mume-header" id="cs666">CS666</h1>
+      <h1 class="mume-header" id="qic-890">QIC 890</h1>
 
-<h3 class="mume-header" id="coupon-collector-problem">Coupon Collector Problem</h3>
+<h4 class="mume-header" id="communication-of-quantum-data-cont">Communication of Quantum Data (cont.)</h4>
 
-<p>Again, we will use the framework of balls/bins, and we ask for what value of <span class="mathjax-exps">$m$</span> do we expect to have no empty bins?</p>
-<p>Suppose each bin is a coupon, and we buy a coupon at random, what is the number of coupons we need to buy to collect all the coupons?</p>
-<p>Let <span class="mathjax-exps">$X_i$</span> be the number of balls thrown to get from <span class="mathjax-exps">$i+1$</span> empty bins to <span class="mathjax-exps">$i$</span> empty bins. <span class="mathjax-exps">$X = \sum X_i$</span> is the toal number of balls until no empty bins. <span class="mathjax-exps">$X_i$</span> is the geometric random variable with <span class="mathjax-exps">$p=i/n$</span>.</p>
-<p>The expectation value of <span class="mathjax-exps">$X$</span> is the sum of the expectation value of each <span class="mathjax-exps">$X_i$</span> (by linearity of expectation values) which is equal to <span class="mathjax-exps">$1/p$</span>. Taking the sum of <span class="mathjax-exps">$1/p$</span> for each <span class="mathjax-exps">$X_i$</span>, we have</p>
-<p></p><div class="mathjax-exps">$$E[X] = \sum_i p_i = \sum_i \frac{n}{i} = nH_n \approx n \ln n$$</div><p></p>
-<p>Where <span class="mathjax-exps">$H_n$</span> is the <span class="mathjax-exps">$n$</span>th harmonic number.</p>
-<h4 class="mume-header" id="power-of-two-choices">Power of Two Choices</h4>
+<p><em>Definition:</em> The Diamond norm distance between two <em>channels</em> <span class="mathjax-exps">$N_1, N_1$</span> is given by</p>
+<p><span class="mathjax-exps">$|| N_1 - N_2 ||_{diamond} = max_{|\phi\rangle} || I \otimes N_1 (|\phi\rangle\langle) - I \otimes N_2 ( |\phi\rangle\langle |) ||_t$</span></p>
+<p>Where the norm on the right hand side is given by the trace distance</p>
+<p>With this definition, if a communication protocol approximates the noiseless channel from systems <span class="mathjax-exps">$S$</span> to <span class="mathjax-exps">$S^\prime$</span> to diamond norm less than some <span class="mathjax-exps">$\epsilon$</span>, then for all systems on <span class="mathjax-exps">$RS$</span>, the protocol yields a state on <span class="mathjax-exps">$RS^\prime$</span> with trace distance less than <span class="mathjax-exps">$\epsilon$</span> from <span class="mathjax-exps">$|\phi\rangle$</span>.</p>
+<p><strong>Example 3</strong> Alice can communicate 1 classical bit to Bob using a noiseless quantum channel <span class="mathjax-exps">$N$</span> on a 2-dim system</p>
+<p>Alice prepares a <span class="mathjax-exps">$|0\rangle$</span> state, and upon given <span class="mathjax-exps">$m = 1$</span> performs Pauli-x on the system, and does nothing otherwise. Alice then uses a noiseless quantum channel to Bob, who measures along the computational basis.</p>
+<p>Such a protocol consumes one qbit, and creates 1 cbit.</p>
+<p>We may consider that the resource of 1 qbit is at least as large as the communication value of 1 classical bit.</p>
+<p><strong>Example 4</strong> Alice and Bob can share the Bell pair <span class="mathjax-exps">$|\Phi\rangle = \frac{1}{\sqrt{2}} (|00\rangle + |11\rangle)$</span>.</p>
+<p>Alice prepares the state in her own lab, and sends the second half of the state to Bob using a noiseless channel. Note that this assumes that the channel preserves entanglement</p>
+<p>Similarly, &quot;1 qbit <span class="mathjax-exps">$\geq$</span> 1 ebit&quot;</p>
+<p><strong>Example 5</strong> Alice and Bob can perform Superdense Coding (Bennett-Wiesner 92)</p>
+<p>Suppose Alice and Bob share bell pairs, then they can communicate 2 classical bits per entangled pair they share.</p>
+<p>1 ebit + 1 qbit <span class="mathjax-exps">$\geq$</span> 2 cbits</p>
+<h4 class="mume-header" id="formalizing-qbits-and-cbits">Formalizing qbits and cbits</h4>
 
-<p>Recall that when <span class="mathjax-exps">$n$</span> balls are thrown into <span class="mathjax-exps">$n$</span> bins, the maximum load is <span class="mathjax-exps">$\Theta(\ln n / \ln \ln n)$</span> with high probability.</p>
-<p>Consider the alternative case where before we throw the ball, we choose two bins at random, and throw the ball into the bin with the fewer number of balls already in it.</p>
-<p>Theorem: This alternative problem reduces the maximum load to <span class="mathjax-exps">$O(\ln \ln n)$</span></p>
-<p>The intuition for this problem is that, given a bin with <span class="mathjax-exps">$h$</span> balls inside, there must be at least two bins with <span class="mathjax-exps">$h$</span> balls inside (there are two bins such that <span class="mathjax-exps">$h$</span> is the lower of two bins).</p>
-<p>Let <span class="mathjax-exps">$N_h$</span> be the number of bins with at least <span class="mathjax-exps">$h$</span> balls inside. The probability that there exists a bin with <span class="mathjax-exps">$h+1$</span> balls inside must be less than the probability of selecting two bins of height <span class="mathjax-exps">$h$</span>, which can be given by <span class="mathjax-exps">$(N_h/n)^2$</span>.</p>
-<p>let <span class="mathjax-exps">$\beta_4 = n/4$</span>, and <span class="mathjax-exps">$\beta_{i+1} = 2\beta_i^2/n$</span>. Let <span class="mathjax-exps">$E(h, t)$</span> be that after <span class="mathjax-exps">$t$</span> balls are thrown, <span class="mathjax-exps">$N_h \leq \beta_h$</span>. Then the probability <span class="mathjax-exps">$Pr[E(4, n)] = 1$</span>. To prove this, <span class="mathjax-exps">$n \geq N_4*4$</span>, so <span class="mathjax-exps">$N_h \leq n/4$</span> which is the event we are interested in.</p>
-<p>Let us also define <span class="mathjax-exps">$Y_t(h)$</span> be the indicator variable that the <span class="mathjax-exps">$t$</span>th ball thrown was placed in a bin that had height <span class="mathjax-exps">$h$</span>.</p>
-<p>Recall that for the binomial r.v. <span class="mathjax-exps">$B(n, p)$</span>, the probability of <span class="mathjax-exps">$Pr[B(n, p) \geq 2np] \leq e^{-np/3}$</span>.</p>
+<p>Choose a basis <span class="mathjax-exps">$\{ |x\rangle \}$</span> basis for <span class="mathjax-exps">$A$</span> and <span class="mathjax-exps">$B$</span>.</p>
+<p>qbit: <span class="mathjax-exps">$\forall x |x\rangle_A \rightarrow_{U_N} |x\rangle_B|0\rangle_E$</span></p>
+<ul>
+<li>or equivalently, there is a definition in terms of density matrices<br>
+cbit: <span class="mathjax-exps">$\forall x |x\rangle_A \rightarrow |x\rangle_B |x\rangle_E$</span><br>
+cobit: <span class="mathjax-exps">$\forall x |x\rangle_A \rightarrow |x\rangle_B |x\rangle_{A^\prime} |0\rangle_E$</span> (Harrow 03)</li>
+</ul>
+<p>In the &quot;cobit&quot; or coherent classical bit, the communication leaks no information, although it is classical</p>
 
       </div>
       
